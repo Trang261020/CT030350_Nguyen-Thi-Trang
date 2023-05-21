@@ -1,0 +1,18 @@
+& when (@media-common = true) {
+    .cms-insurance-policy{
+        .column-main{
+            p{
+                .mb(10px);
+                line-height: 1.5;
+
+                > strong{
+                    .mb;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+
+}

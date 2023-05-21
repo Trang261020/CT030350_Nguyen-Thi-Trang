@@ -1,0 +1,29 @@
+& when (@media-common = true) {
+    .sales-order-print{
+        .logo{
+            img:not(.logo-mobile){
+                filter: invert(42%) sepia(96%) saturate(7497%) hue-rotate(317deg) brightness(93%) contrast(91%);
+                margin-bottom: 15px;
+            }
+        }
+        
+        .menu-wrapper{
+            .lib-visually-hidden();
+        }
+
+        .sticky-footer{
+            .lib-visually-hidden();
+        }
+
+        &.account{
+            .block-content{
+                .box{
+                    .p;
+                    .pt(20px);
+                    .box-shadow(unset);
+                    .border-radius(0);
+                }
+            }
+        }
+    }
+}

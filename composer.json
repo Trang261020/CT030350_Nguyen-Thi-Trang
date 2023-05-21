@@ -1,0 +1,167 @@
+{
+    "name": "magento/project-community-edition",
+    "description": "eCommerce Platform for Growth (Community Edition)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/*": true
+        },
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "version": "2.4.5",
+    "require": {
+        "magento/product-community-edition": "2.4.5",
+        "magento/composer-root-update-plugin": "~2.0",
+        "magento/composer-dependency-version-audit-plugin": "~0.1",
+        "94now/module-recently-product": "1.0.19",
+        "amasty/sorting": "2.10.1",
+        "amasty/adminactionslog": "2.0.9",
+        "amasty/advanced-review": "1.15.7",
+        "amasty/advanced-reviews-page-builder": "1.0.1",
+        "amasty/blog": "2.10.8",
+        "amasty/blog-page-builder": "1.0.3",
+        "amasty/feed": "2.6.22",
+        "amasty/followup": "1.4.4",
+        "amasty/geoip": "1.5.7",
+        "amasty/label": "2.3.0",
+        "amasty/module-advanced-conditions": "1.5.7",
+        "amasty/module-advanced-permissions": "1.4.30",
+        "amasty/module-advanced-reports": "1.9.0",
+        "amasty/module-banners-lite": "1.0.21",
+        "amasty/module-customer-attributes": "2.3.3",
+        "amasty/module-customer-segmentation": "1.2.4",
+        "amasty/module-elastic-search-pro": "1.16.0",
+        "amasty/module-grouped-options": "1.0.3",
+        "amasty/module-optimizer-premium-functionality": "1.0.1",
+        "amasty/module-pdf-customizer": "1.3.3",
+        "amasty/module-promo-banners": "1.12.1",
+        "amasty/module-promo-countdown": "1.0.2",
+        "amasty/module-seo-toolkit": "2.1.2",
+        "amasty/module-single-step-checkout": "4.1.6",
+        "amasty/module-special-promo-pro": "2.9.0",
+        "amasty/module-thank-you-page": "1.2.3",
+        "amasty/module-visual-merchandiser": "1.5.9",
+        "amasty/mostviewed": "2.13.2",
+        "amasty/orderattr": "3.7.13",
+        "amasty/promo": "2.11.8",
+        "amasty/reindex-from-admin": "1.1.2",
+        "amasty/rma": "2.6.8",
+        "amasty/shopby": "2.20.0",
+        "amasty/smtp": "1.2.3",
+        "amasty/social-login": "1.10.5",
+        "amasty/special-occasion-coupons": "1.0.8",
+        "amasty/system-common-rules": "2.4.12",
+        "amasty/xnotif": "1.14.2",
+        "amasty/xsearch": "1.18.3",
+        "codazon/megamenu": "1.0.9",
+        "ecommage/module-address": "3.0.27",
+        "ecommage/module-alepay": "1.0.6",
+        "ecommage/module-momo-wallet": "2.0.2",
+        "ecommage/module-order-rules": "1.0.3",
+        "ecommage/module-vietnam-url-key": "1.0.0",
+        "amasty/module-pre-order-pro":"1.0.2",
+        "ecommage/module-vnpay": "2.0.27",
+        "ecommage/opengraph": "1.0.7",
+        "facebook/facebook-for-magento2": "1.4.6",
+        "lillik/magento2-price-decimal": "1.1.2",
+        "amasty/module-google-rich-snippets": "1.6.2",
+        "sparsh/magento-2-login-with-mobile-number-extension": "1.0.1.1",
+        "weltpixel/module-google-tag-manager": "1.11.7",
+        "magestat/module-facebook-pixel": "1.0.5",
+	     "sparsh/magento-2-banner-extension": "1.3.1",
+        "codazon/slideshow": "1.0.7",
+        "amasty/module-store-pickup-with-locator": "2.5.7",
+        "amasty/module-store-pickup-with-locator-msi": "1.0.5",
+        "amasty/html-sitemap": "1.2.4"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ],
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "psr-4": {
+            "Magento\\": "app/code/Magento/",
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/"
+        }
+    },
+    "require-dev": {
+        "allure-framework/allure-phpunit": "~1.5.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "deployer/deployer": "^7.0",
+        "friendsofphp/php-cs-fixer": "~3.4.0",
+        "lusitanian/oauth": "~0.8.10",
+        "magento/magento-coding-standard": "*",
+        "magento/magento2-functional-testing-framework": "^3.7",
+        "pdepend/pdepend": "~2.10.0",
+        "phpmd/phpmd": "^2.12.0",
+        "phpstan/phpstan": "^1.6.8",
+        "phpunit/phpunit": "~9.5.20",
+        "sebastian/phpcpd": "^6.0.3",
+        "squizlabs/php_codesniffer": "~3.6.0",
+        "symfony/finder": "^5.2"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\PhpStan\\": "dev/tests/static/framework/Magento/PhpStan/",
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "1": {
+            "type": "composer",
+            "url": "https://repo.ecommage.com/package-basic/",
+            "options": {
+                "ssl": {
+                    "verify_peer": false,
+                    "verify_peer_name": false,
+                    "allow_self_signed": true
+                }
+            }
+        },
+        "ecommage/client-bbb-uweuq5": {
+            "type": "composer",
+            "url": "https://repo.ecommage.com/package-clients/bbb-uweuq5/",
+            "options": {
+                "ssl": {
+                    "verify_peer": false,
+                    "verify_peer_name": false,
+                    "allow_self_signed": true
+                }
+            }
+        }
+    },
+    "extra": {
+        "magento-force": "override"
+    }
+}

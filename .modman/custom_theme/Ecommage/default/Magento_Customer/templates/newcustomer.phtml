@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Customer\Block\Form\Login\Info $block */
+?>
+<?php if ($block->getRegistration()->isAllowed()) : ?>
+<div class="block block-new-customer">
+    <div class="block-content" aria-labelledby="block-new-customer-heading">
+        <p><?= $block->escapeHtml(__('Don’t have an Account?')) ?></p>
+        <a href="<?= $block->escapeUrl($block->getCreateAccountUrl()) ?>"><span><?= $block->escapeHtml(__('Create an Account')) ?></span></a>
+    </div>
+</div>
+<?php endif; ?>

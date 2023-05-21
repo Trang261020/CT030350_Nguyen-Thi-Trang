@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ecommage, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cataloginventory" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Inventory</label>
+            <tab>catalog</tab>
+            <resource>Magento_CatalogInventory::cataloginventory</resource>
+            <group id="gift_options" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <comment><![CDATA[Please note that these settings apply to individual items in the cart, not to the entire cart.]]></comment>
+                <label>Product Gift Option Index</label>
+                <field id="option" translate="label comment" type="select" sortOrder="1" showInDefault="1" canRestore="1">
+                    <label>Index Option</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Changing can take some time due to processing whole catalog.</comment>
+                </field>
+                <field id="categories" translate="label comment" type="multiselect" sortOrder="1" showInDefault="1" canRestore="1">
+                    <label>Categories Indexer</label>
+                    <source_model>Ecommage\ProductIndexFreeGift\Model\Config\Source\Categories</source_model>
+                    <comment>select categories to indexer.</comment>
+                    <depends>
+                        <field id="option">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

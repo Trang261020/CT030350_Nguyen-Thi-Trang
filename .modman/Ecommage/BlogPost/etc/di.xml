@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--    <preference for="Amasty\Blog\Model\Layout\Generator"-->
+    <!--        type="Ecommage\BlogPost\Model\Layout\Generator\Preference"/>-->
+    <type name="Amasty\Blog\Model\Layout\Config">
+        <plugin name="blog_layout_config" type="Ecommage\BlogPost\Model\Layout\Generator\Preference" sortOrder="20"/>
+    </type>
+    <type name="Magento\Variable\Model\Config\Structure\AvailableVariables">
+        <arguments>
+            <argument name="configPaths" xsi:type="array">
+                <item name="general/store_information" xsi:type="array">
+                    <item name="customer/password/reset_link_expiration_period" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

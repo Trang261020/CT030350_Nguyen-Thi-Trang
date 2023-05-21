@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <shopeepay>
+                <active>1</active>
+                <model>Ecommage\ShopeePay\Model\Payment\ShopeePay</model>
+                <order_status>pending</order_status>
+                <title>ShopeePay</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+                <is_live>0</is_live>
+                <platform_type>mweb</platform_type>
+                <live_end_point>https://api.wallet.airpay.vn</live_end_point>
+                <live_merchant_ext_id>Bebubam_012345</live_merchant_ext_id>
+                <live_store_ext_id>Bebubam_01</live_store_ext_id>
+                <!-- 1. Luồng PC web live -->
+                <live_pc_client_id>11000100</live_pc_client_id>
+                <live_pc_secret_key>8ea8c3cdde1d4cef8c156a17d98c1099</live_pc_secret_key>
+                <!-- 1. Luồng mobile web live -->
+                <live_mweb_client_id>11000100</live_mweb_client_id>
+                <live_mweb_secret_key>8ea8c3cdde1d4cef8c156a17d98c1099</live_mweb_secret_key>
+
+                <test_end_point>https://api.uat.wallet.airpay.vn</test_end_point>
+                <test_merchant_ext_id>Haravan01</test_merchant_ext_id>
+                <test_store_ext_id>2031920</test_store_ext_id>
+                <!-- 1. Luồng PC web test -->
+                <test_pc_client_id>11000097</test_pc_client_id>
+                <test_pc_secret_key>b6ec27a2068040179e1258d0758677c6</test_pc_secret_key>
+                <!-- 1. Luồng mweb web test -->
+                <test_mweb_client_id>11000098</test_mweb_client_id>
+                <test_mweb_secret_key>28aa917dd74c49aea612136364d84620</test_mweb_secret_key>
+            </shopeepay>
+        </payment>
+    </default>
+</config>

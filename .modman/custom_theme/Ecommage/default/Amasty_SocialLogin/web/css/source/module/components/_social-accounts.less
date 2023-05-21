@@ -1,0 +1,136 @@
+//
+//  Social Accounts Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amsl-accounts {
+        & {
+            flex-direction: column;
+        }
+
+        &,
+        .amsl-linked {
+            .am-flex(space-between);
+        }
+
+        .amsl-accounts-block {
+            margin-bottom: 20px;
+            width: 100%;
+            .amsl-linked-wrapper{
+                margin-top: 15px;
+                .amsl-button{
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .amsl-button {
+            height: 40px;
+            width: 40px;
+        }
+
+        .amsl-button.-amazon,
+        .amsl-button.-paypal {
+            border: 1px solid #ececec;
+        }
+
+        .amsl-linked {
+            & {
+                align-items: center;
+                background: #ececec;
+                box-sizing: border-box;
+                height: 40px;
+                margin: 0 0 15px 23px;
+                padding: 8px 8px 8px 0;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .amsl-linked .amsl-button {
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        .amsl-name {
+            margin: 0 2px 0 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .amsl-social-icon {
+            transform: scale(.6);
+        }
+
+        .amsl-unlink {
+            & {
+                .am-flex(none, center);
+
+                background: @amsl-main-blue__color;
+                border-radius: 4px;
+                height: 100%;
+                line-height: 1;
+                padding: 1px 15px;
+            }
+
+            &,
+            &:hover,
+            &:visited {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            &:hover {
+                background: #5891e6;
+            }
+        }
+
+        .amsl-social-login {
+            height: inherit;
+        }
+
+        .amsl-social-login .amsl-buttons {
+            padding: 0;
+        }
+
+        .amsl-button-wrapper {
+            margin: 15px 15px 0 0;
+        }
+
+        .amsl-accounts-block > .legend {
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amsl-accounts {
+        & {
+            flex-direction: row;
+        }
+
+        .amsl-accounts-block {
+            width: 45%;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs){
+    .amsl-accounts{
+        .amsl-button-wrapper.with-label.-rectangular{
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}

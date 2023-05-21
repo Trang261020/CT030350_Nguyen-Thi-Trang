@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <buynow>
+            <general>
+                <keep_cart_products>1</keep_cart_products>
+                <addtocart_id>product_addtocart_form</addtocart_id>
+            </general>
+        </buynow>
+        <auto_approve_reviews>
+            <general>
+                <enable>1</enable>
+            </general>
+        </auto_approve_reviews>
+    </default>
+</config>

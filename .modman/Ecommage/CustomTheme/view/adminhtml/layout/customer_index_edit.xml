@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer.mobile_number.edits" template="Ecommage_CustomTheme::mobile_number.phtml" after="-" />
+            <referenceBlock name="customer.mobile_number.edit" remove="true" />
+        </referenceContainer>
+    </body>
+</page>

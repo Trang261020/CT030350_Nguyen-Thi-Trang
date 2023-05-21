@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Codazon\Slideshow\Block\Adminhtml\Slideshow\Helper\Form\Gallery\Content">
+        <plugin name="add_option_show_only_mobile" type="Ecommage\CustomSlide\Plugin\Codazon\Slideshow\Block\Adminhtml\Content"/>
+    </type>
+    <type name="Codazon\Slideshow\Block\Widget\Slideshow">
+        <plugin name="display_option_show_only_mobile" type="Ecommage\CustomSlide\Plugin\Codazon\Slideshow\Block\Widget\Slideshow"/>
+    </type>
+</config>

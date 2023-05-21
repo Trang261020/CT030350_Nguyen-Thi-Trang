@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="product_index_free_gift_command" xsi:type="object">Ecommage\ProductIndexFreeGift\Command\IndexFreeGift</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- add warning message to cart when part of product preorder -->
+    <type name="Magento\InventorySales\Plugin\StockState\CheckQuoteItemQtyPlugin">
+        <plugin name="Amasty_Preorder::msi-check-quote-item" disabled="true"/>
+    </type>
+    <type name="Magento\InventorySales\Plugin\StockState\CheckQuoteItemQtyPlugin">
+        <plugin name="Amasty_Preorder::msi-check-quote-item-custom"
+                type="Ecommage\ProductIndexFreeGift\Plugin\InventorySales\Plugin\StockState\CheckQuoteItemQtyPlugin\CheckQuoteItemQty"/>
+    </type>
+</config>

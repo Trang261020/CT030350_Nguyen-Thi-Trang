@@ -1,0 +1,794 @@
+& when (@media-common = true) {
+	.account{
+		.page-title{
+			font-size: 18px;
+			color: @color-theme;
+			margin-bottom: 24px;
+		}
+
+		.page-main{
+			.mt(18px);
+			.mb(50px);
+
+			.field.choice{
+				.lib-input-checkbox();
+			}
+		}
+
+		.block-dashboard-info{
+			margin-bottom: 29px;
+			.block-title{
+				.lib-visually-hidden();
+			}
+		}
+		.block-dashboard-addresses{
+			.block-title{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+
+		.box-actions,
+		.actions{
+			a, a.action{
+				font-weight: @font-weight__semibold;
+				font-size: 12px;
+				text-decoration: underline;
+			}
+		}
+
+		.action{
+			&.change-password{
+				margin-left: 6px;
+			}
+		}
+		.column.main{
+			.block-content{
+				flex-direction: row;
+			}
+		}
+		.block-content{
+			.box{
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+				.border-radius(@button__border-radius);
+				padding: 20px;
+				address a{
+					font-weight: @font-weight__semibold;
+				}
+			}
+			.box-actions{
+				margin-top: 8px;
+			}
+		}
+		.fieldset{
+			.field.choice.set{
+				&.shipping, &.billing{
+					.lib-input-checkbox();
+				}
+			}
+			.legend{
+				margin: 0 0 10px;
+				font-size: 14px;
+				font-weight: @font-weight__bold;
+			}
+		}
+		.actions-toolbar .action.primary{
+			width: auto;
+		}
+		.form-address-edit .actions-toolbar .action.primary{
+			font-size: 14px;
+			padding: 3px 20px;
+			width: auto;
+		}
+		.block-dashboard-orders{
+			.block-title.order{
+				.action.view{
+					float: right;
+				}
+			}
+			.action.view, .action.order{
+				font-size: 12px;
+				font-weight: @font-weight__semibold;
+				text-decoration: underline;
+			}
+		}
+		.block-order-details-view{
+			margin-top: 15px;
+		}
+		&.customer-account-edit{
+			.page-title-wrapper .page-title{
+				margin-bottom: 26px;
+			}
+			.fieldset{
+				.legend{
+					margin-bottom: 15px;
+				}
+				&.info{
+					margin-bottom: 20px;
+					.choice{
+						margin-bottom: 8px;
+					}
+				}
+				&.password{
+					margin-bottom: 30px;
+					.legend span{
+						letter-spacing: -0.002em;
+					}
+				}
+			}
+			.field-full-name{
+				margin-bottom: 9px;
+			}
+			.field-dob{
+				.mt(20px);
+			}
+			.password-strength-meter{
+				.lib-visually-hidden();
+			}
+
+			.ui-datepicker{
+				border: 0;
+				z-index: 99 !important;
+			}
+		}
+		.order-details-items{
+			.order-title{
+				.lib-visually-hidden();
+			}
+			.price-excluding-tax{
+				font-size: 14px;
+			}
+		}
+
+		.table-wrapper{
+			font-size: 13px;
+		}
+
+		.table:not(.cart):not(.totals){
+			> thead{
+				> tr{
+					> th{
+						border-width: 0.75px;
+					}
+				}
+			}
+		}
+
+		.page.messages{
+			.mt(35px);
+		}
+	}
+	.checkout-onepage-success{
+		.page-title-wrapper{
+			margin-top: 20px;
+			.lib-head-h1();
+		}
+		.checkout-success{
+			margin-bottom: 40px;
+		}
+	}
+	.account .columns .column.main .block:not(.widget) .box-title{
+		margin-bottom: 11px;
+	}
+	.account .columns .column.main .block:not(.widget) .block-title{
+		margin-bottom: 6px;
+	}
+
+	//Address Book
+	.customer-address-index{
+		.block-addresses-default{
+			.mb(20px);
+
+			> .block-title{
+				.mb(15px) !important;
+			}
+
+			address{
+				font-size: 14px;
+				line-height: 23px;
+			}
+
+			.box-actions{
+				.mt(12px);
+			}
+		}
+
+		.block-addresses-list{
+			.mb(15px);
+
+			> .block-content{
+				display: block;
+			}
+
+			.table-wrapper{
+				.mb(10px);
+				.mt(6px);
+			}
+
+			.pager{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.pr(10px);
+			}
+
+			.toolbar-amount{
+				.p;
+			}
+		}
+	}
+	//End Address Book
+
+	//Newsletter
+	.newsletter-manage-index{
+		.form-newsletter-manage{
+			.fieldset{
+				.mb(30px);
+
+				> .field{
+					&::before{
+						display: none;
+					}
+				}
+
+				.legend{
+					.mb(13px);
+				}
+			}
+		}
+	}
+	//End Newsletter
+
+	//My Voucher
+	.voucher-manage-index{
+		.voucher__list{
+			.mt(30px);	
+		}
+
+		.voucher-item{
+			.border-radius(20px);
+			.box-shadow(0 0 10px rgba(0,0,0,0.1));
+			background: @color-white;
+			overflow: hidden;
+
+			&:not(:last-of-type){
+				.mb(30px);
+			}
+		}
+
+		.coupon-content{
+			display: flex;
+		}
+
+		.coupon-code{
+			background: lighten(@color-theme, 44%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 5px 0;
+
+			.coupon-title{
+				font-size: 12px;
+			}
+
+			.coupon{
+				border: 0;
+				outline: none;
+				font-weight: @bold;
+				font-size: 20px;
+				background: transparent;
+				text-align: center;
+				display: inline-block;
+				font-family: @font-family__base;
+			}
+
+			.coupon-copy{
+				.p(5px 12px);
+				.border-radius(20px);
+				font-size: 12px;
+				font-weight: @semibold;
+				background: @color-white;
+				border: 1px solid @color-theme-gray1;
+				cursor: pointer;
+			}
+		}
+
+		.coupon-detail{
+			.p(20px);
+			display: flex;
+			flex-direction: column;
+			gap: 7px 0;
+
+			p{
+				.mb;
+			}
+
+			.coupon-date{
+				color: #909090;
+				font-weight: @semibold;
+				font-size: 12px;
+			}
+
+			.coupon-name{
+				.mb;
+				font-size: 16px;
+				line-height: 1.25;
+				font-weight: @semibold;
+			}
+
+			.coupon-action{
+				display: flex;
+				justify-content: flex-end;
+
+				.action{
+					.transition(0.3s);
+				}
+			}
+		}
+
+		.toolbar.bottom{
+			.mt(20px);
+		}
+
+		.pages{
+			.action.previous,
+			.action.next{
+				.w(auto);
+				.h(auto);
+				.m;
+				border: 0;
+
+				&::before{
+					font-size: 30px;
+				}
+			}
+		}
+	}
+	
+	.modal-view-voucher.modal-popup{
+		.modal-content{
+			.pb;
+			.scrollbar(4px);
+		}
+
+		.modal-footer{
+			.pt(15px);
+		}
+
+		.coupon-code{
+			.p(15px);
+			.border-radius(20px);
+			.mb(15px);
+		}
+
+		.coupon-detail{
+			.p;
+		}
+
+		.label-detail{
+			.mb(5px);
+			display: block;
+		}
+
+		.coupon-des{
+			.mb;
+		}
+	}
+	//End My Voucher
+
+	//Account Left Sidebar
+	.account{
+		.block-collapsible-nav{
+			.item{
+				a{
+					&:hover{
+						color: @color-theme;
+					}
+				}
+			}
+		}
+	}
+	//End Account Left Sidebar
+
+	//order
+	.sales-order-view{
+		.block-order-details-view{
+			.block-content{
+				.mt(20px);
+			}
+		}
+	}
+	//End order
+
+	//My returns
+	.amasty_rma-account-newreturn{
+		.amrma-text{
+			a{
+				text-decoration: underline;
+			}
+		}
+
+		.amrma-message-container{
+			.p(20px);
+
+			&.-gray{
+				.py(10px);
+			}
+		}
+
+		.amrma-comment-block{
+			.amrma-comment{
+				.mt(15px);
+				.p(20px);
+			}
+
+			.amrma-attach-file{
+				.amrma-label{
+					.mb(5px);
+
+					&::before{
+						.w(20px);
+						.h(15px);
+						position: absolute;
+						left: 0;
+						top: 0;
+						content: '';
+						background: url("../images/attract-file.svg") no-repeat center center;
+					}
+				}
+			}
+
+			.amrma-delete{
+				background-size: cover;
+			}
+		}
+	}
+
+	.amasty_rma-account-view{
+		.amrma-chat-send{
+			.amrma-textarea{
+				.h(50px) !important;
+				.mr(10px);
+				.scrollbar(3px);
+				.py(0);
+			}
+
+			.amrma-send{
+				align-self: flex-end;
+			}
+		}
+
+		.amrma-feedback{
+			.px(10px);
+		}
+	}
+
+	.amrma-status-container{
+		.amrma-step{
+			&::before{
+				text-align: center;
+			}
+		}
+	}
+
+	.amrma-instructions-title{
+		.amrma-show{
+			top: -6px;
+		}	
+	}
+
+	.amasty_rma-account-history{
+		.amreturn-btn{
+			flex-shrink: 0;
+		}
+	}
+	//End My returns
+
+	.customer-account-index{
+		.block-dashboard-addresses{
+			.block-title{
+				.action.edit{
+					font-weight: @semibold;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs){
+	.voucher-manage-index{
+		.pager{
+			> *{
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.account{
+		.page-title-wrapper{
+			text-align: center;
+		}
+
+		.columns .sidebar-main{
+			order: 0;
+			z-index: 1;
+		}
+		.block-content{
+			flex-wrap: wrap;
+		}
+		.column.main .block:not(.widget) .block-content .box{
+			width: 100%;
+		}
+		.column.main{
+			margin-top: 30px;
+		}
+		.sidebar-main{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 62px;
+		}
+		
+		.block-collapsible-nav{
+			.title{
+				&::after{
+					transform: rotate(-90deg);
+				}
+
+				&.active{
+					&::after{
+					transform: rotate(0);
+					}
+				}
+			}
+		}
+
+		.block-collapsible-nav-content{
+			.py(11.5px,15px);
+		}
+	}
+	.checkout-onepage-success{
+		.page-title-wrapper{
+			margin-top: 20px;
+		}
+	}
+
+	//Newsletter
+	.newsletter-manage-index{
+		.form-newsletter-manage{
+			.actions-toolbar{
+				> .primary{
+					text-align: left;
+				}
+			}
+		}
+	}
+	//End Newsletter
+
+	//My Voucher
+	.voucher-manage-index{
+		.coupon-content{
+			flex-direction: column-reverse;
+		}
+
+		.coupon-code{
+			.p(20px);
+		}
+
+		.pager{
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+
+			.toolbar-amount{
+				.m;
+				.p;
+			}
+
+			.pages{
+				.m(0 auto);
+				order: 1;
+			}
+
+			.limiter{
+				.m;
+				.ml(auto);
+			}
+		}
+	}
+	//End My Voucher
+
+	//My returns
+	.amasty_rma-account-history{
+		.amreturn-select{
+			.px(15px,35px);
+			background-position: center right 15px;
+		}
+
+		.amrma-tbody{
+			.amrma-row{
+				.mb(20px);
+			}
+		}
+	}
+
+	.amrma-status-container{
+		.amrma-step{
+			&.-complete{
+				.mr(15px);
+			}
+		}
+	}
+
+	.amrma-feedback-container{
+		align-items: center;
+
+		.amrma-send{
+			.p(5px 10px);
+			font-size: 12px;
+		}
+	}
+
+	.amasty-rma-pager{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.toolbar-amount{
+			.p;
+		}
+	}
+	//End My returns
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.account{
+		.block-content{
+			.box-billing-address, .box-information{
+				margin-right: 40px;
+			}
+		}
+		.form-address-edit{
+			margin-bottom: 40px;
+			max-width: 600px;
+		}
+		.form.form-edit-account{
+			max-width: 300px;
+		}
+		.block-order-details-view{
+			.box-order-shipping-method, .box-order-billing-address, .box-order-shipping-address{
+				margin-right: 10px;
+			}
+		}
+
+		.page.messages{
+			.mt;
+			.mb(20px);
+		}
+	}
+
+	//Address Book
+	.customer-address-index{
+		.block-addresses-default{
+			.mb(42px);
+
+			.block-content{
+				.box{
+					&:nth-child(odd){
+						.mr(40px);
+					}
+				}
+			}
+		}
+
+		.block-addresses-list{
+			.table-wrapper{
+				.mb(21px);
+			}
+
+			.toolbar-amount{
+				.p;
+			}
+		}
+	}
+	//End Address Book
+
+	//Newsletter
+	.newsletter-manage-index{
+		.form-newsletter-manage{
+			.fieldset{
+				> .field{
+					&::before{
+						display: none;
+					}
+
+					> .label{
+						.ml(2px);
+					}
+				}
+			}
+		}
+	}
+	//End Newsletter
+
+	//Checkout success
+	.checkout-onepage-success{
+		.page-title{
+			margin-right: -112px;
+		}
+	}
+	//End checkout success
+
+	//My Returns
+	.amrma-return-select .amrma-select {
+        font-size: 14px;
+    }
+
+	.amrma-chat-send .amrma-textarea,
+    .amrma-comment-block .amrma-comment {
+        font-size: 14px;
+    }
+
+	.amrma-chat-send{
+		.amrma-attach-file{
+			.amrma-label{
+				&::before{
+					.w(29px);
+					.h(27px);
+				}
+			}
+		}		
+	} 
+
+	.amasty_rma-account-history{
+		.amreturn-select{
+			.py;
+			background-position: center right 15px;
+		}
+	}
+	//End My Returns
+}
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+	@media only screen and (min-width: @screen__s) and (max-width: 1281px) {
+		//Address Book
+		.customer-address-index{
+			.block-addresses-list{
+				.table-wrapper{
+					.table-additional-addresses-items{
+						.scrollbar(4px,3px);
+						display: block;
+						overflow-x: auto;
+						white-space: nowrap;
+
+					}
+				}
+			}
+		}
+		//End Address Book
+	}
+	@media only screen and (min-width: @screen__s) and (max-width: @screen__m) {
+		.account{
+			.box-actions,
+			.actions{
+				a{
+					&.action.view{
+						margin-right: 5px;
+					}
+					&.action.order{
+						margin-right: 0;
+					}
+					&:not(.action){
+						display: block;
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+	}
+}

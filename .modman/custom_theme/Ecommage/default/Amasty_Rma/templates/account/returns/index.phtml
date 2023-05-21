@@ -1,0 +1,66 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package RMA Base for Magento 2
+*/
+?>
+<?php
+/**
+ * @var \Amasty\Rma\Block\Returns\History $block
+ */
+
+if ($history = $block->getProceedData()): ?>
+    <div class="amrma-table-container">
+        <div class="table-wrapper returns-history">
+            <table class="data table table-returns-items history amrma-table" id="my-returns-table">
+                <caption class="table-caption"><?= $block->escapeHtml(__('Returns')) ?></caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Items')) ?></th>
+                    <th scope="col" class="col shipping"><?= $block->escapeHtml(__('Qty')) ?></th>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Id')) ?></th>
+                    <th scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+                    <th scope="col" class="col total"><?= $block->escapeHtml(__('Order #')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col actions"></th>
+                </tr>
+                </thead>
+                <tbody class="amrma-tbody">
+                <?php foreach ($history as $item): ?>
+                    <tr class="amrma-row">
+                        <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
+                            <div class="amrma-image<?= ($block->isChatEnabled() && !empty($item['new_message']) ? ' new-message' : ''); ?>"><img src="<?= $block->escapeUrl($item['product_url'])?>"/></div>
+                        </td>
+                        <td data-th="<?= $block->escapeHtml(__('Qty')) ?>" class="col qty"><?= (double)$item['qty']; ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Id')) ?>" class="col id"><?= $block->escapeHtml($item['request_id'])?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col date"><?= $block->escapeHtml($block->formatDate($item['created_at'])) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Order #')) ?>" class="col order"><?= $block->escapeHtml(str_pad($item[\Magento\Sales\Api\Data\OrderInterface::INCREMENT_ID], 9, '0', STR_PAD_LEFT)) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status">
+                        <span class="amrma-status -pending"<?= (!empty($item['status_color'])?' style="background-color: ' . $block->escapeHtml($item['status_color']) . '"':'') ?>>
+                            <?= $block->escapeHtml($item['status_label']) ?>
+                        </span>
+                        </td>
+                        <td class="col actions">
+                            <a href="<?= $block->escapeUrl($item['view_url']); ?>" class="action view" title="<?= $block->escapeHtml(__('View')) ?>">
+                                <?= $block->escapeHtml(__('View')) ?>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php if ($pager = $block->getPagerHtml()): ?>
+        <div class="toolbar">
+            <div class="amasty-rma-pager"><?= /** @noEscape */ $pager; ?></div>
+        </div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span>
+            <?= $block->escapeHtml(__('You have placed no return request.')) ?>
+        </span>
+    </div>
+<?php endif ?>

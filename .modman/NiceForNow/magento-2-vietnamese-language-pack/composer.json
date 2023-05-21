@@ -1,0 +1,15 @@
+{
+	"name": "nicefornow/magento-2-vietnamese-language-pack",
+	"type": "magento2-language",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"license": [
+		"MIT"
+	],
+	"require": {},
+	"autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+& when (@media-common = true) {
+	.cms-about-us{
+		padding-bottom: 24px;
+		.page-title span{
+			font-size: 23px;
+			font-style: initial;
+		}
+
+		.column-main{
+			p{
+				> strong{
+					margin-bottom: 0;
+				}
+			}
+		}
+		
+		p{
+			> em{
+				font-weight: @font-weight__bold;
+			}
+		}
+		h3{
+			color: @color-black;
+			font-style: initial;
+			margin-bottom: 10px;
+		}
+		div > p{
+			margin-bottom: 16px;
+		}
+		iframe{
+			.mb(20px);
+			max-width: 100%;
+		}
+	}
+//privacy-policy
+	.cms-privacy-policy{
+		em strong{
+			display: inline-block;
+		}
+	}
+//	end privacy-policy
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+}

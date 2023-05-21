@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Magento\Customer\Block\Account\Customer $block */
+
+$helper = $this->helper('Ecommage\CustomCatalog\Helper\Data');
+$helper->isCheckLogin();
+?>
+ <div class="header-link-wrap" >
+ 	<span><?=$block->getChildHtml('minicart')?></span>
+	 <span class="orders-link">
+ 		<img src="<?= $block->getViewFileUrl('images/list.svg')?>" alt="<?= __('my orders') ?>"/>
+ 		<?= $block->getChildHtml('customer-account-navigation-orders-link-header') ?>
+ 	</span>
+ 	<span class="system-link">
+ 		<img src="<?= $block->getViewFileUrl('images/system.svg')?>" alt="<?= __('system') ?>"/>
+		<li>
+			<a href="<?= $block->getBaseUrl() . 'amlocator'?>"><?= __('system') ?></a>
+		</li>
+ 	</span>
+	 <span class="account-link">
+ 		<img src="<?= $block->getViewFileUrl('images/account.svg')?>" alt="<?= __('my account') ?>"/>
+		 <?=$block->getBlockHtml('my-account-link-custom')?>
+ 		<ul class="drd-acc">
+            <?php if ($block->customerLoggedIn()) : ?>
+                <?=$block->getBlockHtml('my-account-link-mb')?>
+            <?php endif; ?>
+ 			<?=$block->getBlockHtml('authorization-link')?>
+ 			<?=$block->getBlockHtml('register-link')?>
+ 		</ul>
+ 	</span>
+ </div>
+ <script>
+ 	require(['jquery'],function($){
+
+ 		$('body').on('click','.orders-link,#purchase-order-mobile',function(){
+            <?php if (!$helper->isCheckLogin()): ?>
+                $('body').find('.amsl-popup-overlay').css('display','flex');
+                    return false;
+            <?php else: ?>
+                window.location.href = $(this).find('a').attr('href');
+            <?php endif; ?>
+ 		})
+        $('body').on('click','.account-link,#my-account-mobile',function(){
+            <?php if (!$helper->isCheckLogin()): ?>
+                $('body').find('.amsl-popup-overlay').css('display','flex');
+                 return false;
+            <?php else: ?>
+                window.location.href = $(this).children('li').find('a').attr('href');
+            <?php endif; ?>
+        })
+ 	})
+ </script>

@@ -1,0 +1,14 @@
+<?php /** @var $block RebuildBlock */
+
+use Ecommage\CatalogWidget\Block\Adminhtml\RebuildBlock;
+$buttonId = sprintf('button_%s', $block->getCacheKey());
+?>
+<div style="display: none;"
+     data-mage-init='{"Ecommage_CatalogWidget/js/rebuild-block":{"ajaxUrl" : "<?= $block->escapeUrl($block->getAjaxUrl()) ?>","buttonId":"#<?= $block->escapeHtmlAttr($buttonId) ?>"}}'>
+    <button title="<?= $block->escapeHtml(__('Re-build Static Blocks')) ?>" type="button"
+            class="action-default scalable rebuild-static-blocks"
+            backend-button-widget-hook-id="<?= $block->escapeHtmlAttr($buttonId) ?>"
+            data-ui-id="adminhtml-cache-container-rebuild-static-blocks-button">
+        <span><?= $block->escapeHtml(__('Re-build Static Blocks')) ?></span>
+    </button>
+</div>

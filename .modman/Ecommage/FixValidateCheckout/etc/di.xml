@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\ValidationRules\BillingAddressValidationRule">
+        <plugin name="ecommage_custom_BillingAddressValidationRule"
+                type="Ecommage\FixValidateCheckout\Plugin\ValidationRules\BillingAddressValidation"/>
+    </type>
+    <type name="Magento\Quote\Model\ValidationRules\ShippingAddressValidationRule">
+        <plugin name="ecommage_custom_ShippingAddressValidationRule"
+                type="Ecommage\FixValidateCheckout\Plugin\ValidationRules\ShippingAddressValidation"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="ecommage_set_ward_region_shipping" sortOrder="1" type="Ecommage\FixValidateCheckout\Plugin\Model\ShippingInformationManagement"/>
+    </type>
+<!--    <preference for="Ecommage\Address\Preference\Webapi\ServiceInputProcessor" type="Ecommage\FixValidateCheckout\Plugin\Webapi\ServiceInput"/>-->
+</config>

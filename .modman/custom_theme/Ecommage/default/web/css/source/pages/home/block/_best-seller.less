@@ -1,0 +1,246 @@
+& when (@media-common = true) {
+	// .page-main{
+	// 	overflow: hidden;
+	// }
+	.home-product-bestseller{
+		.block.widget{
+			.block-title{
+				text-align:center;
+				position: absolute;
+			    left: 0;
+			    z-index: 2;
+			    margin: auto;
+			    display: inline-block;
+				.w(100%);
+				h2{
+				    padding: 10px 30px;
+				    background: @color-theme-second;
+				    border-radius: 60px 0;
+				    position: relative;
+				    box-shadow: -4.5px -4px 0px @color-theme;
+				    text-transform: uppercase;
+					display: inline;
+				}
+				*{
+					font-weight:@font-weight__extrabold;
+					font-family:@font-family__second;
+					font-style:italic;
+					color:@color-theme;
+				}
+			}
+			.product-item {
+				.price-box{
+					min-height: 40px;
+				}
+			}
+			.products-grid {
+				margin-bottom: 0;
+				.product-items{
+					margin:0;
+					flex-wrap: unset;
+				}
+			}
+
+			&.swiper-list{			
+				background:rgba(229, 26, 131, 0.4);	
+			}
+		}	
+
+	}
+	.block.widget{
+		position: relative;
+		.swiper-container{
+		    max-width: 100%;
+		}
+		.product-item{
+	        margin-left: 0 !important;
+	    }
+
+		
+		&.swiper-list{			
+			.block-content{
+				// background:@color-white;
+				// border-radius:20px;
+				// border:10px solid @color-theme-second;
+				.product-item-actions{
+					margin-right: 0;
+				}
+				// .product-item .price-box{
+				// 	margin-bottom: 0;
+				// }
+			}
+			// .product-image-container{
+			// 	margin-bottom: 15px;
+			// }
+		}
+		.block-content{
+			position: relative;
+			.products-grid{
+				max-width: 100%;		
+			}
+			.product-item .price-box{
+				// margin-bottom: 0;
+				min-height: 40px;
+			}
+			.swiper-button-prev,.swiper-button-next{
+			    height: 25px;
+			    width: 25px;
+			    border-radius: 50%;
+			    background:@color-white;
+			    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.15);
+			    top:~"calc(50% - 6px)";
+				&:after{
+					font-size: 13px;
+					color:@color-theme;
+				}
+			}
+			.swiper-button-prev{
+				left: -23px;
+			}	
+			.swiper-button-next{
+				right: -23px;
+			}
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.home-product-bestseller{
+		margin-bottom: 28px;
+		.block{
+			.mb(4px);
+		}
+		.block.widget{
+			.block-title{
+				top:-10px;
+				right:40px;
+				*{
+					font-size:16px;
+				}
+			}
+
+			
+		.product-item{
+			.product-item-photo{
+				.mb(10px);
+			}
+		}
+			// .product-item{
+			// 	padding: 10px;
+
+			// 	.product-item-details{
+			// 		.product-item-inner{
+			// 			position: absolute;
+			// 			bottom: 29px;
+			// 			right: 10px;
+			// 		}
+			// 	}
+			// }
+		}
+		
+		.widget-swipper-products{
+			.product-item {
+				.bg(@color-white);
+			}
+		}
+		// 		.border-radius(20px);
+		// 		.h(auto);
+	
+		// 		.product-item-details{
+		// 			gap: 0;
+		// 			display: block;
+		// 		}
+	
+		// 		.product-item-name{
+		// 			.mb(10px);
+		// 		}
+	
+		// 		.percent-discount{
+		// 			display: inline-flex;
+		// 		}
+	
+		// 		.price-box{
+		// 			width: 100%;
+		// 			.pr(35px);
+		// 			.mb(3px);
+	
+		// 			.old-price {
+		// 				.price{
+		// 					.mt;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+
+	// .block.widget{
+	// 	&.swiper-list{
+	// 		.mx(-@layout__width-xs-indent);
+
+	// 		.block-content{
+	// 			padding: 30px 0 30px 20px;
+
+	// 			.swiper-button-prev,
+	// 			.swiper-button-next{
+	// 				display: none;
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.home-product-bestseller{
+		.block{
+			.mb(43px);
+		}
+
+		.block.widget{
+			.block-title{
+				top:-20px;
+				right: 0;
+				*{
+					font-size:24px;
+				}
+			}
+
+			li.product-item{
+				margin-bottom: 18px;
+			}
+
+			.product-item{
+				padding: 0;
+
+				.product-item-inner{
+					.mt(-3px) !important;
+				}
+			}
+
+			&.swiper-list{
+				.block-content{
+					padding:20px 20px 0;
+					background:@color-white;
+					border-radius:20px;
+					border:10px solid @color-theme-second;
+				}
+			}
+		}
+	}
+
+	.block.widget{
+		&.swiper-list{
+			padding:30px;
+			.border-radius(20px);
+
+			.block-content{
+				.product-item {
+					.price-box{
+						.mb;
+					}
+				}
+			}
+		}
+	}
+}
+

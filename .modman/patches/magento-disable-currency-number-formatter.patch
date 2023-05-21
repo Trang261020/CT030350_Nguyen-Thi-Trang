@@ -1,0 +1,15 @@
+diff --git a/vendor/magento/module-directory/Model/Currency.php b/vendor/magento/module-directory/Model/Currency.php
+index 65b47d75..f9943dab 100644
+--- a/vendor/magento/module-directory/Model/Currency.php
++++ b/vendor/magento/module-directory/Model/Currency.php
+@@ -365,10 +365,6 @@ class Currency extends \Magento\Framework\Model\AbstractModel
+          */
+         $price = sprintf("%F", $price);
+ 
+-        if ($this->canUseNumberFormatter($options)) {
+-            return $this->formatCurrency($price, $options);
+-        }
+-
+         return $this->_localeCurrency->getCurrency($this->getCode())->toCurrency($price, $options);
+     }
+ 

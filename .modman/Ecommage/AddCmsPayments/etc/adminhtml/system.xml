@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1000" translate="label">
+            <group id="shopeepay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="vnpay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Vnpay</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="momo" translate="label" type="text" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Momo</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="alepay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Ngân Lượng</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="cashondelivery" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cash On Delivery Payment</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="banktransfer" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Bank Transfer Payment</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="checkmo" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Check / Money Order</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="purchaseorder" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Purchase Order</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="paypal_billing_agreement">
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+            <group id="free" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Zero Subtotal Checkout</label>
+                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Block Info</label>
+                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+
+            <!--            <group id="braintree_local_payment" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="42">-->
+            <!--                <label>Local Payment Methods</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree_ach_direct_debit" translate="label" showInDefault="1" showInWebsite="1" sortOrder="35">-->
+            <!--                <label>ACH through Braintree</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree_venmo" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="50">-->
+            <!--                <label>Venmo through Braintree</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree_googlepay" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="45">-->
+            <!--                <label>GooglePay through Braintree</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree_applepay" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="40">-->
+            <!--                <label>Apple Pay through Braintree</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree_paypal_credit" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="13">-->
+            <!--                <label>PayPal Credit through Braintree</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="braintree" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                <label><![CDATA[Braintree Payments (by <a href="https://www.gene.co.uk/braintree-payments/" target="_blank" rel="noopener noreferrer">GENE Commerce</a> v 4.4.0)]]></label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+            <!--            <group id="payflow_advanced" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">-->
+            <!--                <label>Payments Advanced</label>-->
+            <!--                <field id="block_id" translate="label comment" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">-->
+            <!--                    <label>Custom Block Info</label>-->
+            <!--                    <source_model>Ecommage\AddCmsPayments\Model\Config\Source\CmsBlock</source_model>-->
+            <!--                </field>-->
+            <!--            </group>-->
+        </section>
+    </system>
+</config>

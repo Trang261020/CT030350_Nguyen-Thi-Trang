@@ -1,0 +1,268 @@
+//
+//  Amasty RMA
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+@amrma-icon__checkbox: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiByeD0iMyIgZmlsbD0iIzAwN0JEQiIvPjxwYXRoIGQ9Ik00IDhsMy4yIDMuMkwxMiA1LjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=');
+@amrma-icon__attach_file: url('@{baseDir}images/attachment.svg');
+@amrma-btn__color_blue: #1979c3;
+//
+//  Common
+//  ----------------------------------------------
+& when (@media-common = true) {
+    .amrma-request-create, .amrma-request-view {
+        & {
+            background: #fff;
+        }
+
+        .page-content {
+            background:  #f7f8fA;
+        }
+
+        div.page-main-actions {
+            & {
+                background: #fff;
+            }
+
+            &:not(._hidden) {
+                margin: 0 -3rem 3rem;
+                padding: 1.5rem 3rem;
+            }
+        }
+
+        footer.page-footer {
+            background: #fff;
+        }
+
+        .admin__control-select {
+            width: 100%;
+        }
+
+        .fieldset-wrapper-title {
+            border: none;
+        }
+
+        .fieldset-wrapper .admin__fieldset {
+            padding-top: 0;
+        }
+    }
+
+    .amrma-fieldset-wrapper {
+        & {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: #fff;
+        }
+
+        .amrma-fieldset-wrapper-title .amrma-strong {
+            font-weight: 600;
+            font-size: 1.6rem;
+        }
+
+        .amrma-admin__fieldset {
+            border: 0;
+        }
+    }
+
+    .amrma-col-status,
+    .amrma-col-details,
+    .amrma-col-tracking,
+    .amrma-col-chat,
+    .amrma-col-message,
+    .amrma-return-wrap {
+        box-shadow: 0 6px 25px rgba(218, 225, 241, 0.5);
+    }
+
+    .amrma-col-status, .amrma-col-message {
+        & {
+            width: 49%;
+            float: right;
+        }
+
+        .amrma-select .admin__field-label {
+            display: none;
+        }
+    }
+
+    .amrma-col-message {
+        margin-top: 20px;
+    }
+
+    .amrma-col-details {
+        & {
+            float: left;
+            width: 49%;
+            padding-top: 0;
+        }
+
+        .admin__field-label {
+            text-align: left;
+        }
+    }
+
+    .amrma-col-details .amrma-admin__fieldset {
+        padding-top: 0;
+    }
+
+    .amrma-col-chat {
+        width: 49%;
+        float: right;
+        margin-top: 20px;
+    }
+
+    .amrma-request-create {
+        .amrma-note,
+        .amrma-custom-fields {
+            margin: 0 -28px;
+            padding: 0 28px;
+            border-top: 1px solid #ccc;
+        }
+    }
+
+    .amrma-custom-fields .admin__field {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin-bottom: 0;
+    }
+
+    .amrma-custom-fields .admin__fieldset .admin__field .admin__field-control,
+    .amrma-col-chat .amrma-textarea .admin__field-control,
+    .amrma-note .admin__fieldset .amrma-textarea .admin__field-control {
+        width: ~"calc(100% - 30px)";
+
+        .admin__control-textarea {
+            resize: none;
+        }
+    }
+
+    .amrma-request-create .amrma-details-info {
+        padding-left: 0;
+        border-right: 1px solid #ccc;
+        border-radius: 0;
+    }
+
+    .amrma-request-create .amrma-customer-info {
+        margin-left: -5px;
+        border-left: 1px solid #ccc;
+        border-radius: 0;
+    }
+
+    .amrma-details-info,
+    .amrma-customer-info {
+        display: inline-flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .amrma-customer-address {
+        margin-top: 20px;
+    }
+
+    .amrma-details-block {
+        & {
+            display: flex;
+            flex-flow: row wrap;
+            margin-bottom: 20px;
+        }
+
+        .amrma-type,
+        .amrma-details {
+            flex-basis: 50%;
+            margin-bottom: 10px;
+            min-width: 150px;
+        }
+
+        .amrma-date {
+            color: #777;
+        }
+    }
+
+    .amrma-fieldset-wrapper-title {
+        margin-bottom: 10px;
+    }
+
+    .amrma-checkbox-container {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .amrma-status {
+        padding: 0 10px 1px;
+        border-radius: 4px;
+        color: #fff;
+        background: #1e79c2;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .amrma-status-col {
+        width: 250px;
+    }
+
+    .amrma-request-create .amrma-col-details .amrma-fieldset-wrapper-title,
+    .amrma-request-create .amrma-customer-link {
+        display: none;
+    }
+
+    .amrma-request-create .amrma-note-container {
+        padding: 0;
+        width: 100%;
+    }
+
+    .amrma-request-create .amrma-shipping-label {
+        margin: 0;
+    }
+
+    .amrma-attach-file {
+        .admin__field-label {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .amrma-attach {
+            display: none;
+        }
+
+        .amrma-file {
+            margin: 5px 0;
+            padding-left: 20px;
+            // color: @amrma-btn__color_blue;
+        }
+
+        .amrma-label.-newreturn:before {
+            top: 4px;
+            left: 0;
+            width: 17px;
+            height: 16px;
+            background-image: @amrma-icon__attach_file;
+        }
+    }
+
+    .amrma-chat-file.-newreturn {
+        & {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        &:before {
+            top: 7px;
+        }
+
+        .amrma-file {
+            padding: 0;
+        }
+
+        .amrma-delete {
+            margin-left: 10px;
+            padding: 0;
+        }
+    }
+}

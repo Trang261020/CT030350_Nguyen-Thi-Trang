@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ecommage, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="salesrule_rule_save_commit_after">
+        <observer name="salesrule_quote_mark_rule_update" instance="Ecommage\ProductIndexFreeGift\Observer\RuleUpdate"/>
+    </event>
+    <event name="salesrule_rule_delete_commit_after">
+        <observer name="salesrule_quote_mark_rule_delete" instance="Ecommage\ProductIndexFreeGift\Observer\RuleUpdate"/>
+    </event>
+    <event name="catalog_product_save_commit_after">
+        <observer name="product_gift_update_product_save" instance="Ecommage\ProductIndexFreeGift\Observer\ProductUpdate" />
+    </event>
+    <event name="catalog_product_delete_after_done">
+        <observer name="product_gift_update_product_save" instance="Ecommage\ProductIndexFreeGift\Observer\ProductDelete" />
+    </event>
+</config>

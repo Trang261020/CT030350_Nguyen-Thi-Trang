@@ -1,0 +1,111 @@
+& when (@media-common = true) {
+    .product-detail-wrapper{
+        .product-detail-cate .block{
+            margin-bottom: 0;
+            .products-grid{
+                margin-bottom: 3px;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s){
+    // Product Grid Type Vertical
+    .product-grid-vertical{
+
+        .product-items{
+            .mr(-@layout__width-xs-indent);
+
+            &.widget-product-grid{
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-right: 10px;
+            }
+
+            .product-item{
+                .w(176px);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    // Product Grid Type Vertical
+    .product-grid-vertical{
+        .block-title{
+            text-align: center;
+            .mb;
+        } 
+
+        h2{
+            .mb(10px);
+            margin-top: 14px;
+        }
+
+        //.block.widget .product-item .product-item-details .product-item-inner{
+          //  bottom: 20px;
+        //}
+    }
+    .product-detail-wrapper{
+        margin-bottom: -34px;
+    }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__s) and (max-width: @screen__m) {
+        .product-grid-vertical {
+            .product-items {
+                .product-item{
+                    .w(33.3333%);
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .product-detail-wrapper{
+        margin-top: 33px;
+        margin-bottom: -36px;
+        display: flex;
+        gap: 0 20px;
+
+        .product.info.detailed{
+            .w(78%);
+        }
+
+        .product-detail-cate{
+            .w(22%);
+        }
+    }
+
+    // Product Grid Type Vertical
+    .product-grid-vertical{
+        .block-title{
+            border-bottom: 1px solid @color-gray-darken0;
+            .mb(17px);
+        }
+
+        .product-items {
+            gap: 18px 0;
+
+            > .product-item{
+                .w(100%);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+    .product-detail-wrapper{
+        gap: 0 40px;
+
+        .product.info.detailed{
+            .w(81.3%);
+        }
+
+        .product-detail-cate{
+            .w(18.7%);
+        }
+    }
+}

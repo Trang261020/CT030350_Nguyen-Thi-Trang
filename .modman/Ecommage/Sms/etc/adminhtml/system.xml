@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+        <system>
+            <section id="sms" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>SMS</label>
+                <tab>ecommage</tab>
+                <class>separator-top</class>
+				<resource>Ecommage_Sms::config</resource>
+				<group id="moduleoption" showInDefault="1" sortOrder="1">
+					<label>Configuration</label>
+					<field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Enable</label>
+						<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+				   </field>
+			   </group>
+                <group id="api" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Settings</label>
+                    <field id="apiurl" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Api Url</label>
+                        <comment><![CDATA[You can make use of {{username}},{{password}},{{source_addr}},{{dest_addr}},{{message}},{{type}},{{request_id}} variables in your Api Url]]></comment>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Username</label>
+                        <validate>required-entry</validate>
+                    </field>
+					<field id="password" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Password</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <validate>required-entry</validate>
+                    </field>
+                    <field id="sourceadd" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Brandname</label>
+                        <validate>required-entry</validate>
+                    </field>
+					<field id="messagetype" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Message Type</label>
+						<source_model>Ecommage\Sms\Model\MessageType</source_model>
+                        <comment><![CDATA[Regular Messages = 0 And Unicode Messages = 8.]]></comment>
+                        <validate>required-entry</validate>
+                    </field>
+                 </group>
+				<group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General Settings</label>
+					 <field id="otplength" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>OTP String Length</label>
+                        <comment><![CDATA[Specify character length for OTP string.]]></comment>
+                         <validate>required-entry validate-number</validate>
+                    </field>
+                    <field id="otptype" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>OTP String Type</label>
+                        <source_model>Ecommage\Sms\Model\OtpType</source_model>
+                    </field>
+				</group>
+				<group id="forgototpsend" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Forgot Password OTP Custom Message Setting</label>
+					<field id="message" translate="label" type="textarea"
+						sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SMS Text</label>
+                        <comment><![CDATA[You can make use of {{shop_name}},{{shop_url}},{{link_reset_password}} variables in your SMS notification text]]></comment>
+                    </field>
+				</group>
+				<group id="loginotpsend" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Login OTP Custom Message Setting</label>
+					<field id="message" translate="label" type="textarea"
+						sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SMS Text</label>
+                        <comment><![CDATA[You can make use of {{shop_name}},{{shop_url}},{{random_code}} variables in your SMS notification text]]></comment>
+                    </field>
+				</group>
+                <group id="createaccount" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create OTP Custom Message Setting</label>
+                    <field id="message" translate="label" type="textarea"
+                            sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SMS Text</label>
+                        <comment><![CDATA[You can make use of {{shop_name}},{{shop_url}} variables in your SMS notification text]]></comment>
+                    </field>
+                </group>
+            </section>
+        </system>
+    </config>

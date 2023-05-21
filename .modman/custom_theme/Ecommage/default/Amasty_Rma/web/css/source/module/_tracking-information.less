@@ -1,0 +1,87 @@
+//
+//  Common
+//  ----------------------------------------------
+& when (@media-common = true) {
+    .amrma-tracking-information {
+        margin-bottom: 40px;
+    }
+
+    .amrma-tracking-information .table-wrapper .table-returns-items .amrma-tbody > .amrma-row > .col {
+        & {
+            border-top: none;
+        }
+
+        &:first-child {
+            padding-left: 10px;
+        }
+    }
+
+    .amrma-tracking-add {
+        & {
+            display: flex;
+            flex-direction: column;
+            // margin: 0 15px;
+        }
+
+        .amrma-input {
+            margin: 10px 0;
+        }
+
+        .amreturn-btn {
+            margin-left: 0;
+        }
+
+        .amrma-label {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+    }
+
+    .amrma-tracking-information .amrma-thead .amrma-col.remove {
+        display: none;
+    }
+}
+
+//
+//  Mobile +
+//  --------------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    //override magento table styles start
+    .amrma-tracking-information .table-wrapper .table-returns-items .amrma-tbody > .amrma-row > .col {
+        border-top: 1px solid #d1d1d1;
+    }
+
+    .account .amrma-table-container > .amrma-items-table > .amrma-table > .amrma-tbody > .amrma-row .col {
+        padding: 10px;
+    }
+    //override magento table styles end
+
+    .amrma-tracking-add {
+        & {
+            display: flex;
+            flex-direction: row;
+            // margin: 0 25px;
+        }
+
+        .amrma-input {
+            flex-basis: 50%;
+            margin: 0 20px;
+        }
+
+        .amreturn-btn {
+            .lib-button-primary();
+        }
+
+        //.amreturn-btn:hover {
+          //  background: #2196f3;
+        //}
+
+        .amrma-label {
+            display: none;
+        }
+    }
+
+    .amrma-select-container {
+        flex-basis: 35%;
+    }
+}

@@ -1,0 +1,161 @@
+<?php
+
+/** @var $block \Magento\Framework\View\Element\Template */
+
+use Magento\Catalog\Model\Category;
+
+$item        = $block->getData('current_item');
+$content     = $item->content;
+$useAjaxMenu = $block->getData('use_ajax_menu');
+$hasChildren = $useAjaxMenu ? false : isset($item->children);
+$itemType    = $item->item_type;
+$depth       = (int)$item->depth;
+$style       = (isset($content->style) && ($content->style != '')) ? 'style="' . $content->style . '"' : '';
+$_helper     = $this->helper('Ecommage\CustomTheme\Helper\Data');// @codingStandardsIgnoreLine
+$this->setItemId(0); // @codingStandardsIgnoreLine
+?>
+<?php if ($itemType == 'category') : ?>
+    <?php $isRange = ($content->display_type == '2') ?>
+    <?php if (!$isRange) : ?>
+        <?php
+        $html = $block->getCategoryTree()->setData('parent_id', $content->category)
+                     ->setData('level', ($isRange ? $depth - 1 : $depth))
+                     ->getHtml('', 'submenu', 0);
+        $class = $block->getItemCSSClass($item);
+        $itemCSSClass = $_helper->getItemCSSClass($html, $class);
+        ?>
+
+        <li class="<?= /* @noEscape*/ $itemCSSClass ?>" <?= /* @noEscape*/ $style ?>>
+        <?= /* @noEscape*/ $block->getTagHtml($content) ?>
+        <?php if ($content->label) : ?>
+            <a <?= /* @noEscape*/ $block->getCustomStyle($content) ?>
+                    class="<?= /* @noEscape*/ ($depth == 0) ? 'menu-link' : 'groupdrop-title' ?>"
+                    href="<?= /* @noEscape*/ $content->url ?>"<?= /* @noEscape*/ !empty($content->attribute) ? ' ' . $content->attribute : '' ?>><?= /* @noEscape*/ $block->getIcon($content) ?>
+                <span><?= /* @noEscape*/ $content->label ?></span></a>
+        <?php endif ?>
+        <div class="cat-tree groupmenu-drop">
+        <ul class="cat-tree groupmenu-drop">
+
+    <?php endif ?>
+    <?= /* @noEscape*/ $html ?>
+    <?php if (!$isRange) : ?>
+
+        </ul>
+        <?php
+        /** @var Category $childCategory */
+        $childCategory = $_helper->loadCategory($content->category);
+        $imgThumb = $childCategory->getImageUrl('thumbnail');
+        if ($imgThumb):
+            ?>
+            <div class="banner-menu-image"><img class="groupdrop-banner-pos" src="<?= /* @noEscape*/ $childCategory->getImageUrl('thumbnail') ?>" alt="<?= /* @noEscape*/ $childCategory->getName() ?>"/></div>
+        <?php endif ?>
+        </div>
+        </li>
+    <?php endif ?>
+<?php else : ?>
+    <li class="<?= /* @noEscape*/ $block->getItemCSSClass($item) ?>" <?= /* @noEscape*/ $style ?>>
+        <?php if ($itemType == 'link'): ?>
+            <a class="menu-link" <?= /* @noEscape*/ $block->getCustomStyle($content) ?>
+               href="<?= /* @noEscape*/ $content->url ?>"<?= /* @noEscape*/ !empty($content->attribute) ? ' ' . $content->attribute : '' ?>><?= /* @noEscape*/ $block->getIcon($content) ?>
+                <span><?= /* @noEscape*/ $content->label ?></span></a>
+            <?= /* @noEscape*/ $block->getTagHtml($content) ?>
+            <?php if ($hasChildren): ?>
+                <ul class="groupmenu-drop">
+                    <?= /* @noEscape*/ $block->getMenuHtml($item->children); ?>
+                </ul>
+            <?php endif ?>
+        <?php elseif ($itemType == 'text'): ?>
+            <?php
+            $text      = $content->content;
+            $layout    = explode(',', $content->layout);
+            $totalPart = array_sum($layout);
+            ?>
+            <div
+                    class="<?= /* @noEscape*/ $content->class ?> groupmenu-drop-content <?= /* @noEscape*/ ($content->width_class) ? 'groupmenu-width-' . $content->width_class : '' ?>"
+                    style=" <?= /* @noEscape*/ $content->style ?>">
+                <?php if ($totalPart > 1): ?>
+                    <div class="row">
+                        <?php foreach ($layout as $key => $column): ?>
+                            <div
+                                    class="col-sm-<?= /* @noEscape*/ (int)$column * (24 / (int)$totalPart); ?>"><?= /* @noEscape*/ $text[$key] ?></div>
+                        <?php endforeach ?>
+
+                    </div>
+                    <?php if ($content->background): ?>
+                        <div class="banner-menu-image">
+                            <img class="groupdrop-banner-pos" src="<?= /* @noEscape*/ $content->background ?>"
+                                 style="<?= /* @noEscape*/ $block->getBackgroundStyle($content) ?>"/>
+                        </div>
+                    <?php endif ?>
+                <?php else: ?>
+                    <?= /* @noEscape*/ $text ?>
+                <?php endif ?>
+            </div>
+
+        <?php elseif ($itemType == 'tab_container'): ?>
+            <?php if (isset($content->background) && $content->background): ?>
+                <img class="groupdrop-banner-pos" src="<?= /* @noEscape*/ $content->background ?>"
+                     style="<?= /* @noEscape*/ $block->getBackgroundStyle($content) ?>"/>
+            <?php endif ?>
+            <div
+                    class="no-dropdown menu-tabs <?= /* @noEscape*/ ($content->tab_type == 0) ? 'cdz-horizontal-tabs' : 'cdz-vertical-tabs' ?> <?= /* @noEscape*/ ($content->width_class) ? 'groupmenu-width-' . $content->width_class : '' ?>"
+                    style=" <?= /* @noEscape*/ $content->style ?>">
+                <?php if ($hasChildren): ?>
+                    <ul class="groupmenu-nondrop">
+                        <?= /* @noEscape*/ $block->getMenuHtml($item->children); ?>
+                    </ul>
+                <?php endif ?>
+            </div>
+        <?php elseif ($itemType == 'tab_item'): ?>
+            <div class="cdz-link-wrap"><a class="cdz-tab-link"
+                                          href="<?= /* @noEscape*/ $content->url ?>"><?= /* @noEscape*/ $block->getIcon($content) ?><?= /* @noEscape*/ $content->label ?></a>
+            </div>
+            <div class="cdz-tab-pane">
+                <?php
+                $text      = $content->content;
+                $layout    = explode(',', $content->layout);
+                $totalPart = array_sum($layout);
+                ?>
+
+                <div class="<?= /* @noEscape*/ $content->class ?> groupmenu-drop-content">
+                    <?php if ($totalPart > 1): ?>
+                        <div class="row">
+                            <?php foreach ($layout as $key => $column): ?>
+                                <div
+                                        class="col-sm-<?= /* @noEscape*/ (int)$column * (24 / (int)$totalPart); ?>"><?= /* @noEscape*/ $text[$key] ?></div>
+                            <?php endforeach ?>
+
+                        </div>
+                    <?php else: ?>
+                        <?= /* @noEscape*/ $text ?>
+                    <?php endif ?>
+                    <?php if ($content->background): ?>
+                        <div class="banner-menu-image"><img class="groupdrop-banner-pos" src="<?= /* @noEscape*/ $content->background ?>"
+                                                            style="<?= /* @noEscape*/ $block->getBackgroundStyle($content) ?>"/></div>
+                    <?php endif ?>
+                </div>
+                <?php if ($hasChildren): ?>
+                    <ul class="groupmenu-nondrop">
+                        <?= /* @noEscape*/ $block->getMenuHtml($item->children); ?>
+                    </ul>
+                <?php endif ?>
+            </div>
+        <?php elseif ($itemType == 'row'): ?>
+            <?php if ($content->background): ?>
+                <img class="groupdrop-banner-pos" src="<?= /* @noEscape*/ $content->background ?>"
+                     style="<?= /* @noEscape*/ $block->getBackgroundStyle($content) ?>"/>
+            <?php endif ?>
+            <?php if ($hasChildren): ?>
+                <ul class="groupmenu-nondrop">
+                    <?= /* @noEscape*/ $block->getMenuHtml($item->children); ?>
+                </ul>
+            <?php endif ?>
+        <?php elseif ($itemType == 'col'): ?>
+            <?php if ($hasChildren): ?>
+                <ul class="groupmenu-nondrop">
+                    <?= /* @noEscape*/ $block->getMenuHtml($item->children); ?>
+                </ul>
+            <?php endif ?>
+        <?php endif ?>
+    </li>
+<?php endif ?>

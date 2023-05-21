@@ -1,0 +1,35 @@
+//
+//  Search Collapsible Styles
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .amsearch-collapsible-section[data-collapsible] {
+        &.-opened .amsearch-collapsible-title:after {
+            transform: rotate(225deg) translate(-5px, 0);
+        }
+
+        .amsearch-collapsible-title {
+            & {
+                align-items: center;
+                cursor: pointer;
+                display: flex;
+            }
+
+            &:after {
+                border-bottom: 1px solid @amsearch-border__color;
+                border-right: 1px solid @amsearch-border__color;
+                content: '';
+                display: inline-block;
+                height: @amsearch__indent;
+                transform: rotate(45deg) translate(0, -5px);
+                transition: .3s all;
+                width: 10px;
+                margin-right: 5px;
+            }
+        }
+    }
+}

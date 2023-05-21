@@ -1,0 +1,88 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+// @codingStandardsIgnoreFile
+use Magento\Framework\Escaper;
+
+/**
+ * @var \Ecommage\OrderRules\Block\Voucher\History $block
+ * @var Escaper $escaper
+ */
+?>
+<?php $_vouchers = $block->getVouchers();
+?>
+<?= $block->getChildHtml('info') ?>
+<?php if ($_vouchers && count($_vouchers)) : ?>
+    <div class="orders-history">
+        <div class="voucher__list">
+            <?php foreach ($_vouchers as $key => $_voucher) : ?>
+            <?php
+                if ($_voucher->getUsageLimit() == 0 || $_voucher->getUsageLimit() > $_voucher->getTimesUsed()):
+                ?>
+            <div class="voucher-item">
+                <div class="coupon-content">
+                    <div class="coupon-code">
+                        <span class="coupon-title"><?= $block->escapeHtml(__('Apply Discount Code')) ?></span>
+                        <input class="coupon" id="coupon-<?= $key ?>" value="<?= /* @noEscape */ $_voucher->getCoponCode() ?>" readonly>
+                        <span class="coupon-copy"><?= $block->escapeHtml(__('Copy')) ?></span>
+                    </div>
+
+                    <div class="coupon-detail">
+                        <h3 class="coupon-name"><?= /* @noEscape */ $_voucher->getName() ?></h3>
+                        <p class="coupon-des"><?= /* @noEscape */ $_voucher->getDescription() ?></p>
+                        <p class="coupon-date">
+                            <span><?= $block->escapeHtml(__('Expiration: ')) ?></span>
+                            <span class="exp-date">
+                                <?= /* @noEscape */ $_voucher->getToDate() ? $block->formatDate($_voucher->getToDate()) : '' ?>
+                            </span>
+                        </p>
+                        <div class="coupon-action view">
+                            <a class="action primary" href="#" data-type="<?= /* @noEscape */ $_voucher->getRuleId() ?>"><?= /* @noEscape */ $block->escapeHtml(__('See Details')) ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <div class="view-rule_detail"></div>
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Ecommage_OrderRules/js/viewRule": {
+                        "updateUrl": "<?= $escaper->escapeUrl($block->getUrl('*/*/ajaxBlock'))?>",
+                        "periodSelect": ".view a",
+                        "popupClass" : ".view-rule_detail"
+                    }
+                }
+            }
+        </script>
+        <script>
+            require(['jquery'], function ($) {
+                $('.coupon-copy').click(function () {
+                    var id = $(this).closest('div').find('input').attr('id');
+                    copyCounponCode(id);
+                });
+                function copyCounponCode(id) {
+                    /* Get the text field */
+                    var copyText = document.getElementById(id);
+                    /* Select the text field */
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+                    /* Copy the text inside the text field */
+                    document.execCommand("copy");
+                }
+            });
+        </script>
+    </div>
+    <?php if ($block->getPagerHtml()) : ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else : ?>
+    <div class="message info empty"><span><?= $block->escapeHtml($block->getEmptyVouchersMessage()) ?></span></div>
+<?php endif ?>

@@ -1,0 +1,46 @@
+//
+//  Categories list styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amblog-element-block .amblog-categories {
+        & {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        &.-level1 .amblog-categories {
+            padding-left: @amblog__indent__xl;
+        }
+
+        .amblog-category-count {
+            color: @amblog-placeholder__color;
+            font-weight: @font-weight__regular;
+            display: none;
+        }
+
+        & .amblog-link {
+            &:extend(.amblog-element-block .amblog-headline all);
+
+            font-size: @amblog-font-size__s;
+            font-weight: @font-weight__regular;
+        }
+
+        // &.-level1 > .amblog-category > .amblog-link {
+        //     font-weight: @font-weight__bold;
+        // }
+
+        &.-level2 .amblog-category {
+            margin: @amblog__indent 0 0;
+        }
+
+        &.-level3 .amblog-category {
+            margin-top: 5px;
+        }
+    }
+}

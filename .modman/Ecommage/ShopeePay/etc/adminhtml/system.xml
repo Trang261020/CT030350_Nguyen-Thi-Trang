@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1000" translate="label">
+            <group id="shopeepay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>ShopeePay</label>
+                <field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Enabled</label>
+                    <config_path>payment/shopeepay/active</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                    <label>Title</label>
+                    <config_path>payment/shopeepay/title</config_path>
+                </field>
+                <field id="order_status" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="select">
+                    <label>New Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status\NewStatus</source_model>
+                    <config_path>payment/shopeepay/order_status</config_path>
+                </field>
+                <field id="allowspecific" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="allowspecific">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                    <config_path>payment/shopeepay/allowspecific</config_path>
+                </field>
+                <field id="specificcountry" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <config_path>payment/shopeepay/specificcountry</config_path>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="sort_order" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="text">
+                    <label>Sort Order</label>
+                    <config_path>payment/shopeepay/sort_order</config_path>
+                </field>
+                <field id="is_live" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Live Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>payment/shopeepay/is_live</config_path>
+                </field>
+                <field id="live_merchant_ext_id" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live Merchant Ext Id</label>
+                    <config_path>payment/shopeepay/live_merchant_ext_id</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_merchant_ext_id" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Merchant Ext Id</label>
+                    <config_path>payment/shopeepay/test_merchant_ext_id</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+                <field id="live_store_ext_id" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live PC Store Ext Id</label>
+                    <config_path>payment/shopeepay/live_store_ext_id</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_store_ext_id" translate="label" type="text" sortOrder="111" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test PC Store Ext Id</label>
+                    <config_path>payment/shopeepay/test_store_ext_id</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+                <field id="platform_type" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Platform Type</label>
+                    <source_model>Ecommage\ShopeePay\Model\Config\Source\PlatformType</source_model>
+                    <config_path>payment/shopeepay/platform_type</config_path>
+                </field>
+                <field id="live_pc_client_id" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live PC Client Id</label>
+                    <config_path>payment/shopeepay/live_pc_client_id</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_pc_client_id" translate="label" type="text" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test PC Client Id</label>
+                    <config_path>payment/shopeepay/test_pc_client_id</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+                <field id="live_mweb_client_id" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live Mobile Client Id</label>
+                    <config_path>payment/shopeepay/live_mweb_client_id</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_mweb_client_id" translate="label" type="text" sortOrder="141" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Mobile Client Id</label>
+                    <config_path>payment/shopeepay/test_mweb_client_id</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+                <field id="live_pc_secret_key" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live PC Secret Key</label>
+                    <config_path>payment/shopeepay/live_pc_secret_key</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_pc_secret_key" translate="label" type="text" sortOrder="161" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test PC Secret Key</label>
+                    <config_path>payment/shopeepay/test_pc_secret_key</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+                <field id="live_mweb_secret_key" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live Mobile Secret Key</label>
+                    <config_path>payment/shopeepay/live_mweb_secret_key</config_path>
+                    <depends>
+                        <field id="is_live">1</field>
+                    </depends>
+                </field>
+                <field id="test_mweb_secret_key" translate="label" type="text" sortOrder="171" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Mobile Secret Key</label>
+                    <config_path>payment/shopeepay/test_mweb_secret_key</config_path>
+                    <depends>
+                        <field id="is_live">0</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

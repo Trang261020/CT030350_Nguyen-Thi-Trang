@@ -1,0 +1,27 @@
+& when (@media-common = true) {
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .product-info-wrapper{
+        .product-info-right{
+            margin-top: 30px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .product-info-wrapper{
+        display: flex;
+        gap: 0 20px;
+
+        .product-info-right{
+            .w(20%);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+    .product-info-wrapper{
+        gap: 0 40px;
+    }
+}

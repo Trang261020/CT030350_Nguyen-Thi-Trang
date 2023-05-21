@@ -1,0 +1,63 @@
+& when (@media-common = true) {
+    .checkout-onepage-failure{
+        .page-title-wrapper{
+            .mt(36px);
+        }
+
+        .page-title{
+            .mb(5px);
+        }
+
+        p{
+            .mb;
+            .mt(15px);
+        }
+
+        strong{
+            font-weight: @semibold;
+        }
+
+        .continue-shopping-wrap{
+            display: flex;
+            justify-content: center;
+        }
+
+        p.continue-shopping{
+            .mt(25px);
+            .p(10px 29px);
+            .border-radius(20px);
+            color: @color-theme;
+            font-size: 0;
+            border: 1px solid @color-theme;
+            font-weight: @semibold;
+            cursor: pointer;
+
+            &:hover{
+                background-color: @color-theme;
+
+                a{
+                    color: @color-white !important;
+                }
+            }
+
+            a{
+                font-size: 14px;
+                color: @color-theme;
+
+                &:visited{
+                    color: @color-theme;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .checkout-onepage-failure{
+        .column.main{
+            .mb(60px);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){}

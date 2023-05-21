@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="banner"
+          label="Banner"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="Magento_PageBuilder/js/content-type/banner/preview"
+          form="pagebuilder_banner_form"
+          menu_section="media"
+          icon="icon-pagebuilder-banner"
+          sortOrder="30"
+          translate="label">
+        <appearances>
+            <appearance name="collage-left"
+                preview_template="Magento_PageBuilder/content-type/banner/collage-left/preview"
+                master_template="Magento_PageBuilder/content-type/banner/collage-left/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <attribute name="background_content_type" source="background_content_type"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="collage-centered"
+                preview_template="Magento_PageBuilder/content-type/banner/collage-centered/preview"
+                master_template="Magento_PageBuilder/content-type/banner/collage-centered/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <attribute name="background_content_type" source="background_content_type"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="collage-right"
+                preview_template="Magento_PageBuilder/content-type/banner/collage-right/preview"
+                master_template="Magento_PageBuilder/content-type/banner/collage-right/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <attribute name="background_content_type" source="background_content_type"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance default="true"
+                name="poster"
+                preview_template="Magento_PageBuilder/content-type/banner/poster/preview"
+                master_template="Magento_PageBuilder/content-type/banner/poster/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <attribute name="background_content_type" source="background_content_type"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+    </type>
+</config>

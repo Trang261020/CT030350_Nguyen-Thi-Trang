@@ -1,0 +1,39 @@
+& when (@media-common = true) {
+	.amblog-index-post{
+		.amblog-post-container{
+			.amblog-post-title{
+				font-size: 18px;
+				font-style: initial;
+				margin-bottom: 20px;
+				font-weight: @font-weight__bold;
+			}
+			> img{
+				margin-bottom: 13px;
+			}
+		}
+		.breadcrumbs{
+			.my(25px, 6px);
+			.pt;
+		}
+		.amblog-content{
+			p{
+				line-height: 18px;
+				margin: 20px 0;
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.amblog-index-post{
+		.amblog-post-title{
+			margin-top: 10px;
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.amblog-index-post{
+		.sidebar-additional{
+			margin-top: 4px;
+		}
+	}
+}

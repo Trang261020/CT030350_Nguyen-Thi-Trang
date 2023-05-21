@@ -1,0 +1,309 @@
+& when (@media-common = true) {
+	.customer-account-login, .customer-account-forgotpassword{
+		.page-heading();
+	}
+	.login-container{
+		display: flex;
+		flex-direction: column;
+		max-width: 400px;
+		margin: auto;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		padding: 25px 30px 20px;
+		margin-bottom: 60px;
+		.border-radius(@button__border-radius);
+		.amsl-social-wrapper{
+			margin: 10px 0 0;
+		}
+		.block-new-customer{
+			margin-bottom: 0;
+		}
+		.field{
+			&.sparsh-mobile-number-login-option{
+				text-align: center;
+			}
+			&.choice{
+				.lib-input-checkbox();
+				margin-bottom: 20px;
+			}
+		}
+		.fieldset > .field.choice .label{
+			display: inline-flex;
+		}
+		.actions-toolbar{
+			.secondary{
+				text-align: right;
+			}
+			.action.remind{
+				font-size: 12px;
+				font-weight: @font-weight__semibold;
+				text-decoration: underline;
+			}
+		}
+		.actions-toolbar{
+			margin-top: 30px;
+		}
+	}
+	.block-customer-login{
+		margin-bottom: 0;
+		.block-content{
+			display: block;
+		}
+	}
+	.block-new-customer{
+		.block-content{
+			flex-direction: row;
+			justify-content: center;
+			margin-top: 14px;
+		}
+		a{
+			font-size: 14px;
+			color: @color-theme;
+			text-decoration: underline;
+			padding-left: 5px;
+			font-weight: @font-weight__semibold;
+		}
+	}
+
+	.amsl-popup-block{
+		.sparsh-mobile-number-login-option{
+			input{
+				cursor: pointer;
+			}
+		}
+
+		div.mage-error{
+			font-size: 10px;
+
+			&.message-popup{
+				text-align: center;
+				width: 100%;
+				margin-bottom: 10px;
+				font-size: 12px;
+			}
+		}
+
+		.action{
+			&.captcha-reload{
+				.mt(10px);
+			}
+		}
+	}
+
+	.amsl-form{
+		.fieldset.login{
+			.field.choice{
+				.label{
+					cursor: pointer;
+				}
+			}
+		}
+
+		.fieldset{
+			> .field:not(.choice){
+				display: flex;	
+				justify-content: space-between;
+
+				&.field-full-name{
+					> .label{
+						.w(32%);
+					}
+				}
+
+				&.confirmation{
+					> .control{
+						.ml(0px);
+					}
+				}
+
+				> .label{
+					.p;
+					.pt(8px);
+				}
+
+				> .control{
+					.ml(8px);
+					.w(65.75%);
+					flex-shrink: 0;
+
+					input{
+						appearance: none;
+						-moz-appearance: none;
+						-webkit-appearance: none;
+					}
+				}
+			}
+		}
+
+	}
+
+	.amsl-login-content{
+		.fieldset{
+			.showpassword{
+				.mt(-17px);
+	
+				&::before{
+					display: none;
+				}
+			}
+		}
+
+		.action{
+			&.remind{
+				position: relative;
+				z-index: 10;
+			}
+		}
+	}
+	
+	.amsl-register-content{
+		.field.newsletter{
+			.w(65.75%);
+			.ml(auto);
+		}
+
+		.field-full-name{
+			flex-wrap: wrap;
+		}
+
+		#fullname-error{
+			.w(100%);
+			.pl(34.25%);
+		}
+
+		.register-showpassword{
+			.pl(34.25%);
+		}
+	}
+	
+	.modal-verify-otp-wrap.modal-popup{
+		display: flex;
+		align-items: center;
+
+		.modal-inner-wrap{
+			max-width: 400px;
+		}
+
+		.modal-header{
+			padding-top: 18px;
+		}
+	}
+
+	#modal-otp{
+		.page-title-otp {
+			margin-bottom: 28px;
+			text-align: center;
+		}
+
+		.verify-otp-login{
+			margin-bottom: 4px;
+
+			.field.otp-login{
+				margin-bottom: 25px;
+			}
+
+			.actions-toolbar{
+				display: flex;
+				justify-content: center;
+
+				.action.send-otp{
+					.p(10px 30px);
+					.m;
+				}
+			}
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.customer-account-login{
+		.page-title-wrapper{
+			.page-title{
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
+		}
+	}
+	.login-container{
+		.actions-toolbar{
+			.primary{
+				display: inline-block;
+				float: left;
+				margin-bottom: 0;
+			}
+			.secondary{
+				float: right;
+				padding-top: 6px;
+			}
+		}
+		.field.password{
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.customer-account-login{
+		.page-title-wrapper{
+			.page-title{
+				margin-bottom: 30px;
+				margin-top: 16px;
+			}
+		}
+	}
+	.login-container{
+		.field.password{
+			margin-bottom: 9px;
+		}
+	}
+}
+
+& when (@media-target ='mobile'), (@media-target ='all') {
+    @media only screen and (max-width:@screen__m) {
+		.amsl-popup-block{
+			.w(400px);
+		}
+
+		.amsl-form{
+			.fieldset{
+				> .field:not(.choice){
+
+					&.field-full-name{
+						> .label{
+							.w(36%);
+						}
+					}
+
+					> .control{
+						.w(60%);
+					}
+				}
+			}
+		}
+
+		.amsl-register-content{
+			#fullname-error{
+				.pl(40.25%);
+			}
+
+			.field.newsletter{
+				.w(60%);
+			}
+
+			.register-showpassword{
+				.pl(40.25%);
+			}
+
+			.confirmation{
+				.control{
+					.ml(2px);
+				}
+
+				.label{
+					&::after{
+						.ml(1px) !important;
+					}
+				}
+			}
+		}
+	}
+}

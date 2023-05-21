@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+/**
+ * @var \Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolverInterface|null $logoSizeResolver
+ */
+$logoSizeResolver = $block->getLogoSizeResolver();
+$logoWidth = $logoSizeResolver !== null && $logoSizeResolver->getWidth()
+    ? $logoSizeResolver->getWidth()
+    : $block->getLogoWidth();
+$logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
+    ? $logoSizeResolver->getHeight()
+    : $block->getLogoHeight();
+?>
+
+
+<?php if ($block->isHomePage()):?>
+<h1 class="logo">
+    <a href="<?= $block->escapeUrl($block->getUrl('')) ?>">
+        <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+            title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+            alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+            <?= $logoWidth ? 'width="' . $block->escapeHtmlAttr($logoWidth) . '"' : '' ?>
+            <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?>
+        />
+        <img class="logo-mobile" src="<?= $block->getViewFileUrl('images/logo-mobile.svg')?>" alt="logo" title="logo mobile"/>
+    </a>
+</h1>
+
+<?php else:?>
+    <a
+        class="logo"
+        href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+        title="<?= $block->escapeHtmlAttr($storeName) ?>"
+        aria-label="store logo">
+        <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+            title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+            alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                <?= $logoWidth ? 'width="' . $block->escapeHtmlAttr($logoWidth) . '"' : '' ?>
+                <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?>
+        />
+        <img class="logo-mobile" src="<?= $block->getViewFileUrl('images/logo-mobile.svg')?>" alt="logo" title="logo mobile"/>
+    </a>
+<?php endif?>
+<div class="menu-wrapper">
+    <span data-action="toggle-nav" class="action nav-toggle category-icon">
+        <img src="<?= $block->getViewFileUrl('images/menu-icon.svg')?>" />
+        <span><?= $block->escapeHtml(__('categories')) ?></span>
+    </span>
+</div>

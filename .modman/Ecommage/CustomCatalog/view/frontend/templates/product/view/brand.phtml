@@ -1,0 +1,38 @@
+<?php
+/**
+ * Copyright © Ecommage, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$_attributeValue = null;
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_helperBrand = $this->helper(Ecommage\CustomCatalog\Helper\Brand::class);
+$_product = $block->getProduct();
+$_code = $_helperBrand->getBrandCode();
+if (empty($_code) || !$_product instanceof \Magento\Catalog\Model\Product) {
+    return;
+}
+
+$brandValue = $_product->getData($_code);
+$brandUrl = $_helperBrand->getbrandUrl($brandValue);
+$attr = $_product->getResource()->getAttribute($_code);
+if ($attr->usesSource()) {
+    $_attributeValue = $attr->getSource()->getOptionText($brandValue);
+}
+
+?>
+<?php if ($_attributeValue) :?>
+    <div class="product attribute brands">
+        <strong class="type"><?= $block->escapeHtml(__('Brand:')) ?></strong>
+        <a href="<?= $block->escapeUrl($brandUrl) ?>" class="value" itemprop="brands"><?= /* @noEscape */ $_attributeValue ?></a>
+    </div>
+<?php endif; ?>

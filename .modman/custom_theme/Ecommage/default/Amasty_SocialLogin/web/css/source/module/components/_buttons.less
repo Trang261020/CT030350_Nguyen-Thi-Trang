@@ -1,0 +1,337 @@
+//
+//  Buttons Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_helpers';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amsl-button {
+        & {
+            .transition(.2, ease);
+
+            background-repeat: no-repeat;
+            border-radius: 100px;
+            display: block;
+        }
+
+        .amsl-social-icon {
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        &.-clear {
+            & {
+                background: none;
+                border: none;
+                box-shadow: none;
+                color: initial;
+                margin: 0;
+                outline: none;
+                padding: 0;
+            }
+
+            &:hover,
+            &:active {
+                background: none;
+                box-shadow: none;
+                color: inherit;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .amsl-button.-google {
+        & {
+            background: @amsl-google-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-google-icon__background;
+        }
+    }
+
+    .amsl-button.-twitter {
+        & {
+            background: @amsl-twitter-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-twitter-icon__background;
+        }
+    }
+
+    .amsl-button.-facebook {
+        & {
+            background: @amsl-facebook-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-facebook-icon__background;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .amsl-button.-apple {
+        & {
+            background: #fff;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-apple-icon__background;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .amsl-button.-linkedin {
+        & {
+            background: @amsl-linkedin-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-linkedin-icon__background;
+        }
+    }
+
+    .amsl-button.-instagram {
+        & {
+            background: @amsl-instagram-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-instagram-icon__background;
+        }
+    }
+
+    .amsl-button.-amazon {
+        & {
+            background: @amsl-amazon-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-amazon-icon__background;
+        }
+    }
+
+    .amsl-button.-paypal {
+        & {
+            background: @amsl-paypal-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-paypal-icon__background;
+        }
+    }
+
+    .amsl-button.-twitch {
+        & {
+            .am-flex(center, center);
+
+            background: @amsl-twitch-button__background;
+        }
+
+        .amsl-social-icon {
+            background-image: @amsl-twitch-icon__background;
+            background-size: 50%;
+            border: 1px solid #000;
+            border-radius: 5px;
+            filter: invert(1);
+            height: 50%;
+            width: 50%;
+        }
+    }
+
+    .amsl-button-wrapper.-rectangular .amsl-button,
+    .amsl-linked-wrapper.-rectangular .amsl-button {
+        border-radius: 20px;
+    }
+
+    .amsl-button-wrapper.-rectangular {
+        .amsl-button.-twitch .amsl-social-icon {
+            background-size: 100%;
+            border: none;
+        }
+
+        &.with-label .amsl-button.-twitch .amsl-social-icon {
+            background-size: 70%;
+        }
+    }
+
+    .amsl-button-wrapper.with-label.-rectangular {
+        & {
+            width: ~"calc(50% - 10px)";
+            border-radius: 20px;
+            &:first-child{
+                margin-right: 20px;
+            }
+        }
+
+        .amsl-button {
+            .am-flex(center, center);
+            box-shadow: none;
+            box-sizing: border-box;
+            height: 40px;
+            width: 100%;
+        }
+
+        .amsl-button:hover {
+            box-shadow: none;
+        }
+
+        .amsl-button.-google {
+            background: @amsl-google-button__rectangle__background;
+        }
+
+        .amsl-button.-google:hover {
+            background: lighten(@amsl-google-button__rectangle__background, 10%);
+        }
+
+        .amsl-button.-paypal {
+            background: @amsl-paypal-button__rectangle__background;
+        }
+
+        .amsl-button.-paypal:hover {
+            background: lighten(@amsl-paypal-button__rectangle__background, 10%);
+        }
+
+        .amsl-button.-amazon {
+            background: @amsl-amazon-button__rectangle__background;
+        }
+
+        .amsl-button.-amazon:hover {
+            background: lighten(@amsl-amazon-button__rectangle__background, 10%);
+        }
+
+        .amsl-button.-facebook .amsl-social-icon {
+            background: @amsl-facebook-icon__rectangle__background;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 8px;
+            margin-left: 0;
+        }
+
+        .amsl-button.-apple {
+            &:hover {
+                background: #f2f2f7;
+            }
+
+            .amsl-social-icon {
+                background: @amsl-apple-icon__background;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 24px;
+            }
+
+            .amsl-text {
+                color: #1c1c1e;
+            }
+        }
+
+        .amsl-button.-google .amsl-social-icon,
+        .amsl-button.-facebook .amsl-social-icon,
+        .amsl-button.-amazon .amsl-social-icon,
+        .amsl-button.-paypal .amsl-social-icon {
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .amsl-social-icon {
+            background-size: 70%;
+            height: 25px;
+            margin: 0 10px;
+            transform: none;
+            width: 25px;
+            margin-left: 0px;
+        }
+
+        .amsl-text {
+            color: #fff;
+            margin-right: 0;
+            font-weight: @font-weight__semibold;
+        }
+    }
+
+    .amsl-showmore-wrapper {
+        & {
+            color: #4878bf;
+            display: block;
+            height: 1px;
+            margin: 25px 0;
+            position: relative;
+            width: 100%;
+        }
+
+        &:before {
+            background: @amsl-main-gray__color;
+            content: '';
+            height: 1px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+        }
+
+        .amsl-social-login & > .amsl-showmore-button {
+            & {
+                box-shadow: none;
+                height: auto;
+                width: auto;
+            }
+
+            &:focus {
+                transform: translateY(-50%);
+            }
+
+            &:hover {
+                box-shadow: none;
+            }
+        }
+
+        > .amsl-showmore-button {
+            & {
+                .transition(.3, ease-in-out);
+
+                background: @amsl-background-color;
+                border: none;
+                box-shadow: none;
+                color: inherit;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 1.4rem;
+                font-weight: 400;
+                outline: none;
+                padding: 5px 15px;
+                transform: translateY(-50%);
+            }
+
+            &:focus {
+                border: 1px solid;
+            }
+
+            &:hover {
+                background: @amsl-background-color;
+                opacity: .8;
+            }
+        }
+
+        .amsl-arrow {
+            background-image: @amsl-showmore-icon__background;
+            background-position: center;
+            display: inline-block;
+            height: 7px;
+            margin-left: 5px;
+            vertical-align: middle;
+            width: 12px;
+        }
+    }
+}

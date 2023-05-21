@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="products_promo_countdown" class="Ecommage\CatalogPromoCountdown\Block\Widgets\Countdown" is_email_compatible="false">
+        <label translate="true">Products Promo Countdown</label>
+        <description translate="true">Products Promo Countdown</description>
+        <parameters>
+            <parameter name="catalog_rule" xsi:type="select" required="true" visible="true" source_model="Ecommage\CatalogPromoCountdown\Model\Source\CatalogRule" sort_order="10">
+                <label translate="true">Catalog Rule</label>
+            </parameter>
+            <parameter name="date_from" xsi:type="block" sort_order="10">
+                <label translate="true">Start Time</label>
+                <description translate="true">Countdown timer will be visible on storefront after this date and time. Applicable for scheduling your future promo actions.</description>
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Date">
+                    <data>
+                        <item name="date_format" xsi:type="string">MM/dd/yyyy</item>
+                        <item name="time_format" xsi:type="string">HH:mm:ss</item>
+                        <item name="current_date_format" xsi:type="string">m/d/Y</item>
+                        <item name="additional_classes" xsi:type="string">validate-date-period-min</item>
+                        <item name="min_date" xsi:type="string">current</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="date_to" xsi:type="block" required="true" sort_order="20">
+                <label translate="true">End Time</label>
+                <description translate="true">Set the exact date and time when your promo ends - it will be used to determine when the count down timer should stop. The timer will vanish after this date and time from storefront automatically.</description>
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Date">
+                    <data>
+                        <item name="date_format" xsi:type="string">MM/dd/yyyy</item>
+                        <item name="time_format" xsi:type="string">HH:mm:ss</item>
+                        <item name="current_date_format" xsi:type="string">m/d/Y</item>
+                        <item name="additional_classes" xsi:type="string">validate-date-period-max</item>
+                        <item name="min_date" xsi:type="string">current</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="text_before" xsi:type="block" sort_order="30">
+                <label translate="true">Before Countdown Text</label>
+                <description translate="true">HTML tags are supported.</description>
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Textarea"/>
+            </parameter>
+            <parameter name="text_after" xsi:type="block" sort_order="40">
+                <label translate="true">After Countdown Text</label>
+                <description translate="true">HTML tags are supported.</description>
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Textarea"/>
+            </parameter>
+            <parameter name="link" xsi:type="text" sort_order="50">
+                <label translate="true">Link</label>
+            </parameter>
+            <parameter name="design" xsi:type="select" visible="true" source_model="Amasty\PromoCountdown\Model\Config\Design" sort_order="70">
+                <label translate="true">Timer Design</label>
+            </parameter>
+            <parameter name="backgroundColor" xsi:type="block" sort_order="70">
+                <label translate="true">Timer Color</label>
+                <description translate="true">Timer Color will not be applicable for design Simple - Transparent.</description>
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Color">
+                </block>
+            </parameter>
+            <parameter name="validation" xsi:type="block" sort_order="999" visible="false">
+                <block class="Amasty\PromoCountdown\Block\Adminhtml\Widgets\Config\Validation">
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

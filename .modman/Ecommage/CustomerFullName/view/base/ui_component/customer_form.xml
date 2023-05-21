@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="address" class="Magento\Customer\Ui\Component\Form\AddressFieldset">
+        <container name="customer_default_billing_address_wrapper" template="Magento_Customer/default-address-wrapper">
+            <component name="customer_default_billing_address_content" template="Ecommage_CustomerFullName/default-address">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="defaultAddressClass" xsi:type="string">billing-address</item>
+                        <item name="title" translate="true" xsi:type="string">Default Billing Address</item>
+                        <item name="contentClass" xsi:type="string">customer-default-billing-address-content</item>
+                        <item name="notExistsMessage" xsi:type="string" translate="true">The customer does not have default billing address</item>
+                        <item name="tracks" xsi:type="array">
+                            <item name="address" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="address">${ $.provider}:data.default_billing_address</link>
+                    </imports>
+                </settings>
+            </component>
+        </container>
+        <container name="customer_default_shipping_address_wrapper" template="Magento_Customer/default-address-wrapper">
+            <component name="customer_default_shipping_address_content" template="Ecommage_CustomerFullName/default-address">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="defaultAddressClass" xsi:type="string">shipping-address</item>
+                        <item name="title" xsi:type="string" translate="true">Default Shipping Address</item>
+                        <item name="contentClass" xsi:type="string">customer-default-shipping-address-content</item>
+                        <item name="notExistsMessage" xsi:type="string" translate="true">The customer does not have default shipping address</item>
+                        <item name="tracks" xsi:type="array">
+                            <item name="address" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <imports>
+                        <link name="address">${ $.provider}:data.default_shipping_address</link>
+                    </imports>
+                </settings>
+            </component>
+        </container>
+
+        <modal name="customer_address_update_modal">
+            <settings>
+                <options>
+                    <option name="title" xsi:type="string" translate="true">Add/Update Address</option>
+                </options>
+            </settings>
+            <insertForm name="update_customer_address_form_loader" component="Ecommage_CustomerFullName/js/form/components/insert-form">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="addressListingProvider" xsi:type="string">ns = customer_address_listing, index = customer_address_listing</item>
+                        <item name="addressModalProvider" xsi:type="string">${ $.parentName }</item>
+                    </item>
+                </argument>
+                <settings>
+                    <formSubmitType>ajax</formSubmitType>
+                    <renderUrl path="mui/index/render_handle">
+                        <param name="handle">customer_address_edit</param>
+                        <param name="buttons">1</param>
+                    </renderUrl>
+                    <loading>false</loading>
+                    <toolbarContainer>${ $.parentName }</toolbarContainer>
+                    <externalProvider>${ $.ns }.customer_address_form_data_source</externalProvider>
+                    <ns>customer_address_form</ns>
+                    <exports>
+                        <link name="parentId">${ $.externalProvider }:data.parent_id</link>
+                    </exports>
+                    <imports>
+                        <link name="parentId">${ $.provider}:data.customer_id</link>
+                        <link name="onAddressDelete">${ $.ns }.${ $.ns }:deleteAddressAction</link>
+                    </imports>
+                </settings>
+            </insertForm>
+        </modal>
+    </fieldset>
+</form>

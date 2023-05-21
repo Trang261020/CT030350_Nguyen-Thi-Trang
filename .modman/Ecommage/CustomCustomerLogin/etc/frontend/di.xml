@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Sparsh\MobileNumberLogin\Observer\AuthenticateMobileNumber">
+        <plugin name="Ecommage_CustomCustomerLogin::vn" type="Ecommage\CustomCustomerLogin\Plugin\Observer\AuthenticateMobileNumber" sortOrder="0" />
+    </type>
+    <type name="Sparsh\MobileNumberLogin\Observer\AuthenticateAjaxMobileNumber">
+        <plugin name="Ecommage_CustomCustomerLogin::ajax_vn" type="Ecommage\CustomCustomerLogin\Plugin\Observer\AuthenticateAjaxMobileNumber" sortOrder="0" />
+    </type>
+    <type name="Magento\Customer\Api\AccountManagementInterface">
+        <plugin name="Ecommage_CustomCustomerLogin::vn_custom" type="Ecommage\CustomCustomerLogin\Plugin\Model\AccountManagement" sortOrder="0" />
+    </type>
+    <type name="Sparsh\MobileNumberLogin\Model\Attribute\Backend\MobileNumber">
+        <plugin name="Ecommage_CustomCustomerLogin::BeforeSave" type="Ecommage\CustomCustomerLogin\Plugin\Model\Attribute\Backend\MobileNumber" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="Ecommage_CustomCustomerLogin::LoginPost" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Controller\Account\LoginPostPlugin" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\ResetPasswordPost">
+        <plugin name="Ecommage_CustomCustomerLogin::ResetPasswordPost" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Controller\Account\ResetPasswordPost" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\ForgotPasswordPost">
+        <plugin name="Ecommage_CustomCustomerLogin::ForgotPasswordPost" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Controller\Account\ForgotPasswordPost" />
+    </type>
+    <type name="Magento\Customer\Model\AccountManagement">
+        <plugin name="Ecommage_CustomCustomerLogin::AccountManagement" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Model\AccountManagementPlugin" />
+    </type>
+
+<!--    <type name="Magento\Customer\Controller\Account\EditPost">-->
+<!--        <plugin name="ecommage_controller_edit_post" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Controller\Account\EditPost" />-->
+<!--    </type>-->
+
+<!--    <type name="Magento\Customer\Controller\Address\FormPost">-->
+<!--        <plugin name="ecommage_controller_edit_post" type="Ecommage\CustomCustomerLogin\Plugin\Customer\Controller\Address\FormPost" />-->
+<!--    </type>-->
+</config>

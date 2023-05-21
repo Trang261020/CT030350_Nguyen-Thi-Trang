@@ -1,0 +1,37 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Blog Pro for Magento 2
+*/
+?>
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$treeHtml = $block->renderCategoriesTreeHtml();
+?>
+<?php if (!$block->isAlreadyWrapped()): ?>
+<div class="amblog-element-block">
+<?php endif; ?>
+    <?php if (!empty(trim($treeHtml))): ?>
+        <div data-amblog-js="accordion" class="amblog-widget-container -categories">
+            <h2 class="amblog-title" data-amblog-js="heading">
+                <?= $escaper->escapeHtml($block->getBlockHeader()); ?>
+            </h2>
+            <div class="amblog-list" data-amblog-js="content">
+                <ul class="amblog-categories -level<?= $escaper->escapeHtml($block->getDefaultLevel()); ?>">
+                    <?= /* @noEscape */
+                    $treeHtml; ?>
+                </ul>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="amblog-empty"><?= $escaper->escapeHtml(__('Categories were not found')); ?></div>
+    <?php endif; ?>
+
+<?php if (!$block->isAlreadyWrapped()): ?>
+</div>
+<?php endif; ?>

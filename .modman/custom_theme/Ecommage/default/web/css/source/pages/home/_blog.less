@@ -1,0 +1,143 @@
+& when (@media-common = true) {
+	.home-blog{
+		h2{
+			text-align: center;
+		}
+		.home-blog-content{
+			display: flex;
+			flex-wrap: wrap;
+			.amblog-element-block{
+				.amblog-post-list{
+					box-shadow: none;
+				}
+				.amblog-title{
+					display: none;
+				}
+			}
+			.amblog-post-list{
+
+			}
+		}
+		.post-title, .short-description{
+			.line-clamp(3);
+		}
+		.amblog-list{
+			.post-title:hover{
+				color: @color-theme;
+			}
+			.post-item-info{
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 15px;
+				.ampost-link{
+					display: none;
+				}
+			}
+		}
+		.home-blog-right{
+			.post-image{
+				width: 100%;
+				img{
+					.border-radius(@button__border-radius);
+				}
+			}
+		}
+		.home-blog-link{
+			//margin-top: 4px;
+			display: flex;
+			justify-content: center;
+			.view-all-blog{
+				// .border-radius(@button__border-radius);
+				padding: 5.25px 20px;
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s){
+	.home-blog .home-blog-left .post-image img{
+		max-width: 100%;
+		.w(200px);
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.home-blog{
+		padding-bottom: 45px;
+		padding-top: 3px;
+		.home-blog-content{
+			flex-direction: column;
+			.amblog-element-block .amblog-post-list{
+				margin-bottom: 15px;
+			}
+		}
+		.home-blog-left{
+			order: 1;
+			width: 100%;
+			.short-description, .post-title{
+				padding: 0 10px 0 13px;
+			}
+			.post-image{
+				width: 52%;
+			}
+			.post-title{
+				margin-bottom: 15.5px;
+			}
+			.post-item-details{
+				width: 48%;
+			}
+		}
+		.home-blog-right{
+			width: 100%;
+			border-bottom: 2px solid @color-gray-darken0;
+			margin-bottom: 22px;
+			.post-title{
+				margin-top: 6px;
+				margin-bottom: 10px;
+			}
+		}
+		.home-blog-link{
+			margin-top: 11px;
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.home-blog{
+		padding-bottom: 66px;
+		margin-top: 40px;
+		.home-blog-left{
+			width: 55%;
+			.short-description{
+				padding: 0 40px 0 18px;
+			}
+			.post-title{
+				padding: 0 40px 0 18px;
+				margin-bottom: 16px;
+			}
+			.post-image{
+				width: 30.5%;
+			}
+			.post-item-details{
+				width: 69.5%;
+			}
+		}
+		.home-blog-right{
+			width: 45%;
+			.post-title{
+				margin-top: 6px;
+				margin-bottom: 14px;
+			}
+		}
+		.home-blog-link{
+			margin-top: 5px;
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+	.home-blog{
+		.home-blog-left{
+			.post-image img{
+				max-width: 200px;
+			}
+		}
+	}
+}

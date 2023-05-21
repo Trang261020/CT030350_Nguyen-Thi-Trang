@@ -1,0 +1,156 @@
+@import '_checkout-method';
+& when (@media-common = true) {
+    .payment-method{
+        .field.choice{
+            .lib-input-radio();
+        }
+    }
+
+    // Shipping Address
+    .checkout-shipping-address{
+        .step-title{
+            display: flex;
+
+            &::before{
+                content: "";
+                .mask-image(icon-header-location-view, @color-theme);
+                .h(15px);
+                .w(15px);
+                display: block;
+                flex-shrink: 0;
+                .mr(10px);
+            }
+        }
+    }
+
+    // From login
+    .checkout-shipping-address{
+        .form-login{
+            .action.remind{
+                font-size: 10px;
+                font-weight: @font-weight__semibold;
+                color: #909090;
+            }
+
+            [id="customer-email-fieldset"]{
+                .mb;
+
+                > *{
+                    .mb;
+                }
+            }
+        }
+    }
+
+    .form-shipping-address{
+        .fieldset.address{
+            .mb(-10px);
+
+            .field {
+                &.choice{
+                    .lib-input-checkbox();
+                }
+
+                .control._with-tooltip {
+                    .lib-hide-tootip();
+                }   
+            }
+
+            > .field {
+                &:last-child{
+                    .mb(10px);
+                }
+            }
+        }
+    }
+
+    // Button authentication
+    .checkout-index-index {
+        .authentication-wrapper{
+            .mb(19px);
+            .mt;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    // From login
+    .checkout-shipping-address{
+        // .pb(10px);
+
+        .form-login{
+            .actions-toolbar{
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: space-between;
+
+                > .primary{
+                    .mb;
+                }
+            }
+
+            [id="customer-email-fieldset"]{                
+                > .fieldset{
+                    .mt(@form-field__vertical-indent__mb);
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .form-shipping-address{
+        .max-w(490px);
+
+        .fieldset.address{
+            .mb(-@form-field__vertical-indent__desktop);
+            
+            > .field{
+                &:not(.choice){
+                    width: 50% !important;
+                }
+
+                &:last-child{
+                    .mb(20px);
+                }
+            }            
+        }
+    }
+
+    // From login
+    .checkout-shipping-address{
+        .form-login{
+            position: relative;
+            padding-right: 130px;
+            .actions-toolbar {
+                position: absolute;
+                top: 25px;
+                right: 0;
+                .w(120px);
+
+                .primary,
+                .secondary{
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            [id="customer-email-fieldset"]{
+                .mx(-5px);
+
+                .field{
+                    .mb;
+                }
+
+                > *{
+                    .px(5px);
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 50%;
+                }
+            }
+        }
+    }
+}

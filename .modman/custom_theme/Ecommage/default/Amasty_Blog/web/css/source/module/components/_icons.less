@@ -1,0 +1,156 @@
+//
+//  Icons Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amblog-social-container,
+    .amblog-element-block[data-set='sidebar-author'],
+    .amblog-item[data-set='content-author'] {
+        .amblog-list {
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-prefix-flex-wrap(wrap);
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .amblog-icon {
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid @amblog__background-color;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 30px;
+            margin: 0 20px 0 0;
+            width: 30px;
+        }
+
+        .amblog-icon:hover {
+            filter: brightness(1.2);
+        }
+
+        .amblog-icon.-twitter {
+            .lib-css(background-image, @amblog-social-twitter__background-image);
+        }
+
+        .amblog-icon.-facebook {
+            .lib-css(background-image, @amblog-social-facebook__background-image);
+        }
+
+        .amblog-icon.-vkontakte {
+            .lib-css(background-image, @amblog-social-vkontakte__background-image);
+        }
+
+        .amblog-icon.-digg {
+            .lib-css(background-image, @amblog-social-digg__background-image);
+        }
+
+        .amblog-icon.-pinterest {
+            .lib-css(background-image, @amblog-social-pinterest__background-image);
+        }
+
+        .amblog-icon.-blogger {
+            .lib-css(background-image, @amblog-social-blogger__background-image);
+        }
+
+        .amblog-icon.-linkedin {
+            .lib-css(background-image, @amblog-social-linkedin__background-image);
+        }
+
+        .amblog-icon.-tumblr {
+            .lib-css(background-image, @amblog-social-tumblr__background-image);
+        }
+
+        .amblog-icon.-reddit {
+            .lib-css(background-image, @amblog-social-reddit__background-image);
+        }
+
+        .amblog-icon.-slashdot {
+            .lib-css(background-image, @amblog-social-slashdot__background-image);
+        }
+
+        .amblog-icon.-odnoklassniki {
+            .lib-css(background-image, @amblog-social-odnoklassniki__background-image);
+        }
+
+        .amblog-icon.-google {
+            .lib-css(background-image, @amblog-social-google__background-image);
+        }
+
+        .amblog-icon.-youtube {
+            .lib-css(background-image, @amblog-social-youtube__background-image);
+        }
+
+        .amblog-icon.-instagram {
+            .lib-css(background-image, @amblog-social-instagram__background-image);
+        }
+
+        .amblog-icon.-tiktok {
+            .lib-css(background-image, @amblog-social-tiktok__background-image);
+        }
+
+        .amblog-icon.-whatsapp {
+            background-image: @amblog-social-whatsapp__background-image;
+        }
+    }
+
+    .amblog-plus {
+        & {
+            align-items: center;
+            cursor: pointer;
+            display: inline-flex;
+        }
+
+        .amblog-icon {
+            .lib-css(transition, all .3 ease, 1);
+
+            display: inline-flex;
+            height: 18px;
+            margin: 0 5px 0 @amblog__indent;
+            width: @amblog__indent__xl;
+        }
+
+        .amblog-count {
+            color: @amblog-social-icon__background-color;
+        }
+
+        .amblog-icon {
+            .lib-css(background, @amblog-like__background);
+        }
+
+        &:hover .amblog-icon {
+            .lib-css(background, @amblog-like__hover__background);
+        }
+
+        &.-voted .amblog-icon {
+            .lib-css(background, @amblog-like__active__background);
+        }
+    }
+
+    .amblog-social {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .amblog-social-container {
+        .amblog-list {
+            margin: 0 -10px;
+        }
+
+        .amblog-icon {
+            margin: 0 9px 18px;
+        }
+    }
+}

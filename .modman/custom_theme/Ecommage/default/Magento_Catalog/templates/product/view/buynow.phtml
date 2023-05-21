@@ -1,0 +1,31 @@
+<?php
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $helper \Ecommage\CustomCatalog\Helper\Data */
+$helper      = $this->helper(\Ecommage\CustomCatalog\Helper\Data::class); // @codingStandardsIgnoreLine
+$_product = $block->getProduct();
+$formId      = $helper->getAddToCartFormId();
+$qtyAndStock = $helper->checkQtyAndStockOptionProduct($_product);
+$buttonTitle = __('Buy Now');
+?>
+
+<?php if ($_product->isSaleable() && $qtyAndStock):?>
+    <button type="submit"
+            title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+            class="action primary buynow"
+            data-mage-init='
+                {
+                    "Ecommage_CustomCatalog/js/buynow": {
+                        "form": "#<?= /* @noEscape */
+            $formId; ?>",
+                        "addToCartUrl": "<?= /* @noEscape */
+            $block->getUrl('checkout/cart/add'); ?>",
+                        "buyNowCartUrl": "<?= /* @noEscape */
+            $block->getUrl('buynow/cart/add'); ?>"
+                    }
+                }
+                '
+            id="product-buynow-button">
+        <span><?= $block->escapeHtml($buttonTitle) ?></span>
+    </button>
+<?php endif;?>

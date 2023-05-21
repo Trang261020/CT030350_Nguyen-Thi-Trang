@@ -1,0 +1,267 @@
+//
+//  List and Grids Posts Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amblog-post-container {
+        &.list-item .amblog-footer {
+            & {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .amblog-wrap {
+                margin-bottom: @amblog__indent__xl;
+            }
+        }
+
+        .post-image {
+            display: block;
+            margin-bottom: @amblog__indent__xxl;
+        }
+
+        .amblog-helpful-wrap,
+        .amblog-post-title {
+            margin-bottom: @amblog__indent__xl;
+        }
+
+        .amblog-read {
+            ._amblog-button;
+
+            margin-bottom: @amblog-element-default__padding;
+        }
+
+        .amblog-helpful-wrap {
+            display: flex;
+            margin-top: @amblog__indent__xl;
+            padding: 0;
+        }
+    }
+
+    .amblog-post-container.-post-page {
+        .amblog-footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .tags {
+            margin-bottom: 10px;
+        }
+
+        .amblog-features {
+            margin-bottom: @amblog__indent__xl;
+        }
+
+        .amblog-features + .amblog-helpful-wrap {
+            margin-top: 0;
+        }
+    }
+
+    .amblog-post-container {
+        .amblog-bottom {
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-box-align(baseline);
+
+            flex-wrap: wrap;
+            margin-top: @amblog__indent__xl;
+        }
+
+        .amblog-bottom > * {
+            margin-bottom: 10px;
+        }
+
+        .amblog-image {
+            border-radius: 4px;
+        }
+
+        .amblog-widget-container {
+            margin: @amblog__indent__xl -@amblog__indent__l;
+        }
+
+        .amblog-headline {
+            & {
+                .lib-css(color, @amblog-gray__color);
+            }
+
+            &:hover {
+                .lib-css(color, @amblog-blue__color);
+
+                text-decoration: none;
+            }
+        }
+
+        .amblog-shot {
+            .lib-css(color, @amblog-gray__color);
+
+            font-size: @amblog-font-size__s;
+            line-height: 1.9rem;
+        }
+
+        .amblog-shot > p,
+        .amblog-content > p {
+            .amblog-word-break();
+        }
+
+        .amblog-features {
+            & {
+                .lib-vendor-prefix-display(flex);
+                .lib-vendor-prefix-flex-wrap(wrap);
+            }
+
+            &.-post {
+                padding: @amblog__indent__l @amblog__indent__l @amblog__indent__xl;
+            }
+        }
+
+        .amblog-item.-author,
+        .amblog-item.-comments {
+            &:extend(.amblog-author-container all);
+        }
+
+        .amblog-item {
+            margin: 0 30px 0 0;
+        }
+
+        .amblog-category,
+        .amblog-item.-author-posts {
+            .lib-css(color, @amblog-gray__color);
+            .amblog-word-break();
+
+            font-size: @amblog-font-size__s;
+            line-height: 25px;
+            margin: 5px 30px 5px 0;
+        }
+
+        .amblog-arrow {
+            .lib-css(background, @amblog-arrow-mobile__background-image);
+
+            display: inline-block;
+            height: 12px;
+            margin-left: @amblog__indent;
+            width: 16px;
+        }
+    }
+
+    .amblog-post-container .amblog-features.-post .amblog-item {
+        padding: 0;
+    }
+
+    .amblog-post-container .amblog-widget-container {
+        &:extend(.amblog-element-block all);
+
+        & {
+            background: @amblog__background-color;
+            border: none;
+            padding-bottom: @amblog__indent__xxl;
+        }
+
+        .amblog-list {
+            .lib-css(border, 1px solid @amblog-border__color);
+
+            background: @color-white;
+            border-radius: 4px;
+            margin: 0 @amblog__indent__xl 0;
+        }
+    }
+
+    .amblog-post-container .amblog-widget-container.-post {
+        & {
+            padding-bottom: @amblog__indent;
+        }
+
+        .amblog-list {
+            background: inherit;
+            border: none;
+        }
+    }
+
+    .amblog-post-container .amblog-widget-container.-categories {
+        .amblog-category {
+            margin-right: 0;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .amblog-post-container .amblog-read {
+        width: 100%;
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amblog-post-container {
+        &.list-item h2.amblog-post-title {
+            font-size: 2rem;
+            line-height: 3rem;
+        }
+
+        .amblog-widget-container {
+            margin: 30px -@amblog__indent__xxl;
+        }
+
+        .amblog-features.-post {
+            padding: @amblog__indent__l @amblog__indent__xxl;
+        }
+
+        .amblog-more {
+            text-align: right;
+        }
+
+        .amblog-arrow {
+            .lib-css(background, @amblog-arrow-desktop__background-image);
+        }
+
+        .amblog-widget-container .amblog-list {
+            margin: 0 30px;
+        }
+    }
+
+    .amblog-post-container .amblog-widget-container.-post {
+        .amblog-list {
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-prefix-flex-wrap(wrap);
+
+            justify-content: space-between;
+        }
+
+        .amblog-item {
+            box-sizing: border-box;
+            width: 47%;
+        }
+    }
+
+    .desktop.one-column .amblog-post-container .amblog-content .amblog-widget-container.-post {
+        .amblog-list {
+            justify-content: inherit;
+        }
+
+        .amblog-item {
+            & {
+                margin: 0 @amblog__indent__xl @amblog__indent__xl 0;
+                width: 31%;
+            }
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amblog-post-container .amblog-widget-container.-post .amblog-item {
+        width: 48%;
+    }
+}

@@ -1,0 +1,126 @@
+//phpcs:ignoreFile
+
+//
+//  Variables
+//  _____________________________________________
+
+@amblog-black__color: #1a1a1a;
+@amblog-light-blue__color: #85c1ef;
+@amblog-blue__color: #E51A83;
+@amblog-gray__color: #333;
+@amblog-light-gray__color: #d9d9d9;
+@amblog-dark-gray__color: #888;
+@amblog-link__hover__color: #185eaf;
+@amblog-border__color: #e9e9e9;
+@amblog__background-color: #fafafa;
+@amblog-date__color: #999;
+@amblog-tag__color: #f5f5f5;
+@amblog-input-background: #f9f9f9;
+@amblog-input-text__color: #525252;
+@amblog-social-icon__background-color: #888;
+@amblog-social-icon__hover__background-color: #585858;
+@amblog-input__border-color: #e5e5e5;
+@amblog-input__hover__border-color: #b3b3b3;
+@amblog-svg-custom-classic__color: #499bf8;
+@amblog-svg-custom-red__color: #ef5350;
+@amblog-svg-custom-green__color: #43a047;
+@amblog-svg-custom-blue__color: #3f51b5;
+@amblog-svg-custom-grey__color: #bdbdbd;
+@amblog-svg-custom-purple__color: #9c27b0;
+@amblog-helpful-text__color: #5b5b5b;
+
+// Defaults
+@amblog-color__grey: #808080;
+@amblog-color__green: #008000;
+@amblog-color__red: #ff0000;
+
+//
+//  Customizable colors
+//  ----------------------------------------------
+
+@amblog-default__background: @amblog__background-color;
+@amblog-element__background: @color-white;
+
+@amblog-section-title__color: @amblog-black__color;
+@amblog-default-text__color: @amblog-gray__color;
+@amblog-placeholder__color: @amblog-date__color;
+
+@amblog-social-icon__background-color: @amblog-dark-gray__color;
+
+//
+//  Shadows
+//  ----------------------------------------------
+
+@amblog-element__box-shadow: 0 2px 4px rgba(84, 95, 125, .12), 0 5px 8px rgba(155, 159, 174, .1);
+
+//
+//  Backgrounds
+//  ----------------------------------------------
+
+@amblog-loader__background: url('../Amasty_Blog/images/ajax-loader.gif') no-repeat scroll 50% 0 transparent;
+
+//
+//  Indents
+//  ----------------------------------------------
+
+@amblog__indent: 10px;
+@amblog__indent__l: @amblog__indent * 2 - @amblog__indent / 2; // 15px
+@amblog__indent__xl: @amblog__indent * 2; // 20px
+@amblog__indent__xxl: @amblog__indent + @amblog__indent__l; // 25px
+
+//
+//  Paddings & Margins
+//  ----------------------------------------------
+
+@amblog-element-default__padding: 25px;
+@amblog-element-title__padding: @amblog-element-default__padding;
+@amblog-element-content__padding: 0 @amblog-element-default__padding @amblog-element-default__padding;
+@amblog-element-sidebar__padding: @amblog-element-default__padding @amblog-element-default__padding calc(~'@{amblog-element-default__padding} - @{amblog__indent}'); /* stylelint-disable-line */
+
+@amblog-page-title-desktop__margin: 20px;
+@amblog-page-title-mobile__margin: 5px;
+
+//
+//  Buttons
+//  ----------------------------------------------
+
+@amblog-button__default-color: contrast(@amblog-button__background);
+@amblog-button__background: @amblog-blue__color;
+@amblog-button__border-radius: 3px;
+@amblog-button__padding: 12px 30px;
+@amblog-button__line-height: 1.8rem;
+@amblog-button__font-size: @amblog-font-size__s;
+@amblog-button__font-weight: @font-weight__bold;
+@amblog-button__transition: .3s ease-in-out;
+@amblog-button__border-color: transparent;
+
+@amblog-button__hover__background: darken(@amblog-button__background, 10%);
+@amblog-button__hover__color: contrast(@amblog-button__hover__background);
+
+@amblog-button__active__background: darken(@amblog-button__background, 20%);
+@amblog-button__active__color: contrast(@amblog-button__active__background);
+
+//
+//  Sizes
+//  ----------------------------------------------
+
+@amblog-font-size__s: 1.4rem;
+@amblog-font-size__base: 1.6rem;
+@amblog-canvas__size: 400px;
+@amblog-close__size: 15px;
+@amblog-swipe__size: 40px;
+
+//
+//  Z-index
+//  ----------------------------------------------
+
+@amblog-z-index__base: 10;
+@amblog-z-index__alpha: 1000;
+@amblog-z-index__betta: @amblog-z-index__alpha - 1;
+
+//
+//  Icons
+//  ----------------------------------------------
+
+@amblog-icons-path: '../Amasty_Blog/images/svg';
+@amblog-social-icon__size: 40px;

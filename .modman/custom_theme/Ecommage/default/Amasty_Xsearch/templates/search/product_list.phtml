@@ -1,0 +1,128 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Advanced Search Base for Magento 2
+*/
+?>
+<?php
+/**
+ * @var \Amasty\Xsearch\Block\Search\Product $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var array $products
+ * phpcs:ignoreFile
+ */
+
+use Magento\Catalog\Api\Data\ProductInterface;
+
+$products = $block->getProducts();
+$helper = $this->helper('Amasty\Preorder\Helper\Data');
+?>
+<?php if (count($products)): ?>
+    <?= /* @noEscape */ $block->fetchView($block->getTemplateFile('Amasty_Xsearch::components/header.phtml')) ?>
+
+    <ul class="amsearch-product-list"
+        data-mage-init='{
+            "amsearchProductItemInit": {}
+        }'>
+        <?php foreach ($products as $id => $product): ?>
+            <li class="amsearch-item product-item <?= strtoupper($product['cart_label']) ==  strtoupper($helper->getDefaultPreorderCartLabel()) ? 'ampreorder-observed' :'' ?>"
+                data-click-url="<?= $escaper->escapeUrl($block->getFullLink($product['url'])) ?>">
+                <a class="amsearch-image"
+                   title="<?= $escaper->escapeHtmlAttr($block->stripTags($product['name'])); ?>"
+                   href="<?= $escaper->escapeUrl($block->getFullLink($product['url'])) ?>">
+                    <?= /* @noEscape */ $product['img'] ?>
+                </a>
+                <section class="amsearch-description product details product-item-details">
+                    <a class="amsearch-link product-item-link"
+                       href="<?= $escaper->escapeUrl($block->getFullLink($product['url'])) ?>"
+                       title="<?= $escaper->escapeHtmlAttr($block->stripTags($product['name'])); ?>">
+                        <?= /* @noEscape */ $product['name'] ?>
+                    </a>
+                    <?php if ($block->isShowDescription($product)):?>
+                        <div class="product description product-item-description">
+                            <?= /* @noEscape */ $product['description'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($block->isNeedShowProductReviews() && $block->getReviews()): ?>
+                        <?= /* @noEscape */ $product['reviews'] ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($product['sku'])): ?>
+                        <?= /* @noEscape */ $block->setData('product', $product)->fetchView($block->getTemplateFile('Amasty_Xsearch::components/sku.phtml')) ?>
+                    <?php endif; ?>
+
+                    <div class="amsearch-wrapper-inner">
+                        <?= /* @noEscape */ $product[ProductInterface::PRICE] ?>
+                        <?php if ($block->getAddToCart($product)): ?>
+                            <div class="product actions product-item-actions"
+                                 item-actions="1"
+                                 data-amsearch-js="product-item">
+                                <div class="actions-primary">
+                                    <?php if ($product['is_salable']): ?>
+                                        <form class="amasty-xsearch-form"
+                                              data-role="tocart-form"
+                                              action="<?= $escaper->escapeHtml($product['cart_post_params']['action']); ?>"
+                                              method="post">
+                                            <input type="hidden"
+                                                   name="product"
+                                                   value="<?= $escaper->escapeHtml($product['cart_post_params']['data']['product']); ?>">
+                                            <?php if ($block->isRedirectToCartEnabled()): ?>
+                                                <input type="hidden"
+                                                       name="return_url"
+                                                       value="<?= $escaper->escapeHtml($product['cart_post_params']['data']['return_url']); ?>">
+                                            <?php endif; ?>
+                                            <input type="hidden"
+                                                   name="<?= $escaper->escapeHtmlAttr($block->getUlrEncodedParam()); ?>"
+                                                   value="<?= $escaper->escapeHtml($product['cart_post_params']['data'][$block->getUlrEncodedParam()]); ?>">
+                                            <input name="form_key"
+                                                   type="hidden"
+                                                   value="<?= $escaper->escapeHtml($block->getFormKey()) ?>"/>
+                                            <button type="submit"
+                                                    title="<?= $escaper->escapeHtmlAttr(__($product['cart_label']) ?? __('Add to Cart')); ?>"
+                                                    class="action tocart primary">
+                                                <span><?= $escaper->escapeHtml(__($product['cart_label']) ?? __('Add to Cart')) ?></span>
+                                            </button>
+                                        </form>
+                                    <?php else: ?>
+                                        <?php if ($product['is_salable']): ?>
+                                            <div class="stock available">
+                                                <span><?= $escaper->escapeHtml(__('In stock')) ?></span>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="stock unavailable">
+                                                <span><?= $escaper->escapeHtml(__('Out of stock')) ?></span>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+
+                                <div data-role="add-to-links" class="actions-secondary">
+                                    <?php if ($block->isWishlistAllowed($product)): ?>
+                                        <a href="#"
+                                           class="amsearch-button -clear -wishlist -icon"
+                                           title="<?= $escaper->escapeHtmlAttr(__('Add to Wish List')); ?>"
+                                           aria-label="<?= $escaper->escapeHtmlAttr(__('Add to Wish List')); ?>"
+                                           data-post='<?= $escaper->escapeHtml($product['wishlist_post_params']); ?>'
+                                           role="button">
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if ($block->isCompareAllowed($product)): ?>
+                                        <a href="#"
+                                           class="amsearch-button -clear -compare -icon"
+                                           title="<?= $escaper->escapeHtmlAttr(__('Add to Compare')); ?>"
+                                           aria-label="<?= $escaper->escapeHtmlAttr(__('Add to Compare')); ?>"
+                                           data-post='<?= $escaper->escapeHtml($product['compare_post_params']); ?>'
+                                           role="button">
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </section>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

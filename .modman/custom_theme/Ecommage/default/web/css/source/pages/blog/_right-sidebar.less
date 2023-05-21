@@ -1,0 +1,98 @@
+& when (@media-common = true) {
+    [data-set="sidebar-category"]{
+        &.desktop-block{
+            .box-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+            .border-radius(20px);
+            padding: 20px 20px 1px;
+        }
+
+
+        .amblog-categories{
+            .amblog-category{
+                .mb(20px);
+    
+                &:last-child{
+                    .mb;
+                }
+            }
+    
+            .amblog-link{
+                position: relative;
+                width: max-content;
+                max-width: 100%;
+                &:after{
+                    .mask-image(icon-theme-arr-right-view, currentColor);
+                    content: "";
+                    .w(12px);
+                    .h(12px);
+                    display: inline-block;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    right: -16px;
+                }
+            }
+        }
+    }
+
+    
+
+    body[class*='amblog-index-']{
+        [data-set="sidebar-recentpost"]{
+            .amblog-title{
+                .lib-heading(h2);
+            }
+
+            .amblog-list{
+                display: block !important;
+            }
+
+            .post-title{
+                .mb(14px);
+            }
+
+            .short-description{
+                .line-clamp(3);
+                .mb;
+                height: 52.5px;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    body[class*='amblog-index-']{
+        [data-set="sidebar-recentpost"]{
+            .post-item-info{
+                display: flex;
+            }
+
+            .post-title{
+                .line-clamp(3);
+            }
+
+            .post-image{
+                .w(51.55%);
+            }
+
+            .post-item-details{
+                .pl(15px);
+                .w(48.45%);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    body[class*='amblog-index-']{
+        [data-set="sidebar-recentpost"]{
+            .post-image{
+                .mb(15px);
+            }
+
+            .post-title{
+                .line-clamp(2);
+            }
+        }
+    }
+}

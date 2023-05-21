@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_width" xsi:type="number">118</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer.content.links" before="copyright">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper" >
+            <container name="header-left" htmlClass="header-left" htmlTag="div" before="-">
+            </container>
+            <container name="header-main" htmlClass="header-main" htmlTag="div">
+
+            </container>
+            <container name="header-right" htmlClass="header-right" htmlTag="div" after="-">
+                <block name="header-right_wrap" class="Magento\Customer\Block\Account\Customer" template="Magento_Theme::html/header/header-right.phtml">
+
+                </block>
+                <block class="Magento\Customer\Block\Account\Link" name="my-account-link-custom">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Account</argument>
+                        <argument name="sortOrder" xsi:type="number">130</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-orders-link-header">
+                <arguments>
+                    <argument name="path" xsi:type="string">sales/order/history</argument>
+                    <argument name="label" xsi:type="string" translate="true">My Orders</argument>
+                    <argument name="sortOrder" xsi:type="number">230</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Js\Components" name="theme.custom.js" as="themecustomjs" template="Magento_Theme::js/js.phtml" after="-" />
+        </referenceContainer>
+        <move element="logo" destination="header-left" before="-"/>
+        <move element="top.search" destination="header-main" before="-"/>
+        <move element="minicart" destination="header-right_wrap" before="-"/>
+        <!-- <move element="register-link" destination="header-right_wrap" />
+        <move element="authorization-link" destination="header-right_wrap" />      -->
+        <move element="wish-list-link" destination="header-right_wrap" />
+        <move element="my-account-link-custom" destination="header-right_wrap" />
+        <!-- <move element="my-account-link" destination="header-right_wrap" />   -->
+        <move element="customer-account-navigation-orders-link-header" destination="header-right_wrap"/>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer.content.links">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+         <referenceBlock name="top.links">
+            <block class="Ecommage\CustomTheme\Block\Account\Link" name="my-account-link-mb">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                    <argument name="sortOrder" xsi:type="number">110</argument>
+                </arguments>
+            </block>
+            </referenceBlock>
+
+        <referenceBlock name="report.bugs" remove="true" />
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="my-account-link" remove="true"/>
+    </body>
+</page>

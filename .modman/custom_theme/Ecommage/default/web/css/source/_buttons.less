@@ -1,0 +1,77 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+.button-arrow(){
+    &:after{
+        .mask-image(icon-theme-arr-right-view, currentColor);
+        content: "";
+        .w(12px);
+        .h(12px);
+        display: inline-block;
+        .ml(6px);
+        .mr(-4px);
+    }
+}
+
+.button-secondary(@size:16px,@fw: @bold){
+    .transition(0.3s);
+    background: @color-theme;
+    color: @color-white;
+    font-size: @size;
+    font-weight: @fw;
+
+    &:hover{
+        color: @color-theme;
+        background: @color-white;
+    }
+}
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    button,
+    a.action.primary,
+    [role="button"] {
+        .lib-css(border-radius, @button__border-radius);
+    }
+
+    [role="button"] {
+        &:visited{
+            color: @color-theme;
+            
+            &:hover{
+                color: @color-white;
+            }
+        }
+    }
+
+    button {
+        &:active {
+            .lib-css(box-shadow, @button__shadow);
+        }
+    }
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action.primary,
+    .action-primary {
+        .lib-button-primary();
+    }
+
+    .button-arrow{
+        .button-arrow();
+    }
+
+    // Custom Button Link with arrow right
+    .button-link{
+        .lib-button-primary();
+        .button-arrow();
+    }
+}

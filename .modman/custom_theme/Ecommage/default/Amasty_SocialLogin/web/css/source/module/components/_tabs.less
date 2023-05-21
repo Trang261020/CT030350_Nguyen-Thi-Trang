@@ -1,0 +1,271 @@
+//
+//  Login/Register Tabs Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+@color-theme: #E51A83;
+& when (@media-common = true) {
+    .amsl-tabs-wrapper.-forgot {
+        display: none;
+        .amsl-tablist{
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .form-label{
+            text-align: center;
+        }
+        .actions-toolbar > .secondary .action.back{
+            display: block;
+        }
+    }
+
+    .amsl-tablist {
+        & {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 30px 20px 10px;
+            padding: 0;
+        }
+
+        > li:only-child {
+            pointer-events: none;
+            user-select: none;
+        }
+
+        > li:only-child a {
+            cursor: default;
+        }
+    }
+    .amsl-tabs-wrapper{
+        .fieldset > .field{
+            margin: 0 0 15px;
+            &.sparsh-mobile-number-login-option{
+                text-align: center;
+            }
+            &.choice.newsletter{
+                margin-bottom: 14px;
+            }
+            input[type='checkbox']{
+                top: 0;
+                appearance: none;
+                background-color: #fff;
+                font: inherit;
+                border: 1px solid #d9d9d9;
+                border-radius: 5px;
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .amsl-tablist .amsl-title {
+        & {
+            display: inline-block;
+            font-size: 18px;
+            margin: 0 10px 0 0;
+            border-radius: 16px;
+            background: #D9D9D9;
+        }
+
+        &:hover {
+            background: #f0f0f0;
+        }
+
+        &.active{
+            background: @color-theme;
+            .amsl-link {
+                //border-bottom: 1px solid @amsl-main-blue__color;
+                color: @color-white;
+            }
+        }
+
+        .amsl-link {
+            color: @color-black;
+            font-size: 14px;
+            font-weight: @font-weight__semibold;
+            display: block;
+            padding: 7px 30px;
+            line-height: 18px;
+        }
+
+        .amsl-link:hover {
+            text-decoration: none;
+        }
+    }
+
+    .amsl-login-content {
+        & {
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .form-login .field.password {
+            margin-bottom: 15px;
+        }
+
+        .field {
+            //margin-bottom: 15px;
+            //.control{
+            //    margin-bottom: 15px;
+            //}
+            &.password{
+                .control{
+                    margin-bottom: 0px;
+                }
+            }
+            &.choice{
+                margin-top: 10px;
+            }
+        }
+
+        .fieldset > .field > .label:not(.show-password) {
+            display: inline-flex;
+        }
+
+        .primary,
+        .action.primary.login {
+            width: auto;
+        }
+
+        .secondary {
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .secondary .action.remind {
+            color: @color-black;
+            font-size: 12px;
+            font-weight: @font-weight__semibold;
+            text-decoration: underline;
+        }
+    }
+    .amsl-popup-block {
+        .form.create.account, .form.password.forget{
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 0;
+        }
+        .amsl-register-content{
+            .actions-toolbar{
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .amsl-register-content {
+        & {
+            width: 100%;
+        }
+
+        .label {
+            color: #000;
+        }
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .fieldset {
+            min-width: 100%;
+        }
+
+        .field.newsletter .label {
+            color: @color-black;
+        }
+
+        .fieldset.create.account .field:nth-of-type(1) {
+            margin-bottom: 15px;
+        }
+
+        .fieldset.create.info .field-name-firstname,
+        .fieldset.create.info .field-name-lastname {
+            display: block;
+            width: 100%;
+        }
+
+        .fieldset.create.info .field-name-lastname {
+            float: right;
+        }
+
+        .password-strength-meter,
+        .password-strength-meter:before,
+        .password-none .password-strength-meter:before {
+            background-color: #fff;
+            display: none;
+        }
+
+        .fiedset:after,
+        .legend,
+        .fieldset > .legend + br {
+            display: none;
+        }
+    }
+
+    //  Extend magento ui styles
+    .amsl-register-content .amsl-form .fullname .fields {
+        & {
+            .am-flex(none, baseline, wrap);
+        }
+
+        > .field-name-firstname,
+        > .field.field-name-lastname {
+            flex-grow: 1;
+        }
+
+        > .field.field-name-middlename {
+            padding: 0;
+            width: 100%;
+        }
+
+        > .field-name-prefix,
+        > .field-name-suffix {
+            flex-basis: 100%;
+        }
+    }
+
+    //  END Extend magento ui styles
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //  Extend magento ui styles
+    .amsl-register-content .amsl-form .fieldset.create.info .fullname .fields {
+        > .field.field-name-firstname {
+            margin-bottom: 20px;
+            width: auto;
+        }
+
+        > .field.field-name-lastname {
+            padding: 0;
+            width: auto;
+        }
+
+        > .field-name-prefix,
+        > .field-name-suffix {
+            flex-basis: 20%;
+        }
+    }
+
+    .amsl-register-content .amsl-form .fieldset.create.info .fullname {
+        &[class*='prefix'] .fields > .field-name-firstname,
+        &[class*='suffix'] .fields > .field-name-lastname {
+            width: calc(~'80% - 10px');
+        }
+    }
+    //  END Extend magento ui styles
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amsl-tabs-wrapper .fieldset > .field.choice.newsletter{
+        margin-top: 10px;
+    }
+    .amsl-popup-block .amsl-register-content .actions-toolbar, .amsl-popup-block .actions-toolbar{
+        margin-top: 0;
+    }
+}

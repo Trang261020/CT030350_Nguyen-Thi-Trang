@@ -1,0 +1,261 @@
+//
+//  Variables
+//  --------------------------------------------
+@amrma-icon__chat_triangle_left: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMjIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwLjUgMjEuNUwuMzI3IDMuMTlDLS41MzUgMS42MzUuOTA0LS4xODggMi42MTUuMjkxTDEwLjUgMi41djE5eiIgZmlsbD0iI0UxRjVGRSIvPjwvc3ZnPg==');
+@amrma-icon__chat_triangle_right: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMjIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMjEuNUwxMC4xNzIgMy4xOWMuODYzLTEuNTU0LS41NzYtMy4zNzctMi4yODctMi44OThMMCAyLjV2MTl6IiBmaWxsPSIjRUNFRUZGIi8+PC9zdmc+');
+@amrma-icon__attach_file: url('@{baseDir}images/attachment.svg');
+@amrma-icon__attach_file_big: url('@{baseDir}images/attachment.svg');
+@amrma-icon__delete: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAzNiAzNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTM1LjkxOCAyLjcxNEwzMy4yMDMgMCAxOC40MTggMTQuNzg3IDMuNjMzIDAgLjkxOCAyLjcxMyAxNS43MDUgMTcuNS45MiAzMi4yODcgMy42MzMgMzVsMTQuNzg1LTE0Ljc4NiAxNC43ODUgMTQuNzg1IDIuNzExLTIuNzEzTDIxLjEzMSAxNy41IDM1LjkxOCAyLjcxNCIgZmlsbD0iIzAwNmJiNCIvPjwvc3ZnPg==');
+@amrma-btn__color_blue: #1979c3;
+
+& when (@media-common = true) {
+    .amrma-chat-container {
+        box-sizing: border-box;
+        background: #f9f9fc;
+        border: 1px solid #ebeef5;
+        border-radius: 20px;
+    }
+
+    .amrma-chat-block {
+        & {
+            display: flex;
+            flex-direction: column;
+            // overflow-y: hidden;
+            overflow-y: auto;
+            min-height: 270px;
+            // max-height: 270px;
+            max-height: 270px !important;
+            padding-right: 5px;
+            margin: 30px 20px 20px;
+        }
+
+        &:hover {
+            overflow-y: scroll;
+            padding-right: 0;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background: #c5c5c5;
+        }
+    }
+
+    .amrma-message-block {
+        & {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 20px 10px;
+            border-radius: 10px;
+        }
+
+        &:before {
+            position: absolute;
+            top: 15px;
+            width: 11px;
+            height: 22px;
+            content: '';
+        }
+
+        .amrma-message {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .amrma-date {
+            align-self: flex-end;
+            margin: 0;
+            padding: 0;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .amrma-image {
+            width: auto;
+            height: auto;
+            max-width: 225px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .amrma-chat-message.-left & {
+            & {
+                background: #e2f5fe;
+            }
+
+            &:before {
+                left: -11px;
+                .lib-css(background, @amrma-icon__chat_triangle_left);
+            }
+        }
+
+        .amrma-chat-message.-right & {
+            & {
+                background: #eceeff;
+            }
+
+            &:before {
+                right: -11px;
+                .lib-css(background, @amrma-icon__chat_triangle_right);
+            }
+        }
+    }
+
+    .amrma-chat-message {
+        & {
+            margin: 5px 20px;
+            max-width: 80%;
+        }
+
+        &.-default {
+            display: none;
+        }
+
+        &.-left {
+            align-self: flex-start;
+        }
+
+        &.-right {
+            & {
+                align-self: flex-end;
+            }
+
+            .amrma-username {
+                text-align: right;
+            }
+        }
+
+        .amrma-username {
+            margin-bottom: 5px;
+            color: #777;
+        }
+
+        .amrma-delete-container {
+            text-align: right;
+        }
+    }
+
+    .amrma-message:before {
+        position: absolute;
+        width: 13px;
+        height: 20px;
+        content: '';
+    }
+
+    .amrma-chat-file {
+        & {
+            position: relative;
+            // padding-left: 25px;
+        }
+
+        &.-preview {
+            display: flex;
+            align-items: center;
+            margin: 25px;
+            padding-right: 20px;
+            // color: #006bb4;
+        }
+
+        &:before {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            width: 17px;
+            height: 16px;
+            // content: '';
+            .lib-css(background-image, @amrma-icon__attach_file);
+        }
+
+        .amrma-file {
+            // font-weight: 600;
+            font-weight: 400;
+        }
+    }
+
+    .amrma-delete {
+        display: inline-block;
+        margin-left: 10px;
+        // width: 16px;
+        // height: 16px;
+        width: 8px;
+        height: 8px;
+        // background: @amrma-icon__delete;
+        // background-repeat: no-repeat;
+        .mask-image(icon-theme-close-view,@color-black);
+        cursor: pointer;
+    }
+
+    .amrma-chat-send {
+        & {
+            position: relative;
+            display: flex;
+            // align-items: flex-end;
+            align-items: stretch;
+            padding: 10px;
+            border-radius: 20px;
+            background: #fff;
+        }
+
+        .amrma-textarea {
+            // margin-left: 25px;
+            margin-left: 5px;
+            width: 86%;
+            max-height: 250px;
+            min-height: 30px;
+            border: none;
+            resize: none;
+        }
+
+        .amrma-hiddentext {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            white-space: pre-wrap;
+        }
+    }
+
+    .amrma-chat-notification {
+        & {
+            display: flex;
+            margin: 5px 0 5px 20px;
+        }
+
+        .amrma-notification {
+            margin-right: 15px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .amrma-date {
+            line-height: 19px;
+        }
+    }
+
+    .amrma-chat-comment {
+        margin: 0 auto;
+        padding: 125px 0;
+        color: #999;
+    }
+
+    .amrma-quick-reply {
+        display: none;
+    }
+}
+
+//
+//  Mobile +
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .amrma-chat-send {
+        margin: 0 20px 20px;
+    }
+}

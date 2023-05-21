@@ -1,0 +1,75 @@
+& when (@media-common = true) {
+	.catalog-product-view{
+		.product.media > div.amlabel-position-wrapper{
+			.lib-visually-hidden();
+		}
+	}
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.catalog-product-view{
+		.product.media{
+			.mb(20px);
+		}
+		.breadcrumbs{
+			display: none;
+		}
+
+		&.fotorama__fullscreen{
+			.header-right{
+				.minicart-wrapper{
+					display: none;
+				}
+			}
+			.fotorama--fullscreen .fotorama__nav-wrap{
+				bottom:0;
+			}
+			.fotorama__arr{
+				top:48%;
+			}
+
+			.amlabel-position-wrapper{
+				display: none !important;
+			}
+		}
+	}
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+	@media only screen and (min-width: @screen__l) and (max-width: (@screen__xl - 1)){
+		.fotorama-item{
+			.fotorama__nav--thumbs .fotorama__nav__frame{
+				margin-right: 0;
+			}
+		}
+		.product-info-wrapper{
+			justify-content: space-between;
+		}
+		.page-layout-1column .product-info-wrapper .product.media{
+			width: 30.5%;
+			max-width: 300px;
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.fotorama-item{
+		.fotorama__stage{
+			margin-bottom: 20px;
+		}
+		&.fotorama--fullscreen{
+			.amlabel-position-wrapper{
+				.lib-visually-hidden();
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+	.fotorama-item{
+		.fotorama__stage{
+			margin-bottom: 40px;
+		}
+		&.fotorama--fullscreen .fotorama__nav-wrap{
+			bottom: 50px;
+		}
+	}
+}

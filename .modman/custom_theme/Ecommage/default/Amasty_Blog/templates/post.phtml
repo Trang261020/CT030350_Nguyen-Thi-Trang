@@ -1,0 +1,155 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Blog Pro for Magento 2
+*/
+?>
+<?php
+/**
+ * @var $block Amasty\Blog\Block\Content\Post
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+use Amasty\Blog\Api\Data\PostInterface;
+
+$post = $block->getPost();
+$image = $post->getPostThumbnailSrc();
+$previousNextNavigation = $block->getData('previous_next_navigation');
+$previous = $post->isPreviewPost() ? null : $previousNextNavigation->getPreviousData();
+$next = $post->isPreviewPost() ? null : $previousNextNavigation->getNextData();
+?>
+
+<div class="amblog-post-container -post-page">
+    <h3 class="amblog-post-title"
+        title=" <?= $escaper->escapeHtml($post->getTitle()); ?>"
+        aria-label=" <?= $escaper->escapeHtml($post->getTitle()); ?>">
+        <?= $escaper->escapeHtml($post->getTitle()); ?>
+    </h3>
+    <div class="amblog-dates">
+        <span class="amblog-date"
+            <?php if ($block->isHumanized()): ?>
+                data-mage-init='{"amBlogDates": "<?= $escaper->escapeJs($post->getPublishedAt()) ?>"}'
+            <?php endif; ?>>
+            <?= $escaper->escapeHtml($block->isHumanized()
+                ? __('Loading...')
+                : $block->renderDate($post->getPublishedAt())) ?>
+        </span>
+        <?php if ($post->getEditedAt() && $block->isShowEditedAt()): ?>
+            <span class="amblog-date">
+                <?= $escaper->escapeHtml(__('Edited')) ?>
+                <span <?php if ($block->isHumanizedEditedAt()): ?>
+                    data-mage-init='{"amBlogDates": "<?= $escaper->escapeJs($post->getEditedAt()) ?>"}'
+                <?php endif; ?>>
+                    <?= $escaper->escapeHtml($block->isHumanizedEditedAt()
+                        ? __('Loading...')
+                        : $block->renderDate($post->getEditedAt(), true)) ?>
+                </span>
+            </span>
+        <?php endif; ?>
+        <?php if ($block->isShowViewsCounter()): ?>
+            <span class="views amblog-views" data-amblog-js="views-counter">
+                <?= $escaper->escapeHtml(__("%1 view(s)", $post->getViews())); ?>
+            </span>
+        <?php endif; ?>
+        <?php if ($block->isDisplayReadTime()): ?>
+            <span class="amblog-minread">
+                <?= $escaper->escapeHtml($block->getReadTime((string)$post->getFullContent())); ?>
+                <?= $escaper->escapeHtml(__(' min read')); ?>
+            </span>
+        <?php endif; ?>
+    </div>
+    <?php if ($image): ?>
+        <?php if ($block->hasThumbnailUrl()): ?>
+            <a class="thumbnail-url"
+               title="<?= $escaper->escapeHtmlAttr($post->getTitle()); ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr($post->getTitle()); ?>"
+               href="<?= $escaper->escapeUrl($block->getThumbnailUrl()); ?>"
+               class="post-image">
+        <?php endif; ?>
+            <img src="<?= $escaper->escapeUrl($image); ?>"
+                 alt="<?= $escaper->escapeHtmlAttr($post->getThumbnailAlt('post')); ?>" />
+        <?php if ($block->hasThumbnailUrl()): ?>
+            </a>
+        <?php endif; ?>
+    <?php endif; ?>
+    <div class="amblog-content">
+        <?= /* @noEscape */ $post->getFullContent(); ?>
+    </div>
+    <div class="amblog-footer">
+        <div class="tags">
+            <?= $block->getTagsHtml($post); ?>
+        </div>
+        <div class="amblog-features">
+            <?= $block->getAuthorHtml($post); ?>
+            <?= $block->getCategoriesHtml($post); ?>
+            <?= $block->getShortCommentsHtml($post); ?>
+        </div>
+        <?php if ($block->getSettingHelper()->getHelpfulEnabled()): ?>
+            <?= $block->getHelpfulHtml(); ?>
+        <?php endif; ?>
+        <?php if ($block->getSettingHelper()->getSocialEnabled()): ?>
+            <?= $block->getSocialHtml(); ?>
+        <?php endif; ?>
+    </div>
+
+    <?php if ($previous || $next): ?>
+        <section class="amblog-navigation-container">
+            <?php foreach ([$previous, $next] as $i => $current): ?>
+                <section class="amblog-navigation <?= /* @noEscape */ $i ? '-next' : '-previous' ?>">
+                    <?php if ($current): ?>
+                    <span class="amblog-navigation-label">
+                        <?= $escaper->escapeHtml(__('%1 article:', $i ? 'Next' : 'Previous')) ?>
+                    </span>
+                        <a  href="<?= $escaper->escapeUrl($current[PostInterface::URL_KEY]) ?>"
+                            rel="<?= /* @noEscape */ $i ? 'next' : 'prev' ?>"
+                            aria-label="<?= $escaper->escapeHtmlAttr($current[PostInterface::TITLE]) ?>"
+                            title="<?= $escaper->escapeHtmlAttr($current[PostInterface::TITLE]) ?>"
+                            class="amblog-title-link">
+                            <?= $escaper->escapeHtml($current[PostInterface::TITLE]) ?>
+                        </a>
+                    <?php endif; ?>
+                </section>
+            <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
+</div>
+
+<?= $block->getChildHtml('amblog.post.related');?>
+<?= $block->getChildHtml('amblog.post.related.products');?>
+
+<?php if ($block->getUseCommentsGlobal() && $post->getCommentsEnabled()): ?>
+    <div class="amblog-comments-wrapper" data-amblog-js="top-comments-wrapper">
+        <div class="amblog-title"><?= $escaper->escapeHtml(__('Comments')); ?></div>
+        <div class="amblog-comments-action" data-amblog-js="comments-form">
+            <?= $block->getChildHtml('amblog.comments.form') ?>
+        </div>
+        <div class="amblog-comments-container" id="comments">
+            <?= $block->getChildHtml('amblog.comments.list') ?>
+        </div>
+    </div>
+<?php endif; ?>
+<div class="amblog-overlay" data-amblog-js="overlay"></div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+             "amBlogAccord": {}
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "[data-amblog-js='views-counter']": {
+             "amBlogViewStatistic": {
+                "postId" : <?= (int) $block->getPost()->getPostId() ?>
+             }
+        }
+    }
+</script>
+
+<?php foreach ($block->getJsonMicroData() as $microData): ?>
+    <script type="application/ld+json"><?= /* @noEscape */$microData; ?></script>
+<?php endforeach;?>
+

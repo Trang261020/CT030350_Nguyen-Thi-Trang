@@ -1,0 +1,116 @@
+& when (@media-common = true) {
+    .row{
+        .col-3{
+            > p{
+                .m;
+            }
+
+            .block-static-block{
+                .h(100%);
+                .mb;
+            }
+        }
+        .column-main{
+            > p, > strong, ul{
+                .mb(20px);
+                line-height: 20px;
+            }
+            strong{
+                display: inline-block;
+            }
+        }
+    }
+
+    .cms-page-view{
+        &:not(.cms-no-route){
+            .page-heading();
+
+            .page-title-wrapper{
+                .pt(15px);
+            }
+        }
+
+        .row{
+            .mb(60px);
+            .mt(8px);
+        }
+    }
+
+    .cms-no-route{
+        .page-title-wrapper{
+            .mt(56px);
+            .mb(15px);
+            text-align: center;
+        }
+
+        .page-title{
+            .mb;
+            font-size: 60px;
+            line-height: 1.214;
+        }
+
+        .no-route-desc{
+            .mb(25px);
+            text-align: center;
+        }
+
+        a.action.primary{
+            .transition(0.3s);
+            .w(max-content);
+            .mx(auto);
+            .p(10px 29px);
+            display: block;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .row{
+        .col-9.column-main{
+            width: 100%;
+        }
+    }
+
+    .cms-page-view{
+        .page-title-wrapper{
+            .mt(20px);
+        }
+
+        .row{
+            flex-direction: column-reverse;
+        }
+    }
+
+    .cms-no-route{
+        .columns{
+            .mb(60px);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+    .row{
+        .col-9.column-main{
+            .pl(20px);
+        }
+
+        .col-3{
+            .block-static-block{
+                .h(100%);
+                .mb;
+            }
+        }
+    }
+
+    .cms-page-view{
+        .row{
+            .mt(13px);
+        }
+    }
+
+    .cms-no-route{
+        .page-title{
+            font-size: 70px;
+        }
+    }
+}

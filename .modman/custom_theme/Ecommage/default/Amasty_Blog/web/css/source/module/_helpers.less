@@ -1,0 +1,100 @@
+//
+//  Helpers
+//  ____________________________________________
+
+._amblog-toggle {
+    &:before {
+        background: @amblog-dropdown-arrow__background;
+        content: '';
+        cursor: pointer;
+        display: block;
+        height: 12px;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%) rotate(-180deg);
+        width: 20px;
+    }
+
+    &.-active:before {
+        transform: translateY(-50%) rotate(0);
+    }
+}
+
+._amblog-form {
+    &.amblog-item {
+        padding: @amblog-element-content__padding;
+    }
+
+    .amblog-form-container {
+        position: relative;
+    }
+
+    .amblog-input {
+        & {
+            .lib-css(border, 1px solid @amblog-input__border-color);
+            .lib-css(color, @amblog-input-text__color);
+
+            border-radius: @amblog-button__border-radius;
+            font-size: @amblog-font-size__s;
+            height: 100%;
+            padding: 11px 60px 11px 14px;
+            width: 100%;
+        }
+
+        &:hover {
+            .lib-css(border-color, @amblog-input__hover__border-color);
+        }
+
+        &::-webkit-input-placeholder,
+        &:-ms-input-placeholder,
+        &::-moz-placeholder {
+            .lib-css(color, @amblog-placeholder__color);
+        }
+
+        &:focus {
+            border: 1px solid @amblog-svg-custom-classic__color;
+            box-shadow: none;
+        }
+
+        &:focus::-webkit-input-placeholder,
+        &:focus::-moz-placeholder,
+        &:focus:-ms-input-placeholder {
+            color: transparent;
+        }
+    }
+}
+
+._amblog-column-form {
+    .input-box {
+        flex-direction: column;
+    }
+
+    .amblog-input {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+
+    .amblog-btn,
+    .amblog-input {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .mage-error[generated='true'] {
+        margin-bottom: 10px;
+        margin-top: -10px;
+        order: 0;
+        width: 100%;
+        word-break: break-all;
+    }
+}
+
+._amblog-button {
+    & {
+        color: #2F6FDB;;
+        display: inline-block;
+        text-decoration: underline;
+        text-underline-position: from-font;
+    }
+}

@@ -1,0 +1,40 @@
+& when (@media-common = true) {
+    .cms-left-sidebar{
+        .p(12.5px 20px);        
+        .border-radius(20px);
+        .box-shadow(0 0 10px rgba(0,0,0,0.1));
+        background: @color-white;
+
+        .sidebar-link-item{
+            .mb;
+
+            &:last-child{
+                .sidebar-link{
+                    border: 0;
+                }
+            }
+        }
+
+        .sidebar-link{
+            .py(7.5px);
+            display: block;
+            line-height: 18px;
+
+            &.active{
+                color: @color-theme;
+                font-weight: @semibold;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .cms-left-sidebar{
+        .mt(5px);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .cms-left-sidebar{
+    }
+}

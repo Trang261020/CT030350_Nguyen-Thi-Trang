@@ -1,0 +1,92 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Customer\Block\Form\Login $block */
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Sparsh_MobileNumberLogin/js/mobile-number": {}
+    }
+}
+</script>
+<div class="block block-customer-login">
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <form class="form form-login"
+              action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+              method="post"
+              id="login-form"
+              data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+                <?php
+                    $isBothOptionAvailable = $block->getLoginMode();
+                    $note = $isBothOptionAvailable ?
+                        'If you have an account, sign in with your email address or mobile number.'
+                        : 'If you have an account, sign in with your mobile number.';
+                ?>
+                <?php if ($isBothOptionAvailable):?>
+                    <div class="field choice sparsh-mobile-number-login-option">
+                        <label class="label" for="mobile_number_user">
+                            <input type="radio" name="user_option" class="radio" id="mobile_number_user" value="sparsh-mobile-number" checked="checked">
+                            <span><?= $block->escapeHtml(__('Mobile Number')) ?></span>
+                        </label>
+                        <label class="label sparsh-email-user" for="email_user">
+                            <input type="radio" name="user_option" class="radio" id="email_user" value="sparsh-email">
+                            <span><?= $block->escapeHtml(__('Email')) ?></span>
+                        </label>
+                    </div>
+                    <div class="field sparsh-user-name sparsh-email required">
+                        <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                        <div class="control">
+                            <input name="login[username]" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                <?php endif ?>
+                <div class="field sparsh-user-name sparsh-mobile-number required">
+                    <label class="label" for="mobile_number"><span><?= $block->escapeHtml(__('Mobile Number')) ?></span></label>
+                    <div class="control">
+                        <input type="text" id="mobile_number" <?= !$isBothOptionAvailable ? 'name="login[mobile_number]"' : null ?> <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> class="mobile_number" class="input-text"  title="<?= $block->escapeHtmlAttr(__('Mobile Number')) ?>" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true, 'validate-digits':true, 'validate-mobile-number':true}">
+                        <input type="hidden" name="login[username]" id="sparsh-mobiles-number">
+                    </div>
+                </div>
+                <input type="hidden" name="country_code">
+                <div class="field password required">
+                    <label for="pass" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+                    <div class="control">
+                        <input name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?= $block->escapeHtmlAttr(__('Password')) ?>" data-validate="{required:true}">
+                    </div>
+                </div>
+                <div class="field choice showpassword" data-bind="scope: 'showPassword'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <?= $block->getChildHtml('form_additional_info') ?>
+                <div class="actions-toolbar">
+                    <div class="primary"><button type="submit" class="action login primary" name="send" id="send2"><span><?= $block->escapeHtml(__('Sign In')) ?></span></button></div>
+                    <div class="secondary"><a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>"><span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span></a></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Customer/js/block-submit-on-send": {
+                    "formId": "login-form"
+                },
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "showPassword": {
+                            "component": "Magento_Customer/js/show-password",
+                            "passwordSelector": "#pass"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>
+

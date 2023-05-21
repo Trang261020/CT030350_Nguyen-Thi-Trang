@@ -1,0 +1,46 @@
+<?php
+/**
+ * @var $block \Ecommage\Sms\Block\VerifyOtpLogin
+ */
+
+$helper = $this->helper('Ecommage\Sms\Helper\Data'); //@codingStandardsIgnoreLine
+$mobileNumber = $block->getReqMobileNumber() ? $block->getReqMobileNumber() : $block->getMobileNumber();
+?>
+
+<div class="block-content-otp">
+    <div class="page-title-otp ">
+        <span>
+            <?= $block->escapeHtml(__('Verify OTP Login')) ?>
+        </span>
+    </div>
+    <form class="form form-login-otp"
+          action="<?= $block->escapeUrl($helper->getUrlVerifyOtp()) ?>"
+          method="post"
+          id="otp-login-form"
+          data-mage-init='{"validation":{}}'>
+        <?= $block->getBlockHtml('formkey') ?>
+        <fieldset class="fieldset verify-otp-login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+            <div class="field otp-login required">
+                <label class="label" for="otp_code"><span><?= $block->escapeHtml(__('OTP Code')) ?></span></label>
+                <div class="control">
+                    <input type="text" id="otp_code" name="otpCode" class="input-text"  title="<?= $block->escapeHtmlAttr(__('OTP Code')) ?>" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true}">
+                    <input type="hidden" id="mobile-number" name="mobileNumber" class="input-text" value="<?= $block->escapeHtml($mobileNumber) ?>">
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary"><button type="submit" class="action send-otp primary" name="sendotp" id="sendOtp"><span><?= $block->escapeHtml(__('Send OTP')) ?></span></button></div>
+            </div>
+            <?= $block->getChildHtml('form_additional_info') ?>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mage/mage',
+        'mage/validation'
+    ], function($){
+        var otpForm = $('#otp-login-form');
+        otpForm.mage('validation', {});
+    });
+</script>

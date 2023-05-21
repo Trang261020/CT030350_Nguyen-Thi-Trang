@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin sortOrder="1" name="face_full_name" type="Ecommage\CustomerFullName\Plugin\Checkout\Block\Checkout\LayoutProcessor" />
+    </type>
+    <type name="Magento\Customer\Block\Widget\Name">
+        <plugin sortOrder="1" name="customer_name_widget" type="Ecommage\CustomerFullName\Plugin\Customer\Block\Widget\Name" />
+    </type>
+    <type name="Magento\Customer\Helper\View">
+        <plugin sortOrder="1" name="customer_name_bk" type="Ecommage\CustomerFullName\Plugin\Customer\Model\Name" />
+    </type>
+    <type name="Magento\Customer\Block\Address\Renderer\DefaultRenderer">
+        <plugin sortOrder="1" name="customer_name_bk" type="Ecommage\CustomerFullName\Plugin\Block\Address\Renderer\DefaultRenderer" />
+    </type>
+</config>

@@ -1,0 +1,109 @@
+//
+//  Base Styles
+//  ______________________________________________
+
+//
+//  Imports
+//  ----------------------------------------------
+
+@import '_mixins';
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    //.amasty-label-container:not(.-preview) {
+    //    max-height: 300px !important;
+    //    max-width: 300px !important;
+    //}
+
+    .amasty-label-container.-link:hover {
+        & {
+            cursor: pointer;
+        }
+
+        .amlabel-text {
+            text-decoration: underline;
+        }
+    }
+
+    .fotorama--fullscreen .amasty-label-container {
+        display: none;
+    }
+
+    // Override magento styles
+    .products-upsell .product-item .amlabel-text {
+        font-size: 12px !important;
+        padding: 0 !important;
+    }
+
+    .fotorama .amlabel-text.-am-centered {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto !important; // override js
+    }
+
+    .admin__field.-amlabel-hidden {
+        & {
+            margin: 0;
+        }
+
+        > .admin__field-label {
+            .lib-visually-hidden();
+        }
+    }
+
+    .amlabel-image-preview {
+        & {
+            border: 1px solid #ccc;
+            display: flex;
+            position: absolute;
+            right: 0;
+            white-space: nowrap;
+            width: ~'calc(100% * .25 - 30px)';
+            z-index: 99;
+        }
+
+        .amlabel-text {
+            .am-word-break;
+        }
+
+        > .amlabel-image {
+            height: 100%;
+            width: 100%;
+        }
+
+        .amlabel-position-wrapper {
+            display: flex;
+            position: absolute;
+        }
+
+        .amasty-label-container {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .amlabel-preview-image + .amlabel-text {
+            left: 50%;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .amlabel-position-wrapper {
+        & {
+            z-index: 99;
+        }
+
+        .block-viewed-products-grid & {
+            z-index: 2;
+        }
+    }
+}

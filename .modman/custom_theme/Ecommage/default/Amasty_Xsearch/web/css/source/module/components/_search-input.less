@@ -1,0 +1,93 @@
+//
+//  Search Input Styles
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .page-header .amsearch-input-wrapper {
+        width: 100%;
+    }
+
+    .amsearch-input-wrapper {
+        & {
+            max-width: 100%;
+            position: relative;
+            transition: .3s;
+        }
+
+        &.-typed {
+            .amsearch-button.-loupe {
+                left: @amsearch__indent;
+                right: auto;
+            }
+
+            .amsearch-input {
+                padding-left: 33px;
+                padding-right: 33px;
+            }
+        }
+
+        .amsearch-input {
+            & {
+                border: 1px solid #ccc;
+                padding: 5px 10px;
+                transition: .3s;
+            }
+
+            &:focus {
+                // & {
+                //     border: 1px solid @amsearch-secondary__color;
+                //     box-shadow: none;
+                // }
+
+                &::placeholder,
+                &::-webkit-input-placeholder {
+                    color: transparent;
+                }
+            }
+
+            &::placeholder,
+            &::-webkit-input-placeholder {
+                color: #999;
+            }
+        }
+
+        .amsearch-button {
+            &.-close {
+                bottom: 0;
+                font-size: 1rem;
+                margin: auto;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            &.-loupe {
+                border: 0;
+                bottom: 0;
+                margin: auto;
+                position: absolute;
+                right: 5px;
+                top: 0;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header:not(.amsearch-full-width) .amsearch-input-wrapper.-dynamic-width {
+        width: 100%;
+    }
+
+    .page-header .amsearch-input-wrapper {
+        min-width: 283px;
+        width: auto;
+    }
+}

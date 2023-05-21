@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ecommage, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.price">
+            <container name="product.info.top" htmlClass="product-info-top" htmlTag="div" before="-">
+                <container name="product.info.brand.wrap" htmlClass="product-info-brand-wrap" htmlTag="div">
+                    <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.brand" template="Ecommage_CustomCatalog::product/view/brand.phtml" after="-"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="product.info.type" destination="product.info.top" before="-"/>
+    </body>
+</page>

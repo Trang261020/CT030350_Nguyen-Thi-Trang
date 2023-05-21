@@ -1,0 +1,307 @@
+@color-store-locator-custom: #919191;
+@color-store-locator-custom1: #fcf065;
+.icon-locator(){
+	font-size: 14px;
+	font-weight: @font-weight__bold;
+	&:before{
+		content:'';
+		display: inline-block;
+		.mask-image(icon-header-location-view,@color-theme);
+		.mask-option(18px 18px,no-repeat,center);
+		margin-right: 5px;
+		.w(18px);
+        .h(18px);
+		position: relative;
+		top: 3px;
+	}
+}
+& when (@media-common =true) {
+	.amlocator-label{
+		display: block;
+		text-align: center;
+		padding: 0 15px;
+	}
+	.amlocator-index-index{
+		.page-heading();
+		.page-title-wrapper{
+			margin-top: 20px;
+		}
+        .column.main{
+            padding-bottom: 0;
+        }
+        .page-main{
+			padding: 0;
+		}
+    }
+	.amlocator-search-container{
+		background: @color-white;
+		.amlocator-search-container-item{
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			padding: 17px 20px 20px;
+		}
+		.storelocator-title{
+			.icon-locator();
+			margin: 0 0 20px;
+			font-style: normal;
+		}
+		.amlocator-wrapper{
+			margin-bottom: 5px;
+		}
+		.amlocator-current-location{
+			.amlocator-reset{
+				background: transparent;
+				&:before{
+					content:"";
+					display: block;
+					height: 12px;
+					width: 12px;
+					.mask-image(icon-theme-close-view, @color-theme);
+					margin-top: 2px;
+				}
+			}
+			.amlocator-text{
+				&:not([disabled]):focus{
+					border-color: @color-theme;
+				}
+				&:focus + .amlocator-search{
+					background: transparent;
+				}
+			}
+			.amlocator-search{
+				background: transparent;
+				&:before{
+					content: "";
+					display: block;
+					position: absolute;
+					.mask-image(icon-header-search-view, @color-theme);
+					width: 15px;
+					height: 15px;
+					top: -1px;
+					left: -3px;
+				}
+			}
+			.amlocator-text{
+				border-radius: @button__border-radius;
+				border-color: @color-gray3;
+				height: 30px;
+			}
+		}
+		.amlocator-title-wrap{
+			text-align: left;
+			margin-bottom: 15px;
+			label{
+				font-size: 10px;
+				color: @color-store-locator-custom;
+			}
+		}
+		.amlocator-range-slider{
+			.transparentBackgroundColorMixin(0.2,@color-theme);
+			.ui-slider-range,
+			.amlocator-tooltip,
+			.amlocator-handle{
+				background: @color-theme;
+				color: @color-white;
+			}
+			.amlocator-tooltip{
+				top: -4px;
+				font-size: 10px;
+				line-height: 1.2;
+				padding: 2px 4px;
+
+				&::after{
+					background: @color-theme;
+					width: 5px;
+					height: 5px;
+				}
+			}
+		}
+	}
+
+	.amlocator-main-container{
+		.amlocator-map-container{
+			.my(20px, 60px);
+		}
+		.amlocator-button.-nearby{
+			font-size: 12px;
+			min-height: 30px;
+		}
+		.amlocator-search-container {
+			.amlocator-button.-nearby{
+				border-radius: @button__border-radius;
+				width: auto;
+				padding: 0 32px;
+				border-color: @color-theme;
+				//color: @color-theme;
+				//background: @color-white;
+				&:hover,
+				&:focus{
+					background: @color-theme;
+					color: @color-white;
+				}
+			}
+		}
+	}
+
+	.amlocator-block{
+		&.-filter{
+			.amlocator-label-filter{
+				.icon-locator();
+			}
+		}
+		&.-storelist{
+			.amlocator-store-information{
+				width: 100%;
+			}
+			.nearby-stores{
+				.icon-locator();
+				margin-top: 0;
+				margin-bottom: 30px;
+				line-height: 17px;
+				font-style: normal;
+			}
+			.amlocator-store-desc{
+				background: @color-white;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+				font-size: 12px;
+				&:not(:first-of-type){
+					margin-top: 20px;
+				}
+				.amlocator-block{
+					margin: 20px 15px;
+				}
+				&.-active{
+					background: @color-theme;
+					.amlocator-link-phone{
+						color: @color-store-locator-custom1;
+						&:before{
+							background: @color-white;
+						}
+					}
+					.amlocator-link-top{
+						border-bottom: 1px solid @color-white;
+					}
+				}
+			}
+			.amlocator-link-top{
+				display: flex;
+				border-bottom: 1px solid @color-gray94;
+				margin-bottom: 9px;
+				.amlocator-link-phone{
+					margin-right: 20px;
+					font-size: 12px;
+					color: @color-theme;
+					position: relative;
+					line-height: 15px;
+					&:before{
+						content: "";
+						display: block;
+						width: 1px;
+						height: 15px;
+						position: absolute;
+						background: @color-gray94;
+						right: -10px;
+						top: 1px;
+					}
+				}
+				.amlocator-title{
+					font-size: 12px;
+					font-weight: @font-weight__semibold;
+					margin-bottom: 8px;
+					line-height: 15px;
+				}
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+	.amlocator-index-index {
+		.nearby-stores {
+			margin-left: 15px;
+		}
+	}
+
+	.amlocator-main-container .amlocator-map-container {
+		.amlocator-stores-wrapper,
+		.amlocator-search-container,
+		.amlocator-block.-map,
+		.amlocator-block.-filter{
+			padding: 0 15px;
+			margin-bottom: 25px;
+		}
+		.amlocator-store-list .amlocator-wrapper {
+			max-height: 425px;
+		}
+	}
+	.amlocator-search-container .amlocator-block{
+		margin-bottom: 0;
+	}
+
+	.amlocator-index-index{
+		.gm-style .gm-style-iw-c{
+			max-width: initial !important;
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s){
+	.amlocator-main-container{
+		.amlocator-search-container {
+			.amlocator-block.-search{
+				margin-bottom: 20px;
+			}
+		}
+		.amlocator-map-container{
+			.amlocator-map{
+				height: 100%;
+			}
+			.amlocator-block{
+				&.-map{
+					height: 500px;
+				}
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+	.amlocator-index-index{
+        .page-main{
+            margin-bottom: 10px;
+        }
+    }
+	.amlocator-block{
+		&.-map{
+			.py(0 20px);
+		}
+		&.-storelist{
+			padding: 0 11px 0 20px;
+			.scrollbar();
+		}
+	}
+	.amlocator-main-container{
+		.amlocator-map-container{
+			height: 710px;
+			max-height: 710px;
+			.amlocator-search-container{
+				margin-bottom: 26px;
+			}
+			.amlocator-block{
+				&.-map{
+					height: 710px;
+				}
+			}
+		}
+		.amlocator-map-container{
+			.amlocator-search-container{
+				width: 34.4%;
+				padding: 0 11px 0 20px;
+			}
+			.amlocator-block{
+				&.-map{
+					width: 66.6%;
+				}
+				&.-storelist{
+					width: 34.4%;
+				}
+			}
+		}
+	}
+}

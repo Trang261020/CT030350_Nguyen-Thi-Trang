@@ -1,0 +1,16 @@
+{
+    "name": "ecommage/svg-web-images",
+    "description": "Upload SVG images in Magento 2.x",
+    "type": "magento2-module",
+    "version": "2.1.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Ecommage\\SvgWebImages\\": ""
+        }
+    }
+}

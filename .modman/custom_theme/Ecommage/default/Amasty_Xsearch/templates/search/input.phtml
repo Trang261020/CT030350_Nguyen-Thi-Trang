@@ -1,0 +1,66 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Advanced Search Base for Magento 2
+*/
+?>
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<section class="amsearch-input-wrapper"
+         data-bind="
+            css: {
+                '-dynamic-width': data.isDynamicWidth,
+                '-match': $data.readyForSearch(),
+                '-typed': inputValue && inputValue().length
+            }">
+    <input type="text"
+           name="q"
+           placeholder="<?= $escaper->escapeHtmlAttr(__('Enter Keyword or Item')) ?>"
+           class="amsearch-input"
+           maxlength="128"
+           role="combobox"
+           aria-haspopup="false"
+           aria-autocomplete="both"
+           autocomplete="off"
+           aria-expanded="false"
+           data-amsearch-block="input"
+           data-bind="
+                afterRender: initInputValue,
+                hasFocus: focused,
+                value: inputValue,
+                event: {
+                    keypress: onEnter
+                },
+                valueUpdate: 'input'">
+    <!-- ko template: { name: templates.loader } --><!-- /ko-->
+    <button class="amsearch-button -close -clear -icon"
+            style="display: none"
+            data-bind="
+                event: {
+                    click: inputValue.bind(this, '')
+                },
+                attr: {
+                    title: $t('Clear Field')
+                },
+                visible: inputValue && inputValue().length">
+    </button>
+    <button class="amsearch-button -loupe -clear -icon -disabled"
+            data-bind="
+                event: {
+                    click: search
+                },
+                css: {
+                    '-disabled': !$data.match()
+                },
+                attr: {
+                    title: $t('Search')
+                }">
+                <img data-bind="attr: { src: require.toUrl('images/search-icon.svg'), alt: 'search' }" />
+    </button>
+</section>

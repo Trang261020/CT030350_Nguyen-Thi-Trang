@@ -1,0 +1,38 @@
+& when (@media-common = true) {
+    .page-bottom{
+        .pb(80px);
+    }
+
+    .recently-view-product-slider{
+        .title{
+            .mb(20px);
+        }
+    }
+
+    .nicefornow-recently-viewed-product{
+        .pt(0);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .recently-view-product-slider{
+        margin-top: 33px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .page-bottom{
+        .pb(99px);
+    }
+
+    .recently-view-product-slider {
+        margin-top: 44px;
+        .title{
+            .mb(23px);
+        }
+    }
+
+    .nicefornow-recently-viewed-product{
+        .pt(0);
+    }
+}

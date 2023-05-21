@@ -1,0 +1,36 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Blog Pro for Magento 2
+*/
+?>
+<?php
+/**
+ * @var $block Amasty\Blog\Block\Layout\MobileWrapper
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<aside
+    class="<?= $escaper->escapeHtml($block->getBlocksSide()) ?> amblog-aside-<?= $escaper->escapeHtml($block->getBlocksSide()) ?>"
+    id="amblog_<?= $escaper->escapeHtml($block->getBlocksSide()) ?>_off_canvas">
+    <?php foreach ($block->getChildBlocksHtml() as $alias => $childHtml): ?>
+        <div data-amblog-js="element-block" class="mobile-block amblog-element-block"
+             data-set="sidebar-<?= $escaper->escapeHtml($alias); ?>">
+            <?= /** @noEscape */ $childHtml ?>
+        </div>
+    <?php endforeach; ?>
+</aside>
+
+<script>
+    require(['jquery', 'Amasty_Blog/js/vendor/swipe/swipy', 'domReady!'], function ($) {
+        $('#amblog_<?= $escaper->escapeHtml($block->getBlocksSide()) ?>_off_canvas')
+            .swipy({'side': '<?= $escaper->escapeHtml($block->getBlocksSide()) ?>'});
+    });
+</script>
+
+<div class="swipe-me amblog-swipe <?= $escaper->escapeHtml(sprintf('-%s', $block->getBlocksSide())); ?>"
+     data-amblog-js="swipe-me"
+     title="<?= $escaper->escapeHtml($block->getSwipePhrase()) ?>">
+</div>

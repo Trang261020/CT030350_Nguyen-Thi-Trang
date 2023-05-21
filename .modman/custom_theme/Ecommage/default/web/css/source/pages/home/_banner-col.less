@@ -1,0 +1,50 @@
+& when (@media-common = true) {}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    // Banner col general
+    .home-banner{
+        .img{
+            .w(100%);
+        }
+    }
+
+    // Banner 4 col
+    .home-banner-4col{
+        margin-bottom: 26px;
+        [class^=col-]{
+            flex: 1 1 162px;
+            min-width: 162px;
+        }
+    }
+
+    // Banner 2 col, 3 col
+    .home-banner-3col{
+        margin-bottom: -10px;
+    }
+    .home-banner-2col{
+        margin-top: 18px;
+        margin-bottom: -12px;
+        .row-scroll-x-xs{
+            margin-bottom: 7px;
+        }
+    }
+    .home-banner-col{
+        [class^=col-]{
+            flex: 1 1 246px;
+            min-width: 246px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .home-banner-4col{
+        margin-bottom: 65px;
+    }
+    .home-banner-3col{
+        margin-bottom: 36px;
+    }
+    .home-banner-2col{
+        margin-bottom: -6px;
+        margin-top: 40px;
+    }
+}

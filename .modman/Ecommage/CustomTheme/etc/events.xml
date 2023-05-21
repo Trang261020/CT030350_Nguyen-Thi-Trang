@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="view_block_abstract_to_html_before">
+        <observer name="registy_random_product_collection" instance="Ecommage\CustomTheme\Observer\ProductRandom" />
+    </event>
+    <event name="customer_register_success">
+        <observer name="ecommage_send_mail_create_account" instance="Ecommage\CustomTheme\Observer\SendMail" />
+    </event>
+</config>

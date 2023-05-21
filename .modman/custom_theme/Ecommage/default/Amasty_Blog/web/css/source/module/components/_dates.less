@@ -1,0 +1,68 @@
+//
+//  Dates Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amblog-dates {
+        & {
+            align-items: flex-start;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        > .amblog-date {
+            display: block;
+            margin-right: 25px;
+            width: auto;
+        }
+    }
+
+    .amblog-date {
+        .lib-css(color, @color-black);
+
+        font-size: 1.4rem;
+        font-style: normal;
+        margin-right: @amblog__indent__l;
+    }
+
+    .amblog-grid-list,
+    .amblog-post-container,
+    .amblog-container-list {
+        .amblog-dates > .amblog-date,
+        .amblog-dates > .amblog-views,
+        .amblog-dates > .amblog-minread {
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .amblog-dates > *:last-child {
+            margin-bottom: 20px;
+        }
+    }
+
+    .amblog-element-block {
+        .amblog-date {
+            margin-top: 10px;
+        }
+
+        .amblog-date.-post {
+            margin-top: 5px;
+        }
+
+        .amblog-date.-comment {
+            margin: @amblog__indent 0;
+        }
+    }
+
+    .amblog-related-post {
+        .amblog-date {
+            color: @amblog-date__color;
+            display: block;
+            margin-top: @amblog__indent__l;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<div if="isPaymentMethodsAvailable()"
+     data-bind="blockLoader: isLoading"
+     class="items payment-methods amcheckout-payment-methods">
+    <div repeat="foreach: paymentGroupsList, item: '$group'"
+         class="payment-group">
+        <div class="amcheckout-title"
+             data-amcheckout-js="step-title">
+            <div if="getRegion($group().displayArea)().length"
+                 translate="getGroupTitle($group)"
+                 class="step-title"
+                 data-role="title">
+            </div>
+        </div>
+        <div class="step-content amcheckout-content"
+             data-amcheckout-js="step-content"
+             data-bind="mageInit: {'checkoutCollapsibleSteps': {}}">
+            <div class="amcheckout-wrapper">
+                <ul class="payment-method__wrapper payment-list__custom">
+                    <!-- ko foreach: { data: getRegion($group().displayArea), as: 'method' } -->
+                    <li data-bind="attr: {'class': 'payment-method ' + $parent.getClassMethod(method)}">
+                        <div class="payment-method-title field choice">
+                            <input class="radio" type="radio">
+                            <label data-bind="attr: {'for': method.item.method}" class="label">
+                                <span data-bind="text: method.item.title"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+                <div class="cms_payment" data-bind="html: cmsPayment,visible: isVisibleCms"></div>
+                <each args="data: getRegion($group().displayArea), as: 'method'" render=""></each>
+            </div>
+        </div>
+    </div>
+</div>
+<div ifnot="isPaymentMethodsAvailable()"
+     class="no-payments-block"
+     translate="'No Payment Methods'">
+</div>

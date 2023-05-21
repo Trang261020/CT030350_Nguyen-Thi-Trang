@@ -1,0 +1,557 @@
+//
+//  Popup Styles
+//  ______________________________________________
+
+//
+//  Imports
+//  ----------------------------------------------
+
+@import '../_helpers';
+
+//
+//  Common
+//  ----------------------------------------------
+@color-theme: #E51A83;
+@media-target: 'mobile'; // Sets target device for this file
+@media-common: true; // Sets not to output common styles
+& when (@media-common = true) {
+    .amsl-login-success {
+        color: @color-theme;
+        padding: 50px;
+    }
+
+    .amsl-popup-overlay {
+        .am-flex(none, center);
+
+        background: rgba(0, 0, 0, .4);
+        height: 100%;
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99999;
+    }
+    .amsl-separator{
+        .lib-visually-hidden();
+    }
+
+    .amsl-popup-block {
+        & {
+            background: #fff;
+            border-radius: 20px;
+            box-sizing: border-box;
+            margin: auto;
+            width: 425px;
+            position: relative;
+        }
+        .amsl-register-content{
+            margin-top: 26px;
+        }
+        .amsl-login-content{
+            .sparsh-mobile-number .control{
+                display: flex;
+                flex-direction: column-reverse;
+            }
+            input.mobile_number{
+                padding-left: 78px;
+            }
+        }
+        .amsl-button-wrapper {
+            margin: 0;
+        }
+
+        .amsl-form {
+            margin: 0 20px 30px;
+            min-width: 250px;
+        }
+
+        .block {
+            margin-bottom: 0;
+        }
+
+        .actions-toolbar > .primary {
+            margin-bottom: 0;
+        }
+
+        //.control.captcha-image .captcha-img {
+        //    display: block;
+        //    max-height: 50px;
+        //}
+
+        .amsl-dialog-title {
+            .lib-visually-hidden();
+        }
+        .amsl-register-content{
+            .field{
+                &.field-name-firstname, &.field-name-lastname{
+                    &.no-display{
+                       .lib-visually-hidden();
+                    }
+                }
+            }
+        }
+    }
+
+    .amsl-popup-block.-social-top .amsl-login-content {
+        & {
+            .am-flex();
+
+            flex-direction: column-reverse;
+        }
+
+        .amsl-separator {
+            display: block;
+            margin: 45px 20px;
+        }
+
+        .amsl-form {
+            margin-bottom: 20px;
+        }
+
+        .amsl-social-login {
+            align-items: center;
+            border-radius: 4px;
+            justify-content: space-around;
+            margin: 0 20px;
+            min-height: inherit;
+            padding: 0;
+        }
+
+        .amsl-social-login .amsl-title {
+            display: none;
+        }
+
+        .amsl-social-login .amsl-title.-short {
+            background: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            transform: none;
+        }
+
+        .amsl-social-login .amsl-buttons {
+            margin: 20px 0;
+            padding: 0;
+            width: 60%;
+        }
+
+        .amsl-social-login .amsl-button-wrapper {
+            margin: 5px;
+        }
+
+        .amsl-social-login .amsl-button {
+            height: @amsl-social-button__on-top__size;
+            width: @amsl-social-button__on-top__size;
+        }
+
+        .amsl-social-login .amsl-social-icon {
+            transform: scale(.6);
+        }
+
+        .amsl-error {
+            & {
+                margin: 5px 20px;
+                order: 1;
+            }
+
+            &.-info {
+                margin-bottom: 20px;
+                margin-top: 0;
+            }
+        }
+
+        .amsl-error.-social {
+            margin: 0;
+        }
+    }
+
+    .amsl-popup-block.-social-top .amsl-login-content .amsl-social-login.-labeled-buttons {
+        & {
+            flex-direction: column;
+            padding: 20px 0 0;
+        }
+
+        .amsl-error.-social {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .amsl-buttons {
+            align-items: flex-start;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .amsl-button-wrapper {
+            box-sizing: border-box;
+            margin: 0 0 15px;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .amsl-button {
+            width: auto;
+        }
+
+        .amsl-social-icon {
+            margin: auto 5px;
+            transform: none;
+        }
+    }
+
+    .amsl-popup-block .actions-toolbar {
+        & {
+            .am-flex(center, center);
+
+            flex-direction: column;
+            margin-top: 26px;
+        }
+
+        &:before,
+        &:after {
+            display: none;
+        }
+
+        .action.primary {
+            background: @color-white;
+            border: 1px solid @color-theme;
+            border-radius: 20px;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: @color-theme;
+            font-size: 14px;
+            font-weight: @font-weight__semibold;
+            height: 30px;
+            margin: 0;
+            padding: 0 19.5px;
+        }
+
+        .action.primary:hover,
+        .action.primary:hover:focus {
+            background: @color-theme;
+            color: @color-white;
+        }
+
+        .action.primary:active {
+            box-shadow: none;
+        }
+    }
+
+    .amsl-popup-block .fieldset {
+        //& {
+        //    margin-bottom: 10px;
+        //}
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        & > .field > .label,
+        & > .fields > .field > .label {
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+
+    .amsl-popup-block .checkbox {
+        & {
+            height: 15px;
+            margin: 0 7px 0 0;
+            vertical-align: middle;
+            width: 15px;
+            border-radius: 5px;
+        }
+
+        & + .label {
+            vertical-align: middle;
+        }
+    }
+
+    .amsl-popup-block .input-text {
+        & {
+            background: @color-white;
+            &:focus{
+                box-shadow: none;
+            }
+        }
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    .amsl-popup-block .amsl-close {
+        //& {
+        //        background: @amsl-close-icon__background;
+        //    border-radius: 8px;
+        //    cursor: pointer;
+        //    height: @amsl-close-icon__size;
+        //    position: absolute;
+        //    right: 10px;
+        //    top: 10px;
+        //    transition: none;
+        //    width: @amsl-close-icon__size;
+        //}
+        //
+        //&:hover,
+        //&:active {
+        //    background: @amsl-close-icon__hover__background;
+        //}
+
+        &:focus {
+            outline: 1px solid;
+        }
+    }
+    .form-create-account{
+        .fieldset{
+            &.account{
+                margin-bottom: 0;
+            }
+            &.info{
+                .field.choice{
+                    // display: none;
+                }
+            }
+        }
+    }
+    .amsl-popup-block .form-create-account .fieldset.create.account:after,
+    .amsl-popup-block .block-title,
+    .amsl-popup-block .field.note {
+        display: none;
+    }
+
+    .amsl-popup-block.-social-top .amsl-showmore-wrapper {
+        margin: 25px 0 7px;
+    }
+    .amsl-popup-block.-social-right .amsl-login-content.-empty,
+    .amsl-popup-block.-social-left .amsl-login-content.-empty {
+        .amsl-error{
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs){
+    .amsl-popup-block{
+        width: ~"calc(100% - 20px)";
+    }
+    .amsl-tablist .amsl-title .amsl-link{
+        padding: 7px 15px;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amsl-popup-block {
+        .fieldset {
+            margin-bottom: 0;
+        }
+    }
+}
+//
+//  Tablet
+//  ----------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amsl-popup-block {
+        .form-create-account .fieldset > .field{
+            margin-bottom: 10px;
+            &.password{
+                margin-bottom: 14px;
+            }
+            &.confirmation{
+                margin-bottom: 25px;
+            }
+        }
+        .fieldset {
+            margin-bottom: 15px;
+
+        }
+        & {
+            margin: auto;
+            max-width: 570px;
+        }
+
+        &.-social-right,
+        &.-social-left {
+            max-width: 425px;
+        }
+
+        &.-social-left .amsl-login-content {
+            flex-direction: row-reverse;
+        }
+
+        &.-social-right .amsl-login-content {
+            flex-direction: row;
+        }
+
+        .amsl-login-content {
+            width: 360px;
+        }
+
+        .amsl-register-content {
+            width: 425px;
+            .amsl-error{
+                margin-top: -10px;
+            }
+        }
+
+        .amsl-register-content .fieldset.create.info .field-name-firstname,
+        .amsl-register-content .fieldset.create.info .field-name-lastname {
+            display: inline-block;
+            margin-bottom: 0;
+            width: 48%;
+        }
+        .amsl-register-content .fieldset.create.info > .field{
+            &.field-full-name{
+                margin-bottom: 15px;
+            }
+            &.field-dob{
+                margin-bottom: 0;
+            }
+        }
+
+        .amsl-tablist {
+            margin: 30px 30px 10px;
+        }
+
+        .amsl-form {
+            margin: 0 30px 25px;
+            min-width: 300px;
+        }
+
+        .amsl-social-login .amsl-buttons {
+            padding: 0;
+        }
+
+        .amsl-button-wrapper {
+            margin: 0;
+        }
+
+        .amsl-login-content .amsl-button-wrapper.with-label.-rectangular {
+            margin: 0;
+            &:first-child{
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .amsl-popup-block.-social-right .amsl-login-content,
+    .amsl-popup-block.-social-left .amsl-login-content {
+        & {
+            .am-flex(none, none, wrap);
+
+            padding-bottom: 7px;
+            width: 100%;
+        }
+
+        .amsl-form {
+            flex: auto;
+            max-width: 400px;
+        }
+
+        //.amsl-form,
+        //.fieldset {
+        //    margin-bottom: 0;
+        //}
+
+        .amsl-separator {
+            display: block;
+        }
+
+        .amsl-social-wrapper {
+            border-top: 1px solid @color-gray-darken0;
+            flex: 1;
+            margin: 0 30px 24px;
+            min-width: 300px;
+            width: auto;
+        }
+
+        .amsl-social-login {
+            border-radius: 4px;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .amsl-social-login .amsl-buttons {
+            box-sizing: border-box;
+            padding: 0;
+            width: 100%;
+        }
+
+        .amsl-social-login .amsl-title {
+            background: none;
+            margin: 0 auto;
+            transform: none;
+            background: @color-white;
+        }
+
+        .amsl-error.-default {
+            //margin: 0 40px 10px;
+            order: 0;
+            //width: 100%;
+        }
+
+        .amsl-error.-social {
+            flex-basis: auto;
+            margin: auto 0 0;
+            order: 1;
+        }
+
+        .amsl-title {
+            position: relative;
+        }
+    }
+
+    .amsl-popup-block.-social-right .amsl-login-content.-empty,
+    .amsl-popup-block.-social-left .amsl-login-content.-empty {
+        & {
+            flex-direction: column;
+        }
+
+        //.amsl-error {
+        //    max-width: 320px;
+        //}
+    }
+
+    .amsl-popup-block.-social-top .amsl-login-content {
+        .amsl-separator {
+            margin: 45px 40px;
+        }
+
+        .amsl-social-login {
+            border-radius: 4px;
+            margin: 0 40px;
+        }
+
+        .amsl-form {
+            margin-bottom: 55px;
+        }
+
+        .amsl-error {
+            margin: 0 30px;
+        }
+    }
+
+    .amsl-popup-block.-social-bottom .amsl-error {
+        margin: 35px 40px 20px;
+    }
+}
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (max-width: 427px){
+        .amsl-popup-block{
+            max-width: ~"calc(100% - 30px)";
+        }
+    }
+    @media only screen and (max-width: (@screen__s - 1)){
+       .amsl-popup-overlay{
+           max-width: 428px;
+       }
+    }
+    @media only screen and (min-width: @screen__s) and (max-width: @screen__m) {
+       .amsl-popup-overlay{
+           max-width: 600px;
+           left: 50%;
+           transform: translateX(-50%);
+       }
+    }
+}

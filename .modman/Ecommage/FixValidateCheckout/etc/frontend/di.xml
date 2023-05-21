@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created By : Rohan Hapani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="rh_checkout_phone_number"
+                type="Ecommage\FixValidateCheckout\Plugin\Block\Checkout\PhonePlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Item\Renderer">
+        <plugin name="ecommage_check_free_gift"
+                type="Ecommage\FixValidateCheckout\Plugin\Block\Checkout\Cart\ItemRenderer" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="Ecommage_Address_Plugin_Magento_Checkout_Block_Checkout_LayoutProcessor"  disabled="true"/>
+        <plugin disabled="false" name="Ecommage_Address_Plugin_Magento_Checkout_Block_Checkout_LayoutProcessor_bk" sortOrder="10"
+                type="Ecommage\FixValidateCheckout\Plugin\Magento\Checkout\Block\Checkout\LayoutProcessor"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\LayoutProcessor">
+        <plugin name="Ecommage_Address_Plugin_Magento_Checkout_Block_Cart_LayoutProcessor"  disabled="true"/>
+    </type>
+</config>

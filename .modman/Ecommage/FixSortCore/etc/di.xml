@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\Shopby\Plugin\Catalog\Model\ResourceModel\Product\Indexer\Price\Dimensional\Configurable\AddIndexSpecialPrice">
+        <plugin name="Amasty_VisualMerch::enable-indexation-shopby" disabled="true"/>
+    </type>
+    <preference for="Magento\Elasticsearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplier" type="Ecommage\FixSortCore\Preference\Model\ResourceModel\Fulltext\Collection\SearchResultApplier"/>
+</config>

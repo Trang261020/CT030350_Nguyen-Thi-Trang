@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="product_free_gifts" view_id="product_free_gifts" class="Ecommage\ProductIndexFreeGift\Indexer\FreeGiftIndex">
+        <title translate="true">Index products with free gifts</title>
+        <description translate="true">Index products with free gifts</description>
+    </indexer>
+</config>

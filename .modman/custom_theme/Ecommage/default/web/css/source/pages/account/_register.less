@@ -1,0 +1,236 @@
+.form-wrap-custom(){
+    .box-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    .border-radius(20px);
+    .max-w(400px);
+    .p(12px 30px 30.5px);
+    .mx(auto);
+    background: @color-white;
+}
+
+& when (@media-common = true) {
+    [id="social-login-popup"]{
+        .amsl-content {
+            min-width: auto;
+        }
+        
+        .amsl-error{
+            position: relative;
+            padding-bottom: 20px;
+
+            > *:not(:last-child){
+                .mb(8px);
+            }
+
+            .mess-same-mobile{
+                .font(@semibold);
+                color: @theme__color__primary;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: max-content;
+                margin: 0 auto;
+            }
+        }
+    }
+    .ui-datepicker{
+        width: 100%;
+        //max-width: 356px;
+        border-radius: 20px;
+        td .ui-state-default{
+            text-align: center;
+        }
+    }
+    ._has-datepicker ~ .ui-datepicker-trigger{
+        &:after{
+            .mask-image(icon-theme-calendar-view, @color-theme);
+            content: "";
+            .w(20px);
+            .h(20px);
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 12px;
+        }
+        &:before{
+            display: none;
+        }
+    }
+    .ui-widget.ui-datepicker{
+        .ui-datepicker-prev{
+            transform: rotate(180deg);
+            &:before{
+                margin: 2px auto;
+            }
+        }
+        .ui-datepicker-next:before{
+            margin: 9px auto auto;
+        }
+        .ui-datepicker-prev,.ui-datepicker-next{
+            &:before{
+                content: "";
+                .mask-image(icon-theme-arr-right-view, @color-theme);
+                .w(14px);
+                .h(14px);
+                display: block;
+            }
+            &.ui-state-disabled{
+                opacity: 0.5;
+            }
+            span{
+                display: none;
+            }
+        }
+    }
+    .customer-account-create{
+        .page-heading();
+
+        .page-title-wrapper{
+            .mb(14px);
+            .mt(4px);
+        }
+
+        .page-main{
+            .mt(11px);
+        }
+    }
+    .fieldset{
+        .customer-dob{
+            position: relative;
+            button{
+                position: absolute;
+                top: -5px;
+                right: 5px;
+            }
+            input{
+                width: 100%;
+            }
+        }
+    }
+    .form-create-account{
+        .mb(50px);
+        .form-wrap-custom();
+        .lib-input-checkbox();
+        .actions-toolbar();
+        .amsl-social-wrapper{
+            margin: 20px 0 0;
+        }
+        .fieldset{
+            .mb;
+            .legend{
+                .lib-visually-hidden();
+            }
+
+            > .field{
+                .mb(15px);
+            }
+        }
+
+        .create.info{
+            .choice{
+                &::before{
+                    display: none;
+                }
+
+                &:not(.newsletter){
+                    .lib-visually-hidden();
+                }
+            }
+        }
+
+        .control{
+            .password-strength-meter{
+                display: none;
+            }
+        }
+
+
+
+        input[type="checkbox"]{
+            .m;
+            .mr(9px);
+        }
+    }
+}
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (max-width: 389px){
+        .ui-datepicker .ui-datepicker-title select{
+            padding-left: 15px;
+            padding-right: 15px;
+            background-position-x: 90%;
+        }
+    }
+    @media only screen and (max-width: 428px) {
+        .ui-datepicker{
+             max-width: ~"calc(100vw - 72px)";
+            left: 50% !important;
+            transform: translateX(-50%);
+        }
+        .account{
+            .ui-datepicker{
+                 max-width: ~"calc(100vw - 40px)";
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .amsl-popup-block .amsl-register-content{
+       max-height: 570px;
+       .scrollbar(4px, 5px, 20px, 20px, @bg: transparent);
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+     .ui-datepicker {
+         max-width: 356px;
+     }
+    .customer-account-create{
+        .ui-datepicker{
+            max-width: 328px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+     .ui-datepicker {
+         max-width: 340px;
+     }
+    .customer-account-create{
+        .ui-datepicker{
+            max-width: 340px;
+        }
+    }
+    .form-create-account{
+        .fieldset{
+            > .field{
+                .mb(19.25px);
+                &.password{
+                    .mb(21px);
+                }
+                &.confirmation{
+                    .mb(19px);
+                }
+                
+                &.choice{
+                    &::before{
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .actions-toolbar{
+            .primary{
+                .action{
+                    .m;
+                }
+            }
+
+            .secondary{
+                a.action{
+                    .mt;
+                }
+            }
+        }
+    }
+}

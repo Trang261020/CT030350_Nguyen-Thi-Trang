@@ -1,0 +1,68 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    // Font Quicksand
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/Quicksand/Regular/Quicksand-Regular',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/Quicksand/Semibold/Quicksand-SemiBold',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/Quicksand/Bold/Quicksand-Bold',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    // Font Montserrat
+    .lib-font-face(
+        @family-name: @font-family-name__second,
+        @font-path: '@{baseDir}fonts/Montserrat/ExtraBold/Montserrat-ExtraBold',
+        @font-weight: 800,
+        @font-style: normal,
+        @font-display: swap
+    );
+    .lib-font-face(
+        @family-name: @font-family-name__second,
+        @font-path: '@{baseDir}fonts/Montserrat/ExtraboldItalic/Montserrat-ExtraBoldItalic',
+        @font-weight: 800,
+        @font-style: italic,
+        @font-display: swap
+    );
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .items {
+        .lib-list-reset-styles();
+    }
+}

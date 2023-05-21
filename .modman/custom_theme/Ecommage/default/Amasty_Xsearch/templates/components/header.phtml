@@ -1,0 +1,42 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Advanced Search Base for Magento 2
+*/
+?>
+<?php
+/**
+ * @var Product|\Amasty\Xsearch\Block\Search\AbstractSearch|RelatedSearchTerms|\Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var array $products
+ */
+
+use Amasty\Xsearch\Block\RelatedSearchTerms;
+use Amasty\Xsearch\Block\Search\Product;
+
+$hiddenProductsCount = $block->getHiddenProductsCount();
+$resultsCount = $block->getNumResults();
+$title = $block->getTitle();
+if($block instanceof Amasty\Xsearch\Block\Search\Product){
+    $hiddenProductsCount = 1;
+}
+?>
+
+<p class="amsearch-block-header amsearch-collapsible-title" data-role="title">
+    <span class="amsearch-title">
+        <?= $escaper->escapeHtml(__($title))?>
+        <?php if ($hiddenProductsCount): ?>
+            <span class="amsearch-count"><?= $escaper->escapeHtml($block->getNumResults()) ?></span>
+        <?php endif; ?>
+    </span>
+
+    <?php if ($hiddenProductsCount): ?>
+        <a href="<?= $escaper->escapeUrl($block->getResultUrl()) ?>"
+           title="<?= $escaper->escapeHtmlAttr(__('View All')) ?>"
+           class="amsearch-link -view-all">
+            <?= $escaper->escapeHtml(__('View All')) ?>
+            <span class="amsearch-count"><?= $escaper->escapeHtml($hiddenProductsCount) ?></span>
+        </a>
+    <?php endif; ?>
+</p>

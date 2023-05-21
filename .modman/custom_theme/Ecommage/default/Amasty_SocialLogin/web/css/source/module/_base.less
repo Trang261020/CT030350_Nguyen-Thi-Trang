@@ -1,0 +1,144 @@
+//
+//  Base Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amsl-separator {
+        & {
+            border: 1px solid @amsl-main-gray__color;
+            display: none;
+            margin: 0;
+            position: relative;
+        }
+
+        .amsl-icon {
+            background: #fff;
+            border: 2px solid @amsl-main-gray__color;
+            border-radius: 20px;
+            box-sizing: border-box;
+            color: @amsl-main-gray__color;
+            display: block;
+            font-size: 14px;
+            height: 33px;
+            left: 50%;
+            line-height: 27px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 33px;
+        }
+    }
+
+    .amsl-cart-page .-labeled-buttons,
+    .amsl-registration-page .-labeled-buttons,
+    .amsl-login-page .-labeled-buttons {
+        > .amsl-title {
+            display: block;
+        }
+
+        .amsl-buttons {
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .amsl-button-wrapper.with-label.-rectangular {
+            &:first-child{
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .amsl-error {
+        & {
+            background: @color-white;
+            display: none;
+            flex-basis: 100%;
+            text-align: left;
+            word-break: break-word;
+            max-width: 400px;
+            font-size: 12px;
+            color: @color-red10;
+            margin: 0 20px;
+            a{
+                color: @color-red10;
+                text-decoration: underline;
+            }
+        }
+
+        &.-default {
+            margin-bottom: 10px;
+        }
+
+        &.-social {
+            margin: 35px 20px 0;
+        }
+
+        &.-info {
+            background: none;
+            color: #a1a1a1;
+            font-size: 14px;
+            line-height: 16px;
+            padding: 0;
+            text-align: center;
+        }
+    }
+
+    .amsl-content {
+        min-width: 300px;
+    }
+
+    .amsl-social-wrapper {
+        .am-flex();
+
+        flex-direction: column;
+        margin: 25px 30px 30px;
+        border-top: 1px solid @color-gray-darken0;
+    }
+
+    .amsl-cart-page,
+    .amsl-login-page,
+    .amsl-registration-page {
+        & {
+            margin: 10px 0;
+        }
+
+        .amsl-error {
+            margin: 0 0 10px;
+        }
+    }
+
+    .amsl-form .field input[type='checkbox'] {
+        top: -1px;
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amsl-cart-page .-labeled-buttons,
+    .amsl-registration-page .-labeled-buttons,
+    .amsl-login-page .-labeled-buttons {
+        .amsl-buttons {
+            width: 100%;
+        }
+
+        .amsl-button-wrapper.with-label.-rectangular {
+            width: ~"calc(50% - 10px)";
+        }
+    }
+
+    .amsl-forgot-content .amsl-error {
+        max-width: 340px;
+    }
+
+    .amsl-error {
+        margin: 0 30px;
+    }
+}

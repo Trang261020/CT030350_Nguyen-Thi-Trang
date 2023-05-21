@@ -1,0 +1,46 @@
+//
+//  Search Overlay Styles
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    // start Fix for widgets
+    body.-amsearch-overlay-opened {
+        .logo{
+            z-index: 0;
+        }
+    }
+    // end Fix for widgets
+
+    .page-header.amsearch-full-width.-opened {
+        z-index: 12;
+    }
+
+    .amsearch-overlay-block {
+        & {
+            // background: rgba(0, 0, 0, .19);
+            bottom: 0;
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 11;
+        }
+
+        .amsearch-overlay {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+        }
+    }
+}

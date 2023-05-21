@@ -1,0 +1,62 @@
+& when (@media-common = true) {
+    .cdz-slideshow{
+        .owl-theme {
+            .owl-dots {
+                position: absolute;
+                bottom: 6px;
+                left: 0;
+                right: 0;
+                .owl-dot {
+                    background: transparent;
+                    border: 0;
+                    padding: 0;
+                    margin: 0 5px;
+
+                    span{
+                        background: @color-white;
+                        .m;
+
+                        .active &{
+                            background: @color-white;
+                        }
+                    }
+
+                    &:not(.active){
+                        span{
+                            .opacity(.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .cdz-slideshow{
+        .owl-theme {
+            .owl-dots {
+                .owl-dot {
+                    span{
+                        .h(7px);
+                        .w(7px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .cdz-slideshow{
+        .owl-theme {
+            .owl-dots {
+                bottom: 11px;
+
+                .owl-dot {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}

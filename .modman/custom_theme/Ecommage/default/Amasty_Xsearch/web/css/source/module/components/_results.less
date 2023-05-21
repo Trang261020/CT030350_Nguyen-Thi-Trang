@@ -1,0 +1,73 @@
+//
+//  Results Popup Styles
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .page-header {
+        &:not(.amsearch-full-width) .amsearch-result-section {
+            .amsearch-animation__fadeIn(.3);
+        }
+
+        .amsearch-result-section {
+            // right: 0;
+        }
+    }
+
+    .amsearch-result-section {
+        & {
+            .am-scrollbar();
+
+            background-color: #fff;
+            border: 0 solid transparent;
+            // border-radius: 3px;
+            // box-shadow: 0 2px 4px rgba(84, 95, 125, .12), 0 5px 8px rgba(155, 159, 174, .1);
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            // margin: 5px 0;
+            max-height: 90vh;
+            position: absolute;
+            top: 100%;
+            transition: .3s;
+            width: 100%;
+            z-index: 99;
+        }
+
+        &:empty {
+            display: none;
+        }
+
+        .amsearch-result-block {
+            & {
+                box-sizing: border-box;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            &:empty {
+                display: none;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amsearch-result-section {
+        & {
+            // min-width: 100%;
+            width: inherit;
+        }
+
+        &:not(.-small) {
+            flex-wrap: nowrap;
+        }
+    }
+}

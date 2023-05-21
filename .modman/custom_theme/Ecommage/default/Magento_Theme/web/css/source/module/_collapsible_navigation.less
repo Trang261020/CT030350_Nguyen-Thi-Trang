@@ -1,0 +1,132 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@collapsible-nav-background: #f9f9f9;
+@collapsible-nav-color: @color-gray34;
+@collapsible-nav-current-border: 3px solid transparent;
+@collapsible-nav-current-border-color: @active__color;
+@collapsible-nav-current-color: #E51A83;
+@collapsible-nav-current-font-weight: @font-weight__semibold;
+@collapsible-nav-delimiter__border-color: @color-gray82;
+@collapsible-nav-item-hover: @color-gray91;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Collapsible navigation
+    //  -----------------------------------------
+
+    .block-collapsible-nav {
+        .content {
+            .lib-css(background, @collapsible-nav-background);
+        }
+        .item {
+            margin: 5.5px 0 0;
+            &:first-child {
+                margin-top: 0;
+            }
+
+            a,
+            > strong {
+                border-left: 3px solid transparent;
+                .lib-css(color, @color-black);
+                display: block;
+                padding: 5px 18px 5px 15px;
+            }
+
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    // .lib-css(background, @collapsible-nav-item-hover);
+                }
+            }
+
+            &.current {
+                a,
+                > strong {
+                    //.lib-css(border-color, @collapsible-nav-current-border-color);
+                    .lib-css(color, @collapsible-nav-current-color);
+                    .lib-css(font-weight, @collapsible-nav-current-font-weight);
+                }
+
+                //a {
+                //    .lib-css(border-color, @collapsible-nav-current-border-color);
+                //}
+            }
+
+            .delimiter {
+                border-top: none;
+                display: block;
+                margin: 0;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block-collapsible-nav {
+        .title {
+            &:extend(.abs-visually-hidden-desktop all);
+        }
+        .content {
+            .lib-css(background, @collapsible-nav-background);
+             border-radius: 20px;
+            .items{
+                padding: 15.25px 0;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-collapsible-nav {
+        //left: 0;
+        //position: absolute;
+        //top: -21px;
+        width: 100%;
+        z-index: 5;
+        margin-bottom: 15px;
+
+        .title {
+            &:extend(.abs-toggling-title-mobile all);
+            border: none;
+            // background: @color-white;
+            background: #e9e9e9;
+            // color: @collapsible-nav-current-color;
+            color: @color-black;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            //border-bottom: @border-width__base solid @border-color__base;
+            display: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background: @color-white;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+}

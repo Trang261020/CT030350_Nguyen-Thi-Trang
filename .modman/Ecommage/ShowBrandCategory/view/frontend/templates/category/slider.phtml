@@ -1,0 +1,42 @@
+<?php
+/**
+ * @author    Amasty Team
+ * @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+ * @package   Shop by Brand for Magento 2
+ */
+
+?>
+<?php
+/** @var Magento\Catalog\Block\Category\View $block */
+
+$category = $block->getCurrentCategory();
+$brandIds = $category->getCustomAttribute('category_brands') ? $category->getCustomAttribute('category_brands')->getValue() : null;
+if (is_array($brandIds)) {
+    $brandIds = implode(',', $brandIds);
+}
+
+$html = $block->getLayout()
+              ->createBlock(
+                  "Ecommage\BrandWidget\Block\Widget\BrandSlider",
+                  "block_name",
+                  [
+                      'data' => [
+                          'brand_ids'       => $brandIds,
+                          "items_number"    => "8",
+                          "display_zero"    => "1",
+                          "sort_by"         => "name",
+                          "slider_width"    => "1200",
+                          "image_width"     => "76",
+                          "show_label"      => "0",
+                          "buttons_show"    => "1",
+                          "infinity_loop"   => "0",
+                          "simulate_touch"  => "0",
+                          "pagination_show" => "0",
+                          "autoplay"        => "0",
+                      ]
+                  ]
+              )
+              ->setTemplate('Ecommage_BrandWidget::widget/brand_list/slider.phtml')
+              ->toHtml();
+?>
+<?= /* @noEscape */ $html ?>

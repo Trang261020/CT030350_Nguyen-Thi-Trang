@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ecommage, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="product_free_gifts" resource="default" engine="innodb" comment="Sales Rule Product">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+            comment="Rule Product ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" identity="false"
+            default="0" comment="Product ID"/>
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Rule Id"/>
+        <column xsi:type="varchar" name="product_gifts" nullable="true" length="255" default="to_fixed"
+            comment="Product Gifts"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

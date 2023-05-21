@@ -1,0 +1,24 @@
+<!--@subject {{trans "Welcome to %store_name" store_name=$store.getFrontendName()}} @-->
+{{template config_path="design/email/header_template"}}
+
+<h3>{{trans "Congratulations on your purchase voucher"}}</h3>
+<table  class="details" cellpadding="5" cellspacing="2" border="1">
+    <tr>
+        <th>{{trans "Coupon Code"}}</th>
+        <th>{{trans "Cart Rule Name"}}</th>
+        <th>{{trans "Cart Rule Description"}}</th>
+    </tr>
+    <tr>
+        <td>
+            <p><strong>{{var couponCode}}</strong></p>
+        </td>
+        <td>
+            {{var cartRuleName}}
+        </td>
+        <td>
+            {{var cartRuleDescription}}
+        </td>
+
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

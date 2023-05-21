@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Checkout\Block\Onepage\Failure */
+?>
+<?php if ($block->getRealOrderId()) :?>
+    <p>
+        <span><?= $block->escapeHtml(__('Order')).':' ?></span>
+        <strong><?= $block->getRealOrderId()?></strong>
+    </p>
+<?php endif ?>
+<?php if ($error = $block->getErrorMessage()) :?>
+    <p><?= $block->escapeHtml($error) ?></p>
+<?php endif ?>
+<div class="continue-shopping-wrap">
+    <p class="action continue-shopping"><?= $block->escapeHtml(
+        __('Click <a href="%1">here</a> to continue shopping.', $block->escapeUrl($block->getContinueShoppingUrl())),
+        ['a']
+    ) ?>
+    </p>
+</div>

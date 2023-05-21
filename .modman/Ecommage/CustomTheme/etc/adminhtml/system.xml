@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="checkout" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Checkout</label>
+            <tab>sales</tab>
+            <resource>Magento_Checkout::checkout</resource>
+            <group id="cart" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shopping Cart</label>
+                <field id="max_items_display_count" translate="label" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Maximum Number of Items Crosssell</label>
+                    <validate>validate-zero-or-greater validate-digits</validate>
+                </field>
+            </group>
+        </section>
+
+        <section id="catalog" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Catalog</label>
+            <tab>catalog</tab>
+            <resource>Magento_Catalog::config_catalog</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display Category Filter Product Page</label>
+                <field id="is_display_filter_category" translate="label" type="select" showInDefault="1" canRestore="1">
+                    <label>Display</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Allow displaying filter by category on product listing page.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

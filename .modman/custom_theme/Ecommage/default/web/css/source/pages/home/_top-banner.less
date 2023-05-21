@@ -1,0 +1,43 @@
+& when (@media-common = true) {
+    .banner-right{
+        img{
+            display: block;
+        }
+
+        .banner_img{
+            & + *{
+                .mt(10px);
+            }
+        }
+    }
+
+    body{
+        .sparsh_banner{
+            .m;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .home-top-banner{
+        .mb(20px);
+
+        .cdz-slideshow{
+            .mx(-@layout__width-xs-indent);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .home-top-banner{
+        margin-bottom: 50px;
+        margin-top: 22px;
+        .owl-carousel {
+            .owl-item {
+                img{
+                    min-height: 247px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Blog Pro for Magento 2
+*/
+?>
+<?php
+/**
+ * @var $block Amasty\Blog\Block\Sidebar\Recentpost
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$collection = $block->getCollection();
+?>
+
+<?php if (!$block->isAlreadyWrapped()): ?>
+    <div class="amblog-element-block">
+<?php endif; ?>
+
+<?php if (count($collection)): ?>
+    <div data-amblog-js="accordion" class="amblog-post-list amblog-widget-container -recent-posts">
+        <h3 class="amblog-title" data-amblog-js="heading">
+            <?= $escaper->escapeHtml($block->getBlockHeader()); ?>
+        </h3>
+        <div class="amblog-list" data-amblog-js="content">
+            <?php foreach ($collection as $post): ?>
+                <?php $activeClass = $post->getIsActive() ? 'active' : ''; ?>
+                <div class="post-item-info <?= /* @noEscape */ $activeClass; ?> amblog-recent-post-<?= (int)$post->getId(); ?>">
+                    <?php if ($block->hasThumbnail($post)
+                        && $block->showImages()
+                        && ($src = $block->getThumbnailSrc($post))): ?>
+                        <a href="<?= $escaper->escapeUrl($post->getUrl()) ?>"
+                           title="<?= $escaper->escapeHtmlAttr($post->getTitle()) ?>"
+                           aria-label="<?= $escaper->escapeHtmlAttr($post->getTitle()) ?>"
+                           class="post-image">
+                            <img src="<?= $escaper->escapeUrl($src); ?>"
+                                 alt="<?= $escaper->escapeHtmlAttr($post->getThumbnailAlt()); ?>">
+                        </a>
+                    <?php endif; ?>
+                    <div class="post-item-details">
+                        <a class="post-title amblog-headline"
+                           href="<?= $escaper->escapeUrl($post->getUrl()); ?>"
+                           title="<?= $escaper->escapeHtmlAttr($post->getTitle()) ?>"
+                           aria-label="<?= $escaper->escapeHtmlAttr($post->getTitle()) ?>">
+                            <?= $escaper->escapeHtml($post->getTitle()); ?>
+                        </a>
+
+                        <?php if ($block->needShowThesis()): ?>
+                            <div class="short-description">
+                                <?= $escaper->escapeHtml($block->getStrippedContent($post->getShortContent())); ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="amblog-dates">
+                            <?php if ($block->needShowDate()): ?>
+                                <div class="amblog-date"
+                                    <?php if ($block->isHumanized()): ?>
+                                        data-mage-init='{
+                                            "amBlogDates": "<?= $escaper->escapeJs($post->getPublishedAt()) ?>"
+                                        }'
+                                    <?php endif; ?>>
+                                    <?= $escaper->escapeHtml($block->isHumanized()
+                                        ? __('Loading...')
+                                        : $block->renderDate($post->getPublishedAt())) ?>
+                                </div>
+                                <?php if ($post->getEditedAt() && $block->isShowEditedAt()): ?>
+                                    <span class="amblog-date">
+                                    <?= $escaper->escapeHtml(__('Edited')) ?>
+                                    <span <?php if ($block->isHumanizedEditedAt()): ?>
+                                        data-mage-init='{"amBlogDates": "<?= $escaper->escapeJs($post->getEditedAt()) ?>"}'
+                                    <?php endif; ?>>
+                                        <?= $escaper->escapeHtml($block->isHumanizedEditedAt()
+                                            ? __('Loading...')
+                                            : $block->renderDate($post->getEditedAt(), true)) ?>
+                                    </span>
+                                </span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if ($block->getSettingsHelper()->getDisplayViews()): ?>
+                                <span class="views amblog-views">
+                                        <?= $escaper->escapeHtml(__('%1 view(s)', $post->getViews())); ?>
+                                </span>
+                            <?php endif; ?>
+                            <?php if ($block->isDisplayReadTime()): ?>
+                                <span class="amblog-minread">
+                                <?= $escaper->escapeHtml($block->getReadTime((string)$post->getFullContent())); ?>
+                                <?= $escaper->escapeHtml(__(' min read')); ?>
+                            </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="amblog-empty"><?= $escaper->escapeHtml(__('Posts were not found')); ?></div>
+<?php endif; ?>
+
+<?php if (!$block->isAlreadyWrapped()): ?>
+    </div>
+<?php endif; ?>

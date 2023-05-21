@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="shipping-address-item" css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()">
+    <text args="address().prefix"></text>
+    <!-- ko if: (address().firstname == address().lastname) -->
+        <text args="address().firstname"></text>
+    <!-- /ko -->
+
+    <!-- ko if: (address().firstname !== address().lastname) -->
+        <text args="address().firstname"></text> <text args="address().lastname"></text>
+    <!-- /ko -->
+    <text args="address().suffix"></text><br>
+    <if args="address().company">
+        <text args="address().company"></text><br>
+    </if>
+    <text args="_.values(address().street).join(', ')"></text><br>
+    <if args="isEnableEcommageAddress()">
+        <text args="address().ward "></text>,<br/>
+    </if>
+    <text args="address().city "></text>, <span text="address().region"></span><br>
+    <text args="getCountryName(address().countryId)"></text><br>
+    <a if="address().telephone" attr="'href': 'tel:' + address().telephone" text="address().telephone"></a><br>
+    <if args="address().vatId">
+        VAT: <text args="address().vatId"></text><br>
+    </if>
+
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Edit'"></span>
+    </button>
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" click="selectAddress" class="action action-select-shipping-item">
+        <span translate="'Ship Here'"></span>
+    </button>
+    <!-- /ko -->
+</div>

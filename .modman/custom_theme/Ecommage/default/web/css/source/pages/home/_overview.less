@@ -1,0 +1,67 @@
+& when (@media-common = true) {
+    .home-for-mom{
+        .view-all-link a{
+            padding: 5.25px 20px;
+        }
+        .my(20px);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+   .amlabel-position-wrapper{
+        .amasty-label-container{
+           max-width: 116px !important;
+        }
+    }
+    .page-wrapper .sections.nav-sections{
+        z-index: 997;
+    }
+    .cms-index-index{
+        h2{
+            text-align: center;
+        }
+    }
+    
+    .home-for-mom{
+        .block-title{
+            margin-bottom: 8px;
+            h2{
+                margin-bottom: 0;
+            }
+        }
+        .products-grid{
+            margin-bottom: 0;
+        }
+        .product-items{
+            .product-item{
+                &:nth-child(n+7){
+                    display: none;
+                }
+            }
+        }
+
+        .view-all-link{
+            .mt(8px);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .home-for-mom{
+        .mt(40px);
+        .products-grid{
+            margin-bottom: 0;
+        }
+        .product-items{
+            gap: 27px 0;
+        }
+        .view-all-link{
+            margin-top: 30px;
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 18px;
+        }
+    }
+}

@@ -1,0 +1,182 @@
+//
+//  Social Login  Styles
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@amsl-socials-checkout__offset: 15px;
+@amsl-checkout-shipping-address__max-width: 500px;
+@amsl-checkout-shipping-address__margin-top: 28px;
+@amsl-button-wrapper__checkout__size: ~'calc(@{amsl-checkout-shipping-address__max-width} / 5 - ((@{amsl-socials-checkout__offset} * 2) / 5))';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amsl-social-login {
+        & {
+            .am-flex(none, none, wrap);
+
+            background: @color-white;
+            border-radius: 0 0 8px 8px;
+            height: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .amsl-title {
+            background: @color-white;
+            border-radius: 4px;
+            box-sizing: border-box;
+            left: 0;
+            margin: 0 auto;
+            max-width: 300px;
+            right: 0;
+            width: 100%;
+            padding: 20px 0 22px;
+        }
+
+        .amsl-title.-short {
+            display: none;
+            width: inherit;
+        }
+
+        .amsl-buttons {
+            .am-flex(none, center, wrap);
+
+            padding: 0;
+            width: 100%;
+        }
+
+        .amsl-buttons.-flex-center {
+            justify-content: center;
+        }
+
+        .amsl-button {
+            & {
+                box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .25);
+                height: @amsl-social-button__default__size;
+                width: @amsl-social-button__default__size;
+            }
+
+            &:hover {
+                box-shadow: 0 4px 4px 2px rgba(0, 0, 0, .15);
+                text-decoration: none;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        .amsl-button.-google:hover {
+            background: lighten(@amsl-google-button__background, 10%);
+        }
+
+        .amsl-button.-twitter:hover {
+            background: lighten(@amsl-twitter-button__background, 10%);
+        }
+
+        .amsl-button.-facebook:hover {
+            background: lighten(@amsl-facebook-button__background, 10%);
+        }
+
+        .amsl-button.-apple:hover {
+            background: #fff;
+        }
+
+        .amsl-button.-linkedin:hover {
+            background: lighten(@amsl-linkedin-button__background, 10%);
+        }
+
+        .amsl-button.-amazon:hover {
+            background: lighten(@amsl-amazon-button__background, 10%);
+        }
+
+        .amsl-button.-paypal:hover {
+            background: lighten(@amsl-paypal-button__background, 10%);
+        }
+
+        .amsl-button.-twitch:hover {
+            background: lighten(@amsl-twitch-button__background, 10%);
+        }
+    }
+
+    .amsl-socials-checkout {
+        & {
+            margin-bottom: @amsl-checkout-shipping-address__margin-top;
+            margin-top: @amsl-checkout-shipping-address__margin-top + 10px;
+        }
+
+        .amsl-social-login {
+            & {
+                border-radius: 0;
+            }
+
+            .amsl-buttons {
+                padding: 30px @amsl-socials-checkout__offset @amsl-socials-checkout__offset;
+            }
+        }
+
+        .amsl-buttons > .amsl-button-wrapper {
+            align-items: center;
+            display: flex;
+            height: @amsl-button-wrapper__checkout__size;
+            justify-content: center;
+            width: @amsl-button-wrapper__checkout__size;
+        }
+    }
+
+    .amsl-cart-page .amsl-social-login,
+    .amsl-login-page .amsl-social-login,
+    .amsl-registration-page .amsl-social-login {
+        & {
+            align-items: center;
+            flex-direction: column;
+            padding-top: 0;
+        }
+
+        .amsl-title {
+            background: none;
+            color: #000;
+            margin: 0;
+            position: relative;
+            text-align: center;
+            transform: none;
+            padding: 20px 0 22px;
+        }
+
+        .amsl-buttons {
+            margin: 0;
+            padding: 0;
+        }
+
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amsl-socials-checkout {
+        max-width: @amsl-checkout-shipping-address__max-width;
+    }
+
+    .amsl-cart-page .amsl-social-login,
+    .amsl-login-page .amsl-social-login,
+    .amsl-registration-page .amsl-social-login {
+        & {
+            flex-direction: row;
+            padding: 0;
+        }
+
+        .amsl-title {
+            margin: auto;
+        }
+
+    }
+}

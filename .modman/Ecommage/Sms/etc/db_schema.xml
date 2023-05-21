@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sms_login_otp" resource="default" engine="innodb" comment="Sms Login Otp Table">
+        <column xsi:type="int" name="id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="OTP ID"/>
+        <column xsi:type="text" name="random_code" nullable="false" comment="Random Code"/>
+        <column xsi:type="varchar" name="mobile_number" nullable="false" length="255" comment="Mobile Number"/>
+        <column xsi:type="varchar" name="is_verify" nullable="false" length="255" comment="Is verify"/>
+        <column xsi:type="timestamp" name="created_time" on_update="false" nullable="false" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Ecommage\CustomTheme\Model\ResourceModel\Method\NameAsc" type="Ecommage\CustomTheme\Model\ResourceModel\Method\Name">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">name_asc</argument>
+            <argument name="methodName" xsi:type="string">Name: A->Z</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ecommage\CustomTheme\Model\ResourceModel\Method\NameDesc" type="Ecommage\CustomTheme\Model\ResourceModel\Method\Name">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">name_desc</argument>
+            <argument name="methodName" xsi:type="string">Name: Z->A</argument>
+        </arguments>
+    </virtualType>
+    <!-- collection of sorting methods -->
+    <type name="Amasty\Sorting\Model\MethodProvider">
+        <arguments>
+            <argument name="indexedMethods" xsi:type="array">
+                <item name="bestsellers" xsi:type="object">Amasty\Sorting\Model\BestsellersWrapper</item>
+                <item name="most_viewed" xsi:type="object">Amasty\Sorting\Model\MostViewedWrapper</item>
+                <item name="wished" xsi:type="object">Amasty\Sorting\Model\WishedWrapper</item>
+            </argument>
+            <argument name="methods" xsi:type="array">
+                <item name="bestsellers" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Bestselling</item>
+                <item name="most_viewed" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\MostViewed</item>
+                <item name="wished" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Wished</item>
+                <item name="reviews_count" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Commented</item>
+                <item name="rating_summary" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Toprated</item>
+                <item name="newest" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Newest</item>
+                <item name="saving" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\Saving</item>
+                <item name="price_asc" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\PriceAsc</item>
+                <item name="price_desc" xsi:type="object">Amasty\Sorting\Model\ResourceModel\Method\PriceDesc</item>
+                <item name="name_asc" xsi:type="object">Ecommage\CustomTheme\Model\ResourceModel\Method\NameAsc</item>
+                <item name="name_desc" xsi:type="object">Ecommage\CustomTheme\Model\ResourceModel\Method\NameDesc</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+        <plugin name="custom_block_toolbar" type="Ecommage\CustomTheme\Plugin\Catalog\Block\Toolbar"/>
+    </type>
+    <type name="Magento\Catalog\Model\Layer">
+        <plugin name="random_collection" type="Ecommage\CustomTheme\Plugin\Catalog\Model\ProductLayer" />
+    </type>
+    <type name="Magento\Rule\Model\Condition\AbstractCondition">
+        <plugin name="Ecommage_CustomTheme::condition_address" type="Ecommage\CustomTheme\Plugin\Catalog\Model\AbstractCondition" />
+    </type>
+</config>
